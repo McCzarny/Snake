@@ -50,9 +50,7 @@ EFLAGS  = -mthumb-interwork
 CODE    = THUMB
 
 # List C source files here.
-CSRCS   = main.c \
-		  gameboard_keys.c
-          
+CSRCS   = main.c          
           
 # List assembler source files here
 ASRCS   = 

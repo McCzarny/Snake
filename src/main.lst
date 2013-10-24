@@ -1,0 +1,334 @@
+ARM GAS  /cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s 			page 1
+
+
+   1              		.code	16
+   2              		.file	"main.c"
+   3              		.section	.debug_abbrev,"",%progbits
+   4              	.Ldebug_abbrev0:
+   5              		.section	.debug_info,"",%progbits
+   6              	.Ldebug_info0:
+   7              		.section	.debug_line,"",%progbits
+   8              	.Ldebug_line0:
+   9 0000 32000000 		.text
+   9      02001D00 
+   9      00000201 
+   9      FB0E0D00 
+   9      01010101 
+  10              	.Ltext0:
+  11              		.align	2
+  12              		.global	main
+  13              		.code 16
+  14              		.thumb_func
+  15              		.type	main, %function
+  16              	main:
+  17              	.LFB2:
+  18              		.file 1 "main.c"
+   1:main.c        **** /******************************************************************************
+   2:main.c        ****  * Includes
+   3:main.c        ****  *****************************************************************************/
+   4:main.c        **** // Libs and api
+   5:main.c        **** #include "../pre_emptive_os/api/osapi.h"
+   6:main.c        **** #include "../pre_emptive_os/api/general.h"
+   7:main.c        **** #include <printf_P.h>
+   8:main.c        **** #include <ea_init.h>
+   9:main.c        **** #include <stdlib.h>
+  10:main.c        **** 
+  11:main.c        **** //#include "gameboard_keys.h"
+  12:main.c        **** 
+  13:main.c        **** /*****************************************************************************
+  14:main.c        ****  *
+  15:main.c        ****  * Description:
+  16:main.c        ****  *    The first function to execute
+  17:main.c        ****  *
+  18:main.c        ****  ****************************************************************************/
+  19:main.c        **** int
+  20:main.c        **** main(void)
+  21:main.c        **** {
+  19              		.loc 1 21 0
+  20              		@ lr needed for prologue
+  22:main.c        **** }
+  21              		.loc 1 22 0
+  22              		@ sp needed for prologue
+  23 0000 7047     		bx	lr
+  24              	.LFE2:
+  25              		.size	main, .-main
+  26              		.section	.debug_frame,"",%progbits
+  27              	.Lframe0:
+  28 0000 0C000000 		.4byte	.LECIE0-.LSCIE0
+  29              	.LSCIE0:
+  30 0004 FFFFFFFF 		.4byte	0xffffffff
+  31 0008 01       		.byte	0x1
+ARM GAS  /cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s 			page 2
+
+
+  32 0009 00       		.ascii	"\000"
+  33 000a 01       		.uleb128 0x1
+  34 000b 7C       		.sleb128 -4
+  35 000c 0E       		.byte	0xe
+  36 000d 0C       		.byte	0xc
+  37 000e 0D       		.uleb128 0xd
+  38 000f 00       		.uleb128 0x0
+  39              		.align	2
+  40              	.LECIE0:
+  41              	.LSFDE0:
+  42 0010 0C000000 		.4byte	.LEFDE0-.LASFDE0
+  43              	.LASFDE0:
+  44 0014 00000000 		.4byte	.Lframe0
+  45 0018 00000000 		.4byte	.LFB2
+  46 001c 02000000 		.4byte	.LFE2-.LFB2
+  47              		.align	2
+  48              	.LEFDE0:
+  49              		.text
+  50              	.Letext0:
+  51 0002 C046     		.section	.debug_info
+  52 0000 8D000000 		.4byte	0x8d
+  53 0004 0200     		.2byte	0x2
+  54 0006 00000000 		.4byte	.Ldebug_abbrev0
+  55 000a 04       		.byte	0x4
+  56 000b 01       		.uleb128 0x1
+  57 000c 00000000 		.4byte	.Ldebug_line0
+  58 0010 02000000 		.4byte	.Letext0
+  59 0014 00000000 		.4byte	.Ltext0
+  60 0018 D6000000 		.4byte	.LASF10
+  61 001c 01       		.byte	0x1
+  62 001d 6C000000 		.4byte	.LASF11
+  63 0021 73000000 		.4byte	.LASF12
+  64 0025 02       		.uleb128 0x2
+  65 0026 C8000000 		.4byte	.LASF0
+  66 002a 01       		.byte	0x1
+  67 002b 08       		.byte	0x8
+  68 002c 02       		.uleb128 0x2
+  69 002d 59000000 		.4byte	.LASF1
+  70 0031 02       		.byte	0x2
+  71 0032 07       		.byte	0x7
+  72 0033 02       		.uleb128 0x2
+  73 0034 3A000000 		.4byte	.LASF2
+  74 0038 04       		.byte	0x4
+  75 0039 07       		.byte	0x7
+  76 003a 02       		.uleb128 0x2
+  77 003b 00000000 		.4byte	.LASF3
+  78 003f 01       		.byte	0x1
+  79 0040 06       		.byte	0x6
+  80 0041 02       		.uleb128 0x2
+  81 0042 E2000000 		.4byte	.LASF4
+  82 0046 02       		.byte	0x2
+  83 0047 05       		.byte	0x5
+  84 0048 03       		.uleb128 0x3
+  85 0049 696E7400 		.ascii	"int\000"
+  86 004d 04       		.byte	0x4
+  87 004e 05       		.byte	0x5
+  88 004f 02       		.uleb128 0x2
+ARM GAS  /cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s 			page 3
+
+
+  89 0050 47000000 		.4byte	.LASF5
+  90 0054 04       		.byte	0x4
+  91 0055 07       		.byte	0x7
+  92 0056 02       		.uleb128 0x2
+  93 0057 47000000 		.4byte	.LASF5
+  94 005b 04       		.byte	0x4
+  95 005c 07       		.byte	0x7
+  96 005d 02       		.uleb128 0x2
+  97 005e 31000000 		.4byte	.LASF6
+  98 0062 04       		.byte	0x4
+  99 0063 05       		.byte	0x5
+ 100 0064 02       		.uleb128 0x2
+ 101 0065 23000000 		.4byte	.LASF7
+ 102 0069 08       		.byte	0x8
+ 103 006a 05       		.byte	0x5
+ 104 006b 02       		.uleb128 0x2
+ 105 006c EC000000 		.4byte	.LASF8
+ 106 0070 01       		.byte	0x1
+ 107 0071 08       		.byte	0x8
+ 108 0072 02       		.uleb128 0x2
+ 109 0073 0C000000 		.4byte	.LASF9
+ 110 0077 08       		.byte	0x8
+ 111 0078 07       		.byte	0x7
+ 112 0079 04       		.uleb128 0x4
+ 113 007a 01       		.byte	0x1
+ 114 007b F1000000 		.4byte	.LASF13
+ 115 007f 01       		.byte	0x1
+ 116 0080 15       		.byte	0x15
+ 117 0081 01       		.byte	0x1
+ 118 0082 48000000 		.4byte	0x48
+ 119 0086 00000000 		.4byte	.LFB2
+ 120 008a 02000000 		.4byte	.LFE2
+ 121 008e 01       		.byte	0x1
+ 122 008f 5D       		.byte	0x5d
+ 123 0090 00       		.byte	0x0
+ 124              		.section	.debug_abbrev
+ 125 0000 01       		.uleb128 0x1
+ 126 0001 11       		.uleb128 0x11
+ 127 0002 01       		.byte	0x1
+ 128 0003 10       		.uleb128 0x10
+ 129 0004 06       		.uleb128 0x6
+ 130 0005 12       		.uleb128 0x12
+ 131 0006 01       		.uleb128 0x1
+ 132 0007 11       		.uleb128 0x11
+ 133 0008 01       		.uleb128 0x1
+ 134 0009 25       		.uleb128 0x25
+ 135 000a 0E       		.uleb128 0xe
+ 136 000b 13       		.uleb128 0x13
+ 137 000c 0B       		.uleb128 0xb
+ 138 000d 03       		.uleb128 0x3
+ 139 000e 0E       		.uleb128 0xe
+ 140 000f 1B       		.uleb128 0x1b
+ 141 0010 0E       		.uleb128 0xe
+ 142 0011 00       		.byte	0x0
+ 143 0012 00       		.byte	0x0
+ 144 0013 02       		.uleb128 0x2
+ 145 0014 24       		.uleb128 0x24
+ARM GAS  /cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s 			page 4
+
+
+ 146 0015 00       		.byte	0x0
+ 147 0016 03       		.uleb128 0x3
+ 148 0017 0E       		.uleb128 0xe
+ 149 0018 0B       		.uleb128 0xb
+ 150 0019 0B       		.uleb128 0xb
+ 151 001a 3E       		.uleb128 0x3e
+ 152 001b 0B       		.uleb128 0xb
+ 153 001c 00       		.byte	0x0
+ 154 001d 00       		.byte	0x0
+ 155 001e 03       		.uleb128 0x3
+ 156 001f 24       		.uleb128 0x24
+ 157 0020 00       		.byte	0x0
+ 158 0021 03       		.uleb128 0x3
+ 159 0022 08       		.uleb128 0x8
+ 160 0023 0B       		.uleb128 0xb
+ 161 0024 0B       		.uleb128 0xb
+ 162 0025 3E       		.uleb128 0x3e
+ 163 0026 0B       		.uleb128 0xb
+ 164 0027 00       		.byte	0x0
+ 165 0028 00       		.byte	0x0
+ 166 0029 04       		.uleb128 0x4
+ 167 002a 2E       		.uleb128 0x2e
+ 168 002b 00       		.byte	0x0
+ 169 002c 3F       		.uleb128 0x3f
+ 170 002d 0C       		.uleb128 0xc
+ 171 002e 03       		.uleb128 0x3
+ 172 002f 0E       		.uleb128 0xe
+ 173 0030 3A       		.uleb128 0x3a
+ 174 0031 0B       		.uleb128 0xb
+ 175 0032 3B       		.uleb128 0x3b
+ 176 0033 0B       		.uleb128 0xb
+ 177 0034 27       		.uleb128 0x27
+ 178 0035 0C       		.uleb128 0xc
+ 179 0036 49       		.uleb128 0x49
+ 180 0037 13       		.uleb128 0x13
+ 181 0038 11       		.uleb128 0x11
+ 182 0039 01       		.uleb128 0x1
+ 183 003a 12       		.uleb128 0x12
+ 184 003b 01       		.uleb128 0x1
+ 185 003c 40       		.uleb128 0x40
+ 186 003d 0A       		.uleb128 0xa
+ 187 003e 00       		.byte	0x0
+ 188 003f 00       		.byte	0x0
+ 189 0040 00       		.byte	0x0
+ 190              		.section	.debug_pubnames,"",%progbits
+ 191 0000 17000000 		.4byte	0x17
+ 192 0004 0200     		.2byte	0x2
+ 193 0006 00000000 		.4byte	.Ldebug_info0
+ 194 000a 91000000 		.4byte	0x91
+ 195 000e 79000000 		.4byte	0x79
+ 196 0012 6D61696E 		.ascii	"main\000"
+ 196      00
+ 197 0017 00000000 		.4byte	0x0
+ 198              		.section	.debug_aranges,"",%progbits
+ 199 0000 1C000000 		.4byte	0x1c
+ 200 0004 0200     		.2byte	0x2
+ 201 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  /cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s 			page 5
+
+
+ 202 000a 04       		.byte	0x4
+ 203 000b 00       		.byte	0x0
+ 204 000c 0000     		.2byte	0x0
+ 205 000e 0000     		.2byte	0x0
+ 206 0010 00000000 		.4byte	.Ltext0
+ 207 0014 02000000 		.4byte	.Letext0-.Ltext0
+ 208 0018 00000000 		.4byte	0x0
+ 209 001c 00000000 		.4byte	0x0
+ 210              		.section	.debug_str,"MS",%progbits,1
+ 211              	.LASF3:
+ 212 0000 7369676E 		.ascii	"signed char\000"
+ 212      65642063 
+ 212      68617200 
+ 213              	.LASF9:
+ 214 000c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 214      206C6F6E 
+ 214      6720756E 
+ 214      7369676E 
+ 214      65642069 
+ 215              	.LASF7:
+ 216 0023 6C6F6E67 		.ascii	"long long int\000"
+ 216      206C6F6E 
+ 216      6720696E 
+ 216      7400
+ 217              	.LASF6:
+ 218 0031 6C6F6E67 		.ascii	"long int\000"
+ 218      20696E74 
+ 218      00
+ 219              	.LASF2:
+ 220 003a 756E7369 		.ascii	"unsigned int\000"
+ 220      676E6564 
+ 220      20696E74 
+ 220      00
+ 221              	.LASF5:
+ 222 0047 6C6F6E67 		.ascii	"long unsigned int\000"
+ 222      20756E73 
+ 222      69676E65 
+ 222      6420696E 
+ 222      7400
+ 223              	.LASF1:
+ 224 0059 73686F72 		.ascii	"short unsigned int\000"
+ 224      7420756E 
+ 224      7369676E 
+ 224      65642069 
+ 224      6E7400
+ 225              	.LASF11:
+ 226 006c 6D61696E 		.ascii	"main.c\000"
+ 226      2E6300
+ 227              	.LASF12:
+ 228 0073 2F637967 		.ascii	"/cygdrive/c/Documents and Settings/mkwapisz/Desktop"
+ 228      64726976 
+ 228      652F632F 
+ 228      446F6375 
+ 228      6D656E74 
+ 229 00a6 2F45372F 		.ascii	"/E7/Snake-master/Snake-master/src\000"
+ 229      536E616B 
+ 229      652D6D61 
+ARM GAS  /cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s 			page 6
+
+
+ 229      73746572 
+ 229      2F536E61 
+ 230              	.LASF0:
+ 231 00c8 756E7369 		.ascii	"unsigned char\000"
+ 231      676E6564 
+ 231      20636861 
+ 231      7200
+ 232              	.LASF10:
+ 233 00d6 474E5520 		.ascii	"GNU C 4.1.1\000"
+ 233      4320342E 
+ 233      312E3100 
+ 234              	.LASF4:
+ 235 00e2 73686F72 		.ascii	"short int\000"
+ 235      7420696E 
+ 235      7400
+ 236              	.LASF8:
+ 237 00ec 63686172 		.ascii	"char\000"
+ 237      00
+ 238              	.LASF13:
+ 239 00f1 6D61696E 		.ascii	"main\000"
+ 239      00
+ 240              		.ident	"GCC: (GNU) 4.1.1"
+ARM GAS  /cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+/cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s:1      .text:00000000 $t
+/cygdrive/c/DOCUME~1/mkwapisz/LOCALS~1/Temp/ccUevjzE.s:16     .text:00000000 main
+
+NO UNDEFINED SYMBOLS
