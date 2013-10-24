@@ -50,19 +50,8 @@ EFLAGS  = -mthumb-interwork
 CODE    = THUMB
 
 # List C source files here.
-CSRCS   = main.c           \
-          lcd.c            \
-          startupDisplay.c \
-          key.c            \
-          select.c         \
-          uart.c           \
-          bt.c             \
-          snake.c          \
-          exampleGame.c    \
-          pong.c           \
-          eeprom.c         \
-          i2c.c            \
-          hw.c
+CSRCS   = main.c \
+		  gameboard_keys.c
           
           
 # List assembler source files here

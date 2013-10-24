@@ -1,5 +1,0 @@
-/**
- * @brief Sprawdza 
- * @return 
- */
-tU8 checkKey(void);
