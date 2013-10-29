@@ -50,7 +50,17 @@ EFLAGS  = -mthumb-interwork
 CODE    = THUMB
 
 # List C source files here.
-CSRCS   = main.c          
+CSRCS   = main.c           \
+          lcd.c            \
+          key.c            \
+          select.c         \
+          uart.c           \
+          bt.c             \
+          snake.c    \
+          eeprom.c         \
+          i2c.c            \
+          hw.c
+          
           
 # List assembler source files here
 ASRCS   = 
