@@ -41,5 +41,8 @@ typedef struct
 } tMenu;
 
 tU8 drawMenu(tMenu newMenu);
-
+void moveSnake(tU8 anyKey);
+static tU8 mod (tU8 a, tU8 b);
+static tU8 cleanEndOfTail();
+static void putSnack();
 #endif

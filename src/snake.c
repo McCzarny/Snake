@@ -34,12 +34,17 @@
 #define GAME_OVER        2
 #define GAME_END         3
 
+#define BACKGROUND_COLOR 0
+#define SNAKE_COLOR 0x5d
+#define SNACK_COLOR 0x8d
+
 #define MOVE_UP         0
 #define MOVE_DOWN       1
 #define MOVE_LEFT       2
 #define MOVE_RIGHT      3
 
 #define ARENA_SIZE      32
+#define MAX_SNAKE_SIZE  64
 //#define BOARD_WIDTH  10
 //#define BOARD_HEIGHT 16
 
@@ -53,9 +58,14 @@
 static tU8 gameStatus;
 static tU8 snakeXPos;
 static tU8 snakeYPos;
+static tU8 snakeSize;
+static tU8 lastKey;
+static tU8 isOn;
 
 static tU32 time;
 static tU8 gameArena[ARENA_SIZE][ARENA_SIZE];
+static tU8 snakeTail[MAX_SNAKE_SIZE];
+static tU8 snakeTailGuard;
 //static tU8 score;
 
 //static tS32 shift[NUM_OF_FIGURE]={1,0,3,4,5,2,7,8,9,6,11,12,13,10,15,14,17,16,18};
@@ -481,26 +491,147 @@ setField(tU8 x, tU8 y, tU8 color)
 static void
 moveField(tU8 x, tU8 y, tU8 direction)
 {
+    int actualX = x;
+    int actualY = y;
+    // Draw point.
     switch(direction)
     {
     case MOVE_DOWN:
-        gameArena[x][y + 1] = gameArena[x][y];
-        gameArena[x][y] = 0;
+        actualY++;
         break;
     case MOVE_UP:
-        gameArena[x][y - 1] = gameArena[x][y];
-        gameArena[x][y] = 0;
+        actualY--;
         break;
     case MOVE_LEFT:
-        gameArena[x - 1][y] = gameArena[x][y];
-        gameArena[x][y] = 0;
+        actualX--;
         break;
     case MOVE_RIGHT:
-        gameArena[x + 1][y] = gameArena[x][y];
-        gameArena[x][y] = 0;
+        actualX++;
         break;
     default:
-        break;
+        return;
+    }
+    if(gameArena[actualX][actualY] == SNAKE_COLOR)
+    {
+        //GAMEOVER
+    }
+    else if (gameArena[actualX][actualY] == SNACK_COLOR && snakeSize < MAX_SNAKE_SIZE)
+    {
+        snakeSize++;
+    }
+
+    // Erase last point
+    cleanEndOfTail();
+    // Remember move
+    snakeTail[snakeTailGuard] = direction;
+    snakeTailGuard = (snakeTailGuard + 1) % snakeSize;
+}
+
+static void
+putSnack()
+{
+    tU8 x = rand() % ARENA_SIZE;
+    tU8 y = rand() % ARENA_SIZE;
+    gameArena[x][y] = SNACK_COLOR;
+}
+
+static tU8
+cleanEndOfTail()
+{
+    tU8 actualX = snakeXPos;
+    tU8 actualY = snakeYPos;
+    for(tU8 i = snakeTailGuard; i != mod((snakeTailGuard - 1), snakeSize);)
+    {
+        if(snakeTail[i] == NULL)
+        {
+            break;
+        }
+
+        switch(snakeTail[i])
+        {
+        case MOVE_DOWN:
+            actualY--;
+            break;
+        case MOVE_UP:
+            actualY++;
+            break;
+        case MOVE_LEFT:
+            actualX++;
+            break;
+        case MOVE_RIGHT:
+            actualX--;
+            break;
+        default:
+            return;
+        }
+
+        i = (i + 1) % snakeSize;
+    }
+    gameArena[actualX][actualY] = BACKGROUND_COLOR;
+}
+
+static tU8
+mod (tU8 a, tU8 b)
+{
+   tU8 ret = a % b;
+   if(ret < 0)
+     ret+=b;
+   return ret;
+}
+
+
+
+void
+moveSnake(tU8 anyKey)
+{
+    if (anyKey == KEY_UP)
+    {
+        if(snakeYPos != 1)
+        {
+            moveField(snakeXPos, snakeYPos, MOVE_UP);
+            snakeYPos -= 1;
+        }
+    }
+    else if (anyKey == KEY_DOWN)
+    {
+        if(snakeYPos != ARENA_SIZE - 2)
+        {
+            moveField(snakeXPos, snakeYPos, MOVE_DOWN);
+            snakeYPos += 1;
+        }
+    }
+    else if (anyKey == KEY_RIGHT)
+    {
+        if(snakeXPos != ARENA_SIZE - 2)
+        {
+            moveField(snakeXPos, snakeYPos, MOVE_RIGHT);
+            snakeXPos += 1;
+        }
+    }
+    else if (anyKey == KEY_LEFT)
+    {
+        if(snakeXPos != 1)
+        {
+            moveField(snakeXPos, snakeYPos, MOVE_LEFT);
+            snakeXPos -= 1;
+        }
+    }
+    else if (anyKey == KEY_CENTER)
+    {
+        iisOnf (isOn == 0)
+        {
+            setLED(1, 1);
+            setLED(2, 1);
+            isOn = 1;
+            osSleep(1);
+        }
+        else
+        {
+            setLED(1, 0);
+            setLED(2, 0);
+            isOn = 0;
+            osSleep(1);
+        }
     }
 }
 
@@ -514,13 +645,18 @@ moveField(tU8 x, tU8 y, tU8 direction)
 void
 playSnake(void)
 {
+    srand(time(NULL));
 
     snakeXPos = 16;
     snakeYPos = 16;
-    tU8 isOn = 0;
+    snakeSize = 5;
+    snakeTailGuard = 0;
+    snakeTail[0] = MOVE_UP;
     lcdClrscr();
     setBorder(0xfd);
     setField(snakeXPos, snakeYPos, 0x5d);
+    lastKey = KEY_UP;
+    isOn = 0;
     for(;;)
     {
         time++;
@@ -531,59 +667,15 @@ playSnake(void)
         anyKey = checkKey();
         if (anyKey != KEY_NOTHING)
         {
-            if (anyKey == KEY_UP)
-            {
-                if(snakeYPos != 1)
-                {
-                    moveField(snakeXPos, snakeYPos, MOVE_UP);
-                    snakeYPos -= 1;
-                }
-            }
-            else if (anyKey == KEY_DOWN)
-            {
-                if(snakeYPos != ARENA_SIZE - 2)
-                {
-                    moveField(snakeXPos, snakeYPos, MOVE_DOWN);
-                    snakeYPos += 1;
-                }
-            }
-            else if (anyKey == KEY_RIGHT)
-            {
-                if(snakeXPos != ARENA_SIZE - 2)
-                {
-                    moveField(snakeXPos, snakeYPos, MOVE_RIGHT);
-                    snakeXPos += 1;
-                }
-            }
-            else if (anyKey == KEY_LEFT)
-            {
-                if(snakeXPos != 1)
-                {
-                    moveField(snakeXPos, snakeYPos, MOVE_LEFT);
-                    snakeXPos -= 1;
-                }
-            }
-            else if (anyKey == KEY_CENTER)
-            {
-                if (isOn == 0)
-                {
-                    setLED(1, 1);
-                    setLED(2, 1);
-                    isOn = 1;
-                    osSleep(1);
-                }
-                else
-                {
-                    setLED(1, 0);
-                    setLED(2, 0);
-                    isOn = 0;
-                    osSleep(1);
-                }
-            }
+            lastKey = anyKey;
             osSleep(1);
         }
+
+        moveSnake(lastKey);
         drawArena();
     }
+
+
     //  setupGame(FALSE);
     //  lcdGotoxy(5,40);
     //  lcdColor(0,0xe0);
