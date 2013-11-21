@@ -16,6 +16,7 @@
  *****************************************************************************/
 #include "../pre_emptive_os/api/osapi.h"
 #include "../pre_emptive_os/api/general.h"
+#include "startup/lpc2xxx.h"
 #include <printf_P.h>
 #include <ea_init.h>
 #include <stdlib.h>
@@ -51,6 +52,8 @@
 
 //#define FIGURE_SIZE 4
 //#define NUM_OF_FIGURE 19
+#define LED_GREEN 0
+#define LED_RED 1
 
 
 /*****************************************************************************
@@ -453,6 +456,101 @@ static tU8 snakeTailGuard;
 //  lastUpdate = ms;
 //}
 
+int toggle = 0;
+int count = 0;
+
+tU16 notes[] = {262, 294, 330, 349, 392, 440, 494, 523}; //C D E F G A B C
+int note = 0;
+
+static void
+startMusic(void)
+{
+        setBuzzer(toggle == 0 ? FALSE : TRUE);
+
+        toggle = ~toggle;
+        count++;
+
+        if(count == notes[note]*10) //Note delay
+        {
+                if(note < 8)
+                                note++;                 //choose next note
+                if(note == 8)
+                {
+                                T1MCR = 0x06;   //Stop and reset timer at MR0
+                                setBuzzer(FALSE);
+                                setLED(LED_GREEN, FALSE);
+                                setLED(LED_RED, FALSE);
+                                note = 0;
+                }
+                T1TCR = 0x02;                                              //Disable and reset timer
+                T1MR0 = CORE_FREQ / (100*notes[note]); //set new timer's ticks
+                T1TCR = 0x01;                                              //Start timer
+                count = 0;
+        }
+
+        T1IR        = 0x000000ff;        //reset all IRQ flags
+        VICVectAddr = 0x00000000;        //dummy write to VIC to signal end of interrupt
+}
+
+static void
+eatNoise(void)
+{
+    setBuzzer(toggle == 0 ? FALSE : TRUE);
+
+    toggle = ~toggle;
+    count++;
+
+    if(count == notes[note]*10) //Note delay
+    {
+            if(note < 3)
+                            note++;                 //choose next note
+            if(note == 3)
+            {
+                            T1MCR = 0x06;   //Stop and reset timer at MR0
+                            setBuzzer(FALSE);
+                            setLED(LED_GREEN, FALSE);
+                            setLED(LED_RED, FALSE);
+                            note = 0;
+            }
+            T1TCR = 0x02;                                              //Disable and reset timer
+            T1MR0 = CORE_FREQ / (100*(notes[note] + 15 * snakeSize)); //set new timer's ticks
+            T1TCR = 0x01;                                              //Start timer
+            count = 0;
+    }
+
+    T1IR        = 0x000000ff;        //reset all IRQ flags
+    VICVectAddr = 0x00000000;        //dummy write to VIC to signal end of interrupt
+}
+
+static void
+waitUp(void)
+{
+    RTC_CIIR = 0x1;
+}
+
+static void
+initTimer1(tU32 functionAdress)
+{
+        //initialize and start Timer #0
+        T1TCR = 0x00000002;                           //disable and reset Timer0
+        T1PC  = 0x00000000;                           //no prescale of clock
+        T1MR0 = CORE_FREQ / (100*notes[note]);        //calculate no of timer ticks for note[0] its 3.8ms
+        T1IR  = 0x000000ff;                           //reset all flags before enable IRQs
+        T1MCR = 0x00000003;                           //reset counter and generate IRQ on MR0 match
+
+        //initialize VIC for Timer0 interrupts
+        VICIntSelect &= ~0x20;           //Timer1 interrupt is assigned to IRQ (not FIQ)
+        VICVectAddr5  = functionAdress; //register ISR address
+        VICVectCntl5  = 0x25;            //enable vector interrupt for timer1
+        VICIntEnable  |= 0x20;           //enable timer1 interrupt
+        T1TCR = 0x00000001;              //start Timer1
+}
+
+void stopTimer1()
+{
+    T1MCR = 0x06;   //Stop and reset timer at MR0
+}
+
 static void
 drawArena(void)
 {
@@ -510,6 +608,22 @@ resetSnake()
 }
 
 static void
+makeNoise()
+{
+//    setBuzzer(TRUE);
+//    setLED(LED_GREEN, FALSE);
+//    setLED(LED_RED,   TRUE);
+//    osSleep(1);
+
+//    setBuzzer(FALSE);
+//    setLED(LED_GREEN, TRUE);
+//    setLED(LED_RED,   FALSE);
+//    osSleep(1);
+
+    initTimer1((tU32)eatNoise);
+}
+
+static void
 moveField(tU8 x, tU8 y, tU8 direction)
 {
     int actualX = x;
@@ -549,6 +663,8 @@ moveField(tU8 x, tU8 y, tU8 direction)
     {
 		//Move and eat.
 		//TODO brzeczyk zjadania
+
+        makeNoise();
 		resetSnake();
         snakeSize++;
 		putSnack();
@@ -618,7 +734,11 @@ mod (tU8 a, tU8 b)
    return ret;
 }
 
-
+void
+enterSleepMode()
+{
+    PCON = 0x2;
+}
 
 void
 moveSnake(tU8 anyKey)
@@ -671,6 +791,8 @@ moveSnake(tU8 anyKey)
             isOn = 0;
             osSleep(1);
         }
+        waitUp();
+        enterSleepMode();
     }
 }
 
@@ -685,7 +807,7 @@ void
 playSnake(void)
 {
     //srand(time(NULL));
-
+    initTimer1((tU32)startMusic);
     snakeXPos = 16;
     snakeYPos = 16;
     snakeSize = 1; //TODO (nie obslugujemy wiekszych)
