@@ -1,0 +1,3119 @@
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 1
+
+
+   1              		.code	16
+   2              		.file	"snake.c"
+   3              		.section	.debug_abbrev,"",%progbits
+   4              	.Ldebug_abbrev0:
+   5              		.section	.debug_info,"",%progbits
+   6              	.Ldebug_info0:
+   7              		.section	.debug_line,"",%progbits
+   8              	.Ldebug_line0:
+   9 0000 03010000 		.text
+   9      02005200 
+   9      00000201 
+   9      FB0E0D00 
+   9      01010101 
+  10              	.Ltext0:
+  11              		.align	2
+  12              		.code 16
+  13              		.thumb_func
+  14              		.type	putSnack, %function
+  15              	putSnack:
+  16              	.LFB7:
+  17              		.file 1 "snake.c"
+   1:snake.c       **** /******************************************************************************
+   2:snake.c       ****  *
+   3:snake.c       ****  * Copyright:
+   4:snake.c       ****  *    (C) 2006 Embedded Artists AB
+   5:snake.c       ****  *
+   6:snake.c       ****  * File:
+   7:snake.c       ****  *    exampleGame.c
+   8:snake.c       ****  *
+   9:snake.c       ****  * Description:
+  10:snake.c       ****  *    Implementation of example game.
+  11:snake.c       ****  *
+  12:snake.c       ****  *****************************************************************************/
+  13:snake.c       **** 
+  14:snake.c       **** /******************************************************************************
+  15:snake.c       ****  * Includes
+  16:snake.c       ****  *****************************************************************************/
+  17:snake.c       **** #include "../pre_emptive_os/api/osapi.h"
+  18:snake.c       **** #include "../pre_emptive_os/api/general.h"
+  19:snake.c       **** #include <printf_P.h>
+  20:snake.c       **** #include <ea_init.h>
+  21:snake.c       **** #include <stdlib.h>
+  22:snake.c       **** #include "lcd.h"
+  23:snake.c       **** #include "key.h"
+  24:snake.c       **** #include "select.h"
+  25:snake.c       **** #include "time.h"
+  26:snake.c       **** 
+  27:snake.c       **** #include "configAppl.h"
+  28:snake.c       **** 
+  29:snake.c       **** 
+  30:snake.c       **** /******************************************************************************
+  31:snake.c       ****  * Typedefs and defines
+  32:snake.c       ****  *****************************************************************************/
+  33:snake.c       **** #define GAME_NOT_STARTED 0
+  34:snake.c       **** #define GAME_RUNNING     1
+  35:snake.c       **** #define GAME_OVER        2
+  36:snake.c       **** #define GAME_END         3
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 2
+
+
+  37:snake.c       **** 
+  38:snake.c       **** #define BACKGROUND_COLOR 0
+  39:snake.c       **** #define SNAKE_COLOR 0x5d
+  40:snake.c       **** #define SNACK_COLOR 0x8d
+  41:snake.c       **** 
+  42:snake.c       **** #define MOVE_UP         4
+  43:snake.c       **** #define MOVE_DOWN       1
+  44:snake.c       **** #define MOVE_LEFT       2
+  45:snake.c       **** #define MOVE_RIGHT      3
+  46:snake.c       **** 
+  47:snake.c       **** #define ARENA_SIZE      32
+  48:snake.c       **** #define MAX_SNAKE_SIZE  64
+  49:snake.c       **** //#define BOARD_WIDTH  10
+  50:snake.c       **** //#define BOARD_HEIGHT 16
+  51:snake.c       **** 
+  52:snake.c       **** //#define FIGURE_SIZE 4
+  53:snake.c       **** //#define NUM_OF_FIGURE 19
+  54:snake.c       **** 
+  55:snake.c       **** 
+  56:snake.c       **** /*****************************************************************************
+  57:snake.c       ****  * Local variables
+  58:snake.c       ****  ****************************************************************************/
+  59:snake.c       **** static tU8 gameStatus;
+  60:snake.c       **** static tU8 snakeXPos;
+  61:snake.c       **** static tU8 snakeYPos;
+  62:snake.c       **** static tU8 snakeSize;
+  63:snake.c       **** static tU8 lastKey;
+  64:snake.c       **** static tU8 isOn;
+  65:snake.c       **** 
+  66:snake.c       **** static tU32 timeVal;
+  67:snake.c       **** static tU8 gameArena[ARENA_SIZE][ARENA_SIZE];
+  68:snake.c       **** static tU8 snakeTail[MAX_SNAKE_SIZE];
+  69:snake.c       **** static tU8 snakeTailGuard;
+  70:snake.c       **** //static tU8 score;
+  71:snake.c       **** 
+  72:snake.c       **** //static tS32 shift[NUM_OF_FIGURE]={1,0,3,4,5,2,7,8,9,6,11,12,13,10,15,14,17,16,18};
+  73:snake.c       **** //static tS32 board[BOARD_WIDTH][BOARD_HEIGHT];
+  74:snake.c       **** //static tS32 currFigure;
+  75:snake.c       **** //static tS32 currXpos;
+  76:snake.c       **** //static tS32 currYpos;
+  77:snake.c       **** //static volatile tU32 lastUpdate;
+  78:snake.c       **** //static volatile tU32 delayTimeMs;
+  79:snake.c       **** 
+  80:snake.c       **** 
+  81:snake.c       **** /*****************************************************************************
+  82:snake.c       ****  * External variables
+  83:snake.c       ****  ****************************************************************************/
+  84:snake.c       **** //extern volatile tU32 ms;
+  85:snake.c       **** 
+  86:snake.c       **** 
+  87:snake.c       **** //char figures[NUM_OF_FIGURE][FIGURE_SIZE][FIGURE_SIZE]=
+  88:snake.c       **** //{{".X..",
+  89:snake.c       **** //  ".X..",
+  90:snake.c       **** //  ".X..",
+  91:snake.c       **** //  ".X.."},
+  92:snake.c       **** // {"....",
+  93:snake.c       **** //  "XXXX",
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 3
+
+
+  94:snake.c       **** //  "....",
+  95:snake.c       **** //  "...."},
+  96:snake.c       **** 
+  97:snake.c       **** // {"XXX.",
+  98:snake.c       **** //  "X...",
+  99:snake.c       **** //  "....",
+ 100:snake.c       **** //  "...."},
+ 101:snake.c       **** // {".XX.",
+ 102:snake.c       **** //  "..X.",
+ 103:snake.c       **** //  "..X.",
+ 104:snake.c       **** //  "...."},
+ 105:snake.c       **** // {"..X.",
+ 106:snake.c       **** //  "XXX.",
+ 107:snake.c       **** //  "....",
+ 108:snake.c       **** //  "...."},
+ 109:snake.c       **** // {".X..",
+ 110:snake.c       **** //  ".X..",
+ 111:snake.c       **** //  ".XX.",
+ 112:snake.c       **** //  "...."},
+ 113:snake.c       **** 
+ 114:snake.c       **** // {"XXX.",
+ 115:snake.c       **** //  "..X.",
+ 116:snake.c       **** //  "....",
+ 117:snake.c       **** //  "...."},
+ 118:snake.c       **** // {"..X.",
+ 119:snake.c       **** //  "..X.",
+ 120:snake.c       **** //  ".XX.",
+ 121:snake.c       **** //  "...."},
+ 122:snake.c       **** // {"X...",
+ 123:snake.c       **** //  "XXX.",
+ 124:snake.c       **** //  "....",
+ 125:snake.c       **** //  "...."},
+ 126:snake.c       **** // {".XX.",
+ 127:snake.c       **** //  ".X..",
+ 128:snake.c       **** //  ".X..",
+ 129:snake.c       **** //  "...."},
+ 130:snake.c       **** 
+ 131:snake.c       **** // {".X..",
+ 132:snake.c       **** //  "XXX.",
+ 133:snake.c       **** //  "....",
+ 134:snake.c       **** //  "...."},
+ 135:snake.c       **** // {".X..",
+ 136:snake.c       **** //  ".XX.",
+ 137:snake.c       **** //  ".X..",
+ 138:snake.c       **** //  "...."},
+ 139:snake.c       **** // {"XXX.",
+ 140:snake.c       **** //  ".X..",
+ 141:snake.c       **** //  "....",
+ 142:snake.c       **** //  "...."},
+ 143:snake.c       **** // {".X..",
+ 144:snake.c       **** //  "XX..",
+ 145:snake.c       **** //  ".X..",
+ 146:snake.c       **** //  "...."},
+ 147:snake.c       **** 
+ 148:snake.c       **** // {"X...",
+ 149:snake.c       **** //  "XX..",
+ 150:snake.c       **** //  ".X..",
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 4
+
+
+ 151:snake.c       **** //  "...."},
+ 152:snake.c       **** // {".XX.",
+ 153:snake.c       **** //  "XX..",
+ 154:snake.c       **** //  "....",
+ 155:snake.c       **** //  "...."},
+ 156:snake.c       **** 
+ 157:snake.c       **** // {".X..",
+ 158:snake.c       **** //  "XX..",
+ 159:snake.c       **** //  "X...",
+ 160:snake.c       **** //  "...."},
+ 161:snake.c       **** // {"XX..",
+ 162:snake.c       **** //  ".XX.",
+ 163:snake.c       **** //  "....",
+ 164:snake.c       **** //  "...."},
+ 165:snake.c       **** // {"XX..",
+ 166:snake.c       **** //  "XX..",
+ 167:snake.c       **** //  "....",
+ 168:snake.c       **** //  "...."}};
+ 169:snake.c       **** 
+ 170:snake.c       **** 
+ 171:snake.c       **** ///*****************************************************************************
+ 172:snake.c       **** // *
+ 173:snake.c       **** // * Description:
+ 174:snake.c       **** // *    Check if current place for figure is valid
+ 175:snake.c       **** // *
+ 176:snake.c       **** // ****************************************************************************/
+ 177:snake.c       **** //static tS8
+ 178:snake.c       **** //isValid(tS32 x, tS32 y, tS32 shape)
+ 179:snake.c       **** //{
+ 180:snake.c       **** //  tS32 i,j;
+ 181:snake.c       **** 
+ 182:snake.c       **** //  for (i=0; i<FIGURE_SIZE; i++)
+ 183:snake.c       **** //    for (j=0; j<FIGURE_SIZE; j++)
+ 184:snake.c       **** //      if((figures[shape][i][j] == 'X') &&
+ 185:snake.c       **** //         ((i+x >= BOARD_WIDTH) || (j+y >= BOARD_HEIGHT) || (i+x < 0)))
+ 186:snake.c       **** //        return 0;
+ 187:snake.c       **** 
+ 188:snake.c       **** //  for (i=0; i<FIGURE_SIZE; i++)
+ 189:snake.c       **** //    for (j=0; j<FIGURE_SIZE; j++)
+ 190:snake.c       **** //      if((i+x < BOARD_WIDTH) &&
+ 191:snake.c       **** //         (j+y < BOARD_HEIGHT) &&
+ 192:snake.c       **** //         (figures[shape][i][j] == 'X') &&
+ 193:snake.c       **** //         (board[i+x][j+y] != 0))
+ 194:snake.c       **** //        return 0;
+ 195:snake.c       **** 
+ 196:snake.c       **** //  return 1;
+ 197:snake.c       **** //}
+ 198:snake.c       **** 
+ 199:snake.c       **** 
+ 200:snake.c       **** ///*****************************************************************************
+ 201:snake.c       **** // *
+ 202:snake.c       **** // * Description:
+ 203:snake.c       **** // *    Draw/refresh game board
+ 204:snake.c       **** // *
+ 205:snake.c       **** // ****************************************************************************/
+ 206:snake.c       **** //static void
+ 207:snake.c       **** //drawGame(void)
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 5
+
+
+ 208:snake.c       **** //{
+ 209:snake.c       **** //  tS32 i,j;
+ 210:snake.c       **** 
+ 211:snake.c       **** //  for (i=1; i<=BOARD_WIDTH; i++)
+ 212:snake.c       **** //    for (j=1; j<=BOARD_HEIGHT; j++)
+ 213:snake.c       **** //      if(board[i-1][j-1] != 0)
+ 214:snake.c       **** //        lcdRectBrd(30+(i*6), 10+(j*6), 6, 6, 209,50,5);
+ 215:snake.c       **** //      else
+ 216:snake.c       **** //        lcdRect(30+(i*6), 10+(j*6), 6, 6, 0);
+ 217:snake.c       **** //}
+ 218:snake.c       **** 
+ 219:snake.c       **** 
+ 220:snake.c       **** ///*****************************************************************************
+ 221:snake.c       **** // *
+ 222:snake.c       **** // * Description:
+ 223:snake.c       **** // *    Insert one figure at a specific x,y position on the game board
+ 224:snake.c       **** // *
+ 225:snake.c       **** // ****************************************************************************/
+ 226:snake.c       **** //static void
+ 227:snake.c       **** //insertFigure(tS32 shape, tS32 x, tS32 y)
+ 228:snake.c       **** //{
+ 229:snake.c       **** //  tS32 i,j;
+ 230:snake.c       **** 
+ 231:snake.c       **** //  for (i=0; i<FIGURE_SIZE; i++)
+ 232:snake.c       **** //    for (j=0; j<FIGURE_SIZE; j++)
+ 233:snake.c       **** //      if(figures[shape][i][j] == 'X')
+ 234:snake.c       **** //        board[x+i][y+j] = 1;
+ 235:snake.c       **** //}
+ 236:snake.c       **** 
+ 237:snake.c       **** 
+ 238:snake.c       **** ///*****************************************************************************
+ 239:snake.c       **** // *
+ 240:snake.c       **** // * Description:
+ 241:snake.c       **** // *    Delete one figure at a specific x,y position on the game board
+ 242:snake.c       **** // *
+ 243:snake.c       **** // ****************************************************************************/
+ 244:snake.c       **** //static void
+ 245:snake.c       **** //deleteFigure(tS32 shape, tS32 x, tS32 y)
+ 246:snake.c       **** //{
+ 247:snake.c       **** //  tS32 i,j;
+ 248:snake.c       **** 
+ 249:snake.c       **** //  for (i=0; i<FIGURE_SIZE; i++)
+ 250:snake.c       **** //    for (j=0; j<FIGURE_SIZE; j++)
+ 251:snake.c       **** //      if(figures[shape][i][j] == 'X')
+ 252:snake.c       **** //        board[x+i][y+j] = 0;
+ 253:snake.c       **** //}
+ 254:snake.c       **** 
+ 255:snake.c       **** 
+ 256:snake.c       **** ///*****************************************************************************
+ 257:snake.c       **** // *
+ 258:snake.c       **** // * Description:
+ 259:snake.c       **** // *    Returns TRUE if one row of the board is full
+ 260:snake.c       **** // *
+ 261:snake.c       **** // ****************************************************************************/
+ 262:snake.c       **** //static char
+ 263:snake.c       **** //full(tS32 j)
+ 264:snake.c       **** //{
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 6
+
+
+ 265:snake.c       **** //  tS32 i;
+ 266:snake.c       **** 
+ 267:snake.c       **** //  for(i=0; i<BOARD_WIDTH; i++)
+ 268:snake.c       **** //    if(board[i][j] != 1)
+ 269:snake.c       **** //      return 0;
+ 270:snake.c       **** 
+ 271:snake.c       **** //  return 1;
+ 272:snake.c       **** //}
+ 273:snake.c       **** 
+ 274:snake.c       **** 
+ 275:snake.c       **** ///*****************************************************************************
+ 276:snake.c       **** // *
+ 277:snake.c       **** // * Description:
+ 278:snake.c       **** // *    Draw the current score
+ 279:snake.c       **** // *
+ 280:snake.c       **** // ****************************************************************************/
+ 281:snake.c       **** //static void
+ 282:snake.c       **** //drawScore(void)
+ 283:snake.c       **** //{
+ 284:snake.c       **** //  tU8 str[4];
+ 285:snake.c       **** 
+ 286:snake.c       **** //  str[0] = score/100 + '0';
+ 287:snake.c       **** //  str[1] = (score/10)%10 + '0';
+ 288:snake.c       **** //  str[2] = score%10 + '0';
+ 289:snake.c       **** //  str[3] = 0;
+ 290:snake.c       **** //  if (str[0] == '0')
+ 291:snake.c       **** //  {
+ 292:snake.c       **** //    str[0] = ' ';
+ 293:snake.c       **** //    if (str[1] == '0')
+ 294:snake.c       **** //      str[1] = ' ';
+ 295:snake.c       **** //  }
+ 296:snake.c       **** //  lcdGotoxy(80,116);
+ 297:snake.c       **** //  lcdPuts(str);
+ 298:snake.c       **** //}
+ 299:snake.c       **** 
+ 300:snake.c       **** 
+ 301:snake.c       **** ///*****************************************************************************
+ 302:snake.c       **** // *
+ 303:snake.c       **** // * Description:
+ 304:snake.c       **** // *    Check if time to update score
+ 305:snake.c       **** // *
+ 306:snake.c       **** // ****************************************************************************/
+ 307:snake.c       **** //static void
+ 308:snake.c       **** //checkScore(void)
+ 309:snake.c       **** //{
+ 310:snake.c       **** //  tS32 i,j,k;
+ 311:snake.c       **** 
+ 312:snake.c       **** //  for (j=0; j<BOARD_HEIGHT; j++)
+ 313:snake.c       **** //  {
+ 314:snake.c       **** //    //check if one row is full
+ 315:snake.c       **** //    if(full(j))
+ 316:snake.c       **** //    {
+ 317:snake.c       **** //      //if so, erase that row...
+ 318:snake.c       **** //      for(k=j; k>0; k--)
+ 319:snake.c       **** //        for(i=0; i<BOARD_WIDTH; i++)
+ 320:snake.c       **** //          board[i][k] = board[i][k-1];
+ 321:snake.c       **** 
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 7
+
+
+ 322:snake.c       **** //      //and update score
+ 323:snake.c       **** //      score++;
+ 324:snake.c       **** //      drawScore();
+ 325:snake.c       **** //    }
+ 326:snake.c       **** //  }
+ 327:snake.c       **** //}
+ 328:snake.c       **** 
+ 329:snake.c       **** 
+ 330:snake.c       **** ///*****************************************************************************
+ 331:snake.c       **** // *
+ 332:snake.c       **** // * Description:
+ 333:snake.c       **** // *    Returns TRUE if game is over
+ 334:snake.c       **** // *
+ 335:snake.c       **** // ****************************************************************************/
+ 336:snake.c       **** //static char
+ 337:snake.c       **** //gameOver(void)
+ 338:snake.c       **** //{
+ 339:snake.c       **** //  tS32 i;
+ 340:snake.c       **** 
+ 341:snake.c       **** //  for(i=0; i<NUM_OF_FIGURE; i++)
+ 342:snake.c       **** //    if(!isValid(3,0,i))
+ 343:snake.c       **** //      return 1;
+ 344:snake.c       **** 
+ 345:snake.c       **** //  return 0;
+ 346:snake.c       **** //}
+ 347:snake.c       **** 
+ 348:snake.c       **** 
+ 349:snake.c       **** ///*****************************************************************************
+ 350:snake.c       **** // *
+ 351:snake.c       **** // * Description:
+ 352:snake.c       **** // *    Calculate new update/advance time, based in current score
+ 353:snake.c       **** // *    The higher score, the shorter update time
+ 354:snake.c       **** // *
+ 355:snake.c       **** // ****************************************************************************/
+ 356:snake.c       **** //static void
+ 357:snake.c       **** //updateDelayTime(void)
+ 358:snake.c       **** //{
+ 359:snake.c       **** //  if (score >= 75)
+ 360:snake.c       **** //    delayTimeMs = 200;
+ 361:snake.c       **** //  else if (score >= 50)
+ 362:snake.c       **** //    delayTimeMs = 300;
+ 363:snake.c       **** //  else if (score >= 25)
+ 364:snake.c       **** //    delayTimeMs = 350;
+ 365:snake.c       **** //  else if (score >= 10)
+ 366:snake.c       **** //    delayTimeMs = 400;
+ 367:snake.c       **** //  else
+ 368:snake.c       **** //    delayTimeMs = 500;
+ 369:snake.c       **** //}
+ 370:snake.c       **** 
+ 371:snake.c       **** 
+ 372:snake.c       **** ///*****************************************************************************
+ 373:snake.c       **** // *
+ 374:snake.c       **** // * Description:
+ 375:snake.c       **** // *    Advance the game, check if game is over
+ 376:snake.c       **** // *
+ 377:snake.c       **** // ****************************************************************************/
+ 378:snake.c       **** //static void
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 8
+
+
+ 379:snake.c       **** //advanceGame(void)
+ 380:snake.c       **** //{
+ 381:snake.c       **** //  insertFigure(currFigure, currXpos, currYpos);
+ 382:snake.c       **** //  drawGame();
+ 383:snake.c       **** //  deleteFigure(currFigure, currXpos, currYpos);
+ 384:snake.c       **** 
+ 385:snake.c       **** //  /*******************************************************
+ 386:snake.c       **** //   * Check if time to update figure position
+ 387:snake.c       **** //   *******************************************************/
+ 388:snake.c       **** //  updateDelayTime();
+ 389:snake.c       **** //  if ((ms - lastUpdate) > delayTimeMs)
+ 390:snake.c       **** //  {
+ 391:snake.c       **** //    lastUpdate = ms;
+ 392:snake.c       **** 
+ 393:snake.c       **** //    if (isValid(currXpos, currYpos+1, currFigure))
+ 394:snake.c       **** //      currYpos++;
+ 395:snake.c       **** 
+ 396:snake.c       **** //    //figure has hit bottom
+ 397:snake.c       **** //    //insert new, random figure on the game board
+ 398:snake.c       **** //    else
+ 399:snake.c       **** //    {
+ 400:snake.c       **** //      insertFigure(currFigure, currXpos, currYpos);
+ 401:snake.c       **** //      currYpos  = 0;
+ 402:snake.c       **** //      currXpos  = 3;
+ 403:snake.c       **** //      currFigure = rand() % NUM_OF_FIGURE;
+ 404:snake.c       **** 
+ 405:snake.c       **** //      //check if game is over
+ 406:snake.c       **** //      if (gameOver())
+ 407:snake.c       **** //        gameStatus = GAME_OVER;
+ 408:snake.c       **** //    }
+ 409:snake.c       **** 
+ 410:snake.c       **** //    //check score, i.e., if any rows are full
+ 411:snake.c       **** //    checkScore();
+ 412:snake.c       **** //  }
+ 413:snake.c       **** //}
+ 414:snake.c       **** 
+ 415:snake.c       **** 
+ 416:snake.c       **** /*****************************************************************************
+ 417:snake.c       ****  *
+ 418:snake.c       ****  * Description:
+ 419:snake.c       ****  *    Draw game background and game board, initialize all variables
+ 420:snake.c       ****  *
+ 421:snake.c       ****  ****************************************************************************/
+ 422:snake.c       **** //static void
+ 423:snake.c       **** //setupGame (tBool drawBoard)
+ 424:snake.c       **** //{
+ 425:snake.c       **** //  tS32 i,j;
+ 426:snake.c       **** 
+ 427:snake.c       **** //  //initialize random generator and reset score
+ 428:snake.c       **** //  srand(ms);
+ 429:snake.c       **** //  score = 0;
+ 430:snake.c       **** 
+ 431:snake.c       **** 
+ 432:snake.c       **** //  //draw game board
+ 433:snake.c       **** //  if (drawBoard == TRUE)
+ 434:snake.c       **** //  {
+ 435:snake.c       **** //    lcdColor(1, 0xe0);
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 9
+
+
+ 436:snake.c       **** //    lcdGotoxy(16, 116);
+ 437:snake.c       **** //    lcdPuts(" Score:   0 ");
+ 438:snake.c       **** 
+ 439:snake.c       **** //    lcdRect(34, 14, 64, 100, 3);
+ 440:snake.c       **** //    lcdRect(36, 16, 60, 96, 0);
+ 441:snake.c       **** //  }
+ 442:snake.c       **** 
+ 443:snake.c       **** //  //initialise game board
+ 444:snake.c       **** //  for (i=0; i<BOARD_WIDTH; i++)
+ 445:snake.c       **** //    for (j=0; j<BOARD_HEIGHT; j++)
+ 446:snake.c       **** //      board[i][j] = 0;
+ 447:snake.c       **** 
+ 448:snake.c       **** //  currFigure = rand() % NUM_OF_FIGURE;
+ 449:snake.c       **** //  currXpos  = 3;
+ 450:snake.c       **** //  currYpos  = 0;
+ 451:snake.c       **** //  insertFigure(currFigure, currXpos, currYpos);
+ 452:snake.c       **** 
+ 453:snake.c       **** //  lastUpdate = ms;
+ 454:snake.c       **** //}
+ 455:snake.c       **** 
+ 456:snake.c       **** static void
+ 457:snake.c       **** drawArena(void)
+ 458:snake.c       **** {
+ 459:snake.c       ****     tU8 step = 128 / ARENA_SIZE;
+ 460:snake.c       ****     tU8 i,j;
+ 461:snake.c       ****     for(i = 0; i < ARENA_SIZE; i++)
+ 462:snake.c       ****     {
+ 463:snake.c       ****         for(j = 0; j < ARENA_SIZE; j++)
+ 464:snake.c       ****         {
+ 465:snake.c       ****             lcdRect(step * i, step * j, step, step, gameArena[i][j]);
+ 466:snake.c       ****         }
+ 467:snake.c       ****     }
+ 468:snake.c       **** }
+ 469:snake.c       **** 
+ 470:snake.c       **** static void
+ 471:snake.c       **** setBorder(tU8 color)
+ 472:snake.c       **** {
+ 473:snake.c       ****     tU8 i,j;
+ 474:snake.c       ****     for(i = 0; i < ARENA_SIZE; i++)
+ 475:snake.c       ****     {
+ 476:snake.c       ****         for(j = 0; j < ARENA_SIZE; j++)
+ 477:snake.c       ****         {
+ 478:snake.c       ****             if (i == 0 || j == 0 || i == ARENA_SIZE - 1 || j == ARENA_SIZE - 1)
+ 479:snake.c       ****             {
+ 480:snake.c       ****                 gameArena[i][j] = color;
+ 481:snake.c       ****             }
+ 482:snake.c       ****         }
+ 483:snake.c       ****     }
+ 484:snake.c       **** }
+ 485:snake.c       **** 
+ 486:snake.c       **** static void
+ 487:snake.c       **** setField(tU8 x, tU8 y, tU8 color)
+ 488:snake.c       **** {
+ 489:snake.c       ****     gameArena[x][y] = color;
+ 490:snake.c       **** }
+ 491:snake.c       **** 
+ 492:snake.c       **** static void
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 10
+
+
+ 493:snake.c       **** resetSnake()
+ 494:snake.c       **** {
+ 495:snake.c       **** 	int j = 0, i = snakeTailGuard;
+ 496:snake.c       **** 	int index;
+ 497:snake.c       **** 	tU8 snakeTailCopy[snakeSize];
+ 498:snake.c       **** 	/*
+ 499:snake.c       **** 	for(index = 0; index < snakeSize; index++)
+ 500:snake.c       **** 	{
+ 501:snake.c       **** 		snakeTailCopy[snakeSize-index-1] = snakeTail[(snakeTailGuard+index)%snakeSize];
+ 502:snake.c       **** 	}
+ 503:snake.c       **** 	*/
+ 504:snake.c       **** 	do 
+ 505:snake.c       ****     {
+ 506:snake.c       **** 		snakeTailCopy[snakeSize-1-i] = snakeTail[i];
+ 507:snake.c       ****         i = (i + 1) % snakeSize;
+ 508:snake.c       ****     }while(i != snakeTailGuard % snakeSize);
+ 509:snake.c       **** 	snakeTailGuard = snakeSize - 1;
+ 510:snake.c       **** }
+ 511:snake.c       **** 
+ 512:snake.c       **** static void
+ 513:snake.c       **** moveField(tU8 x, tU8 y, tU8 direction)
+ 514:snake.c       **** {
+ 515:snake.c       ****     int actualX = x;
+ 516:snake.c       ****     int actualY = y;
+ 517:snake.c       ****     // Draw point.
+ 518:snake.c       ****     switch(direction)
+ 519:snake.c       ****     {
+ 520:snake.c       ****     case MOVE_DOWN:
+ 521:snake.c       ****         actualY++;
+ 522:snake.c       ****         break;
+ 523:snake.c       ****     case MOVE_UP:
+ 524:snake.c       ****         actualY--;
+ 525:snake.c       ****         break;
+ 526:snake.c       ****     case MOVE_LEFT:
+ 527:snake.c       ****         actualX--;
+ 528:snake.c       ****         break;
+ 529:snake.c       ****     case MOVE_RIGHT:
+ 530:snake.c       ****         actualX++;
+ 531:snake.c       ****         break;
+ 532:snake.c       ****     default:
+ 533:snake.c       ****         return;
+ 534:snake.c       ****     }
+ 535:snake.c       **** 
+ 536:snake.c       **** 	cleanEndOfTail();
+ 537:snake.c       **** 	
+ 538:snake.c       **** 
+ 539:snake.c       **** 	
+ 540:snake.c       ****     // Remember move
+ 541:snake.c       ****     snakeTail[snakeTailGuard] = direction;
+ 542:snake.c       ****     snakeTailGuard = (snakeTailGuard + 1) % snakeSize;
+ 543:snake.c       **** 	
+ 544:snake.c       **** 	if(gameArena[actualX][actualY] == SNAKE_COLOR)
+ 545:snake.c       ****     {		
+ 546:snake.c       ****         //GAMEOVER
+ 547:snake.c       ****     }
+ 548:snake.c       ****     else if (gameArena[actualX][actualY] == SNACK_COLOR && snakeSize < MAX_SNAKE_SIZE)
+ 549:snake.c       ****     {
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 11
+
+
+ 550:snake.c       **** 		//Move and eat.
+ 551:snake.c       **** 		//TODO brzeczyk zjadania
+ 552:snake.c       **** 		resetSnake();
+ 553:snake.c       ****         snakeSize++;
+ 554:snake.c       **** 		putSnack();
+ 555:snake.c       ****     }
+ 556:snake.c       **** 	else
+ 557:snake.c       **** 	{
+ 558:snake.c       **** 		//Normal move. Erase last point
+ 559:snake.c       **** 	}
+ 560:snake.c       **** 	
+ 561:snake.c       **** 	//add snake point
+ 562:snake.c       **** 	setField(actualX, actualY, SNAKE_COLOR);
+ 563:snake.c       **** }
+ 564:snake.c       **** 
+ 565:snake.c       **** static void
+ 566:snake.c       **** putSnack()
+ 567:snake.c       **** {
+  18              		.loc 1 567 0
+  19 0000 10B5     		push	{r4, lr}
+  20              	.LCFI0:
+  21              	.L2:
+ 568:snake.c       **** 	tU8 x,y, snackSet = 0;
+ 569:snake.c       **** 	do
+ 570:snake.c       **** 	{
+ 571:snake.c       **** 		x = rand() % ARENA_SIZE;
+  22              		.loc 1 571 0
+  23 0002 FFF7FEFF 		bl	rand
+  24 0006 041C     		mov	r4, r0
+ 572:snake.c       **** 		y = rand() % ARENA_SIZE;
+  25              		.loc 1 572 0
+  26 0008 FFF7FEFF 		bl	rand
+ 573:snake.c       **** 		if (gameArena[x][y]==BACKGROUND_COLOR)
+  27              		.loc 1 573 0
+  28 000c 104A     		ldr	r2, .L9
+  29 000e 1440     		and	r4, r4, r2
+  30 0010 002C     		cmp	r4, #0
+  31 0012 04DA     		bge	.L3
+  32 0014 2023     		mov	r3, #32
+  33 0016 013C     		sub	r4, r4, #1
+  34 0018 5B42     		neg	r3, r3
+  35 001a 1C43     		orr	r4, r4, r3
+  36 001c 0134     		add	r4, r4, #1
+  37              	.L3:
+  38 001e 2306     		lsl	r3, r4, #24
+  39 0020 1040     		and	r0, r0, r2
+  40 0022 1C0E     		lsr	r4, r3, #24
+  41 0024 0028     		cmp	r0, #0
+  42 0026 04DA     		bge	.L4
+  43 0028 2023     		mov	r3, #32
+  44 002a 0138     		sub	r0, r0, #1
+  45 002c 5B42     		neg	r3, r3
+  46 002e 1843     		orr	r0, r0, r3
+  47 0030 0130     		add	r0, r0, #1
+  48              	.L4:
+  49 0032 0306     		lsl	r3, r0, #24
+  50 0034 074A     		ldr	r2, .L9+4
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 12
+
+
+  51 0036 180E     		lsr	r0, r3, #24
+  52 0038 6301     		lsl	r3, r4, #5
+  53 003a 9C18     		add	r4, r3, r2
+  54 003c 235C     		ldrb	r3, [r4, r0]
+  55 003e 002B     		cmp	r3, #0
+  56 0040 DFD1     		bne	.L2
+ 574:snake.c       **** 		{
+ 575:snake.c       **** 			snackSet = 1;
+ 576:snake.c       **** 			gameArena[x][y] = SNACK_COLOR;
+  57              		.loc 1 576 0
+  58 0042 7323     		mov	r3, #115
+  59 0044 5B42     		neg	r3, r3
+  60 0046 2354     		strb	r3, [r4, r0]
+ 577:snake.c       **** 		}
+ 578:snake.c       **** 	}while(!snackSet);
+ 579:snake.c       **** }
+  61              		.loc 1 579 0
+  62              		@ sp needed for prologue
+  63 0048 10BC     		pop	{r4}
+  64 004a 01BC     		pop	{r0}
+  65 004c 0047     		bx	r0
+  66              	.L10:
+  67 004e 0000     		.align	2
+  68              	.L9:
+  69 0050 1F000080 		.word	-2147483617
+  70 0054 0C000000 		.word	gameArena
+  71              	.LFE7:
+  72              		.size	putSnack, .-putSnack
+  73              		.global	__umodsi3
+  74              		.global	__modsi3
+  75              		.align	2
+  76              		.code 16
+  77              		.thumb_func
+  78              		.type	resetSnake, %function
+  79              	resetSnake:
+  80              	.LFB5:
+  81              		.loc 1 494 0
+  82 0058 F0B5     		push	{r4, r5, r6, r7, lr}
+  83              	.LCFI1:
+  84              		.loc 1 495 0
+  85 005a 164B     		ldr	r3, .L17
+  86 005c 1C78     		ldrb	r4, [r3]
+  87              	.LVL0:
+  88              		.loc 1 497 0
+  89 005e 164B     		ldr	r3, .L17+4
+  90 0060 1D78     		ldrb	r5, [r3]
+  91 0062 AB1D     		add	r3, r5, #6
+  92              		.loc 1 494 0
+  93 0064 82B0     		sub	sp, sp, #8
+  94              	.LCFI2:
+  95              		.loc 1 497 0
+  96 0066 9B08     		lsr	r3, r3, #2
+  97              		.loc 1 494 0
+  98 0068 00AF     		add	r7, sp, #0
+  99              	.LCFI3:
+ 100              		.loc 1 494 0
+ 101 006a 6A46     		mov	r2, sp
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 13
+
+
+ 102              		.loc 1 497 0
+ 103 006c 9B00     		lsl	r3, r3, #2
+ 104              		.loc 1 494 0
+ 105 006e 7A60     		str	r2, [r7, #4]
+ 106              		.loc 1 497 0
+ 107 0070 D21A     		sub	r2, r2, r3
+ 108 0072 9546     		mov	sp, r2
+ 109 0074 6B46     		mov	r3, sp
+ 110              		.loc 1 508 0
+ 111 0076 201C     		mov	r0, r4
+ 112 0078 291C     		mov	r1, r5
+ 113              		.loc 1 497 0
+ 114 007a 3B60     		str	r3, [r7]
+ 115              		.loc 1 508 0
+ 116 007c FFF7FEFF 		bl	__umodsi3
+ 117 0080 0006     		lsl	r0, r0, #24
+ 118 0082 060E     		lsr	r6, r0, #24
+ 119              	.L12:
+ 120              		.loc 1 506 0
+ 121 0084 3A68     		ldr	r2, [r7]
+ 122 0086 2B1B     		sub	r3, r5, r4
+ 123 0088 9B18     		add	r3, r3, r2
+ 124 008a 0C4A     		ldr	r2, .L17+8
+ 125 008c 125D     		ldrb	r2, [r2, r4]
+ 126 008e 013B     		sub	r3, r3, #1
+ 127              		.loc 1 507 0
+ 128 0090 601C     		add	r0, r4, #1
+ 129              		.loc 1 506 0
+ 130 0092 1A70     		strb	r2, [r3]
+ 131              		.loc 1 507 0
+ 132 0094 291C     		mov	r1, r5
+ 133 0096 FFF7FEFF 		bl	__modsi3
+ 134 009a 041C     		mov	r4, r0
+ 135              		.loc 1 508 0
+ 136 009c B042     		cmp	r0, r6
+ 137 009e F1D1     		bne	.L12
+ 138              	.LVL1:
+ 139              		.loc 1 509 0
+ 140 00a0 044A     		ldr	r2, .L17
+ 141 00a2 6B1E     		sub	r3, r5, #1
+ 142 00a4 1370     		strb	r3, [r2]
+ 143 00a6 7B68     		ldr	r3, [r7, #4]
+ 144 00a8 9D46     		mov	sp, r3
+ 145              		.loc 1 510 0
+ 146 00aa BD46     		mov	sp, r7
+ 147 00ac 02B0     		add	sp, sp, #8
+ 148              		@ sp needed for prologue
+ 149 00ae F0BC     		pop	{r4, r5, r6, r7}
+ 150 00b0 01BC     		pop	{r0}
+ 151 00b2 0047     		bx	r0
+ 152              	.L18:
+ 153              		.align	2
+ 154              	.L17:
+ 155 00b4 4C040000 		.word	snakeTailGuard
+ 156 00b8 02000000 		.word	snakeSize
+ 157 00bc 0C040000 		.word	snakeTail
+ 158              	.LFE5:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 14
+
+
+ 159              		.size	resetSnake, .-resetSnake
+ 160              		.align	2
+ 161              		.code 16
+ 162              		.thumb_func
+ 163              		.type	moveField, %function
+ 164              	moveField:
+ 165              	.LFB6:
+ 166              		.loc 1 514 0
+ 167 00c0 F0B5     		push	{r4, r5, r6, r7, lr}
+ 168              	.LCFI4:
+ 169              	.LVL2:
+ 170 00c2 0006     		lsl	r0, r0, #24
+ 171              	.LVL3:
+ 172 00c4 0906     		lsl	r1, r1, #24
+ 173              	.LVL4:
+ 174 00c6 1206     		lsl	r2, r2, #24
+ 175              	.LVL5:
+ 176 00c8 84B0     		sub	sp, sp, #16
+ 177              	.LCFI5:
+ 178              		.loc 1 514 0
+ 179 00ca 090E     		lsr	r1, r1, #24
+ 180              	.LVL6:
+ 181              		.loc 1 515 0
+ 182 00cc 000E     		lsr	r0, r0, #24
+ 183              		.loc 1 514 0
+ 184 00ce 170E     		lsr	r7, r2, #24
+ 185              	.LVL7:
+ 186              		.loc 1 515 0
+ 187 00d0 0090     		str	r0, [sp]
+ 188              	.LVL8:
+ 189              		.loc 1 516 0
+ 190 00d2 0191     		str	r1, [sp, #4]
+ 191              	.LVL9:
+ 192              		.loc 1 518 0
+ 193 00d4 022F     		cmp	r7, #2
+ 194 00d6 0ED0     		beq	.L22
+ 195 00d8 022F     		cmp	r7, #2
+ 196 00da 02D8     		bhi	.L25
+ 197 00dc 012F     		cmp	r7, #1
+ 198 00de 71D1     		bne	.L40
+ 199 00e0 04E0     		b	.L21
+ 200              	.L25:
+ 201 00e2 032F     		cmp	r7, #3
+ 202 00e4 0BD0     		beq	.L23
+ 203 00e6 042F     		cmp	r7, #4
+ 204 00e8 6CD1     		bne	.L40
+ 205 00ea 01E0     		b	.L24
+ 206              	.L21:
+ 207              		.loc 1 521 0
+ 208 00ec 0131     		add	r1, r1, #1
+ 209              	.LVL10:
+ 210 00ee 00E0     		b	.L43
+ 211              	.LVL11:
+ 212              	.L24:
+ 213              		.loc 1 524 0
+ 214 00f0 0139     		sub	r1, r1, #1
+ 215              	.LVL12:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 15
+
+
+ 216              	.L43:
+ 217 00f2 0191     		str	r1, [sp, #4]
+ 218 00f4 06E0     		b	.L26
+ 219              	.LVL13:
+ 220              	.L22:
+ 221              		.loc 1 527 0
+ 222 00f6 0098     		ldr	r0, [sp]
+ 223 00f8 0138     		sub	r0, r0, #1
+ 224 00fa 0090     		str	r0, [sp]
+ 225 00fc 02E0     		b	.L26
+ 226              	.L23:
+ 227              		.loc 1 530 0
+ 228 00fe 0099     		ldr	r1, [sp]
+ 229              	.LVL14:
+ 230 0100 0131     		add	r1, r1, #1
+ 231 0102 0091     		str	r1, [sp]
+ 232              	.LVL15:
+ 233              	.L26:
+ 234              	.LBB8:
+ 235              	.LBB9:
+ 580:snake.c       **** 
+ 581:snake.c       **** static tU8
+ 582:snake.c       **** cleanEndOfTail()
+ 583:snake.c       **** {
+ 584:snake.c       ****     tU8 actualX = snakeXPos;
+ 236              		.loc 1 584 0
+ 237 0104 314B     		ldr	r3, .L46
+ 238 0106 1D78     		ldrb	r5, [r3]
+ 239              	.LVL16:
+ 585:snake.c       ****     tU8 actualY = snakeYPos;
+ 240              		.loc 1 585 0
+ 241 0108 314B     		ldr	r3, .L46+4
+ 242 010a 1E78     		ldrb	r6, [r3]
+ 243              	.LVL17:
+ 586:snake.c       **** 	tU8 i = snakeTailGuard;
+ 244              		.loc 1 586 0
+ 245 010c 314B     		ldr	r3, .L46+8
+ 246 010e 1B78     		ldrb	r3, [r3]
+ 247 0110 0393     		str	r3, [sp, #12]
+ 248              	.LVL18:
+ 587:snake.c       ****     do 
+ 588:snake.c       ****     {
+ 589:snake.c       ****         switch(snakeTail[i])
+ 590:snake.c       ****         {
+ 591:snake.c       ****         case MOVE_DOWN:
+ 592:snake.c       ****             actualY--;
+ 593:snake.c       ****             break;
+ 594:snake.c       ****         case MOVE_UP:
+ 595:snake.c       ****             actualY++;
+ 596:snake.c       ****             break;
+ 597:snake.c       ****         case MOVE_LEFT:
+ 598:snake.c       ****             actualX++;
+ 599:snake.c       ****             break;
+ 600:snake.c       ****         case MOVE_RIGHT:
+ 601:snake.c       ****             actualX--;
+ 602:snake.c       ****             break;
+ 603:snake.c       ****         default:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 16
+
+
+ 604:snake.c       ****             return;
+ 605:snake.c       ****         }
+ 606:snake.c       ****         i = (i + 1) % snakeSize;
+ 249              		.loc 1 606 0
+ 250 0112 314B     		ldr	r3, .L46+12
+ 251 0114 1B78     		ldrb	r3, [r3]
+ 252 0116 039C     		ldr	r4, [sp, #12]
+ 253              	.LVL19:
+ 254 0118 0293     		str	r3, [sp, #8]
+ 255              	.L27:
+ 256              		.loc 1 589 0
+ 257 011a 304B     		ldr	r3, .L46+16
+ 258 011c 1B5D     		ldrb	r3, [r3, r4]
+ 259 011e 022B     		cmp	r3, #2
+ 260 0120 0FD0     		beq	.L30
+ 261 0122 022B     		cmp	r3, #2
+ 262 0124 02D8     		bhi	.L33
+ 263 0126 012B     		cmp	r3, #1
+ 264 0128 23D1     		bne	.L28
+ 265 012a 04E0     		b	.L29
+ 266              	.L33:
+ 267 012c 032B     		cmp	r3, #3
+ 268 012e 0AD0     		beq	.L31
+ 269 0130 042B     		cmp	r3, #4
+ 270 0132 1ED1     		bne	.L28
+ 271 0134 01E0     		b	.L32
+ 272              	.L29:
+ 273              		.loc 1 592 0
+ 274 0136 731E     		sub	r3, r6, #1
+ 275 0138 00E0     		b	.L44
+ 276              	.L32:
+ 277              		.loc 1 595 0
+ 278 013a 731C     		add	r3, r6, #1
+ 279              	.L44:
+ 280 013c 1B06     		lsl	r3, r3, #24
+ 281 013e 1E0E     		lsr	r6, r3, #24
+ 282 0140 04E0     		b	.L34
+ 283              	.L30:
+ 284              		.loc 1 598 0
+ 285 0142 6B1C     		add	r3, r5, #1
+ 286 0144 00E0     		b	.L45
+ 287              	.L31:
+ 288              		.loc 1 601 0
+ 289 0146 6B1E     		sub	r3, r5, #1
+ 290              	.L45:
+ 291 0148 1B06     		lsl	r3, r3, #24
+ 292 014a 1D0E     		lsr	r5, r3, #24
+ 293              	.L34:
+ 294              		.loc 1 606 0
+ 295 014c 601C     		add	r0, r4, #1
+ 296 014e 0299     		ldr	r1, [sp, #8]
+ 297              	.LVL20:
+ 298 0150 FFF7FEFF 		bl	__modsi3
+ 299 0154 0006     		lsl	r0, r0, #24
+ 300 0156 040E     		lsr	r4, r0, #24
+ 607:snake.c       ****     }while(i != snakeTailGuard % snakeSize);
+ 301              		.loc 1 607 0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 17
+
+
+ 302 0158 0299     		ldr	r1, [sp, #8]
+ 303 015a 0398     		ldr	r0, [sp, #12]
+ 304 015c FFF7FEFF 		bl	__umodsi3
+ 305 0160 0006     		lsl	r0, r0, #24
+ 306 0162 000E     		lsr	r0, r0, #24
+ 307 0164 8442     		cmp	r4, r0
+ 308 0166 D8D1     		bne	.L27
+ 608:snake.c       **** 	
+ 609:snake.c       ****     gameArena[actualX][actualY] = BACKGROUND_COLOR;
+ 309              		.loc 1 609 0
+ 310 0168 1D4B     		ldr	r3, .L46+20
+ 311 016a 6A01     		lsl	r2, r5, #5
+ 312 016c D218     		add	r2, r2, r3
+ 313 016e 0023     		mov	r3, #0
+ 314 0170 9355     		strb	r3, [r2, r6]
+ 315              	.LVL21:
+ 316              	.L28:
+ 317              	.LBE9:
+ 318              	.LBE8:
+ 319              		.loc 1 541 0
+ 320 0172 039A     		ldr	r2, [sp, #12]
+ 321 0174 194B     		ldr	r3, .L46+16
+ 322              		.loc 1 542 0
+ 323 0176 101C     		mov	r0, r2
+ 324              		.loc 1 541 0
+ 325 0178 9F54     		strb	r7, [r3, r2]
+ 326              		.loc 1 542 0
+ 327 017a 0299     		ldr	r1, [sp, #8]
+ 328              	.LVL22:
+ 329 017c 0130     		add	r0, r0, #1
+ 330 017e FFF7FEFF 		bl	__modsi3
+ 331 0182 144C     		ldr	r4, .L46+8
+ 332              	.LVL23:
+ 333 0184 2070     		strb	r0, [r4]
+ 334              		.loc 1 544 0
+ 335 0186 0098     		ldr	r0, [sp]
+ 336 0188 154A     		ldr	r2, .L46+20
+ 337 018a 4301     		lsl	r3, r0, #5
+ 338 018c 0199     		ldr	r1, [sp, #4]
+ 339 018e 9B18     		add	r3, r3, r2
+ 340 0190 5B5C     		ldrb	r3, [r3, r1]
+ 341 0192 5D2B     		cmp	r3, #93
+ 342 0194 0CD0     		beq	.L36
+ 343              		.loc 1 548 0
+ 344 0196 8D2B     		cmp	r3, #141
+ 345 0198 0AD1     		bne	.L36
+ 346 019a 029A     		ldr	r2, [sp, #8]
+ 347 019c 3F2A     		cmp	r2, #63
+ 348 019e 07D8     		bhi	.L36
+ 349              		.loc 1 552 0
+ 350 01a0 FFF75AFF 		bl	resetSnake
+ 351              		.loc 1 553 0
+ 352 01a4 0C4A     		ldr	r2, .L46+12
+ 353 01a6 1378     		ldrb	r3, [r2]
+ 354 01a8 0133     		add	r3, r3, #1
+ 355 01aa 1370     		strb	r3, [r2]
+ 356              		.loc 1 554 0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 18
+
+
+ 357 01ac FFF728FF 		bl	putSnack
+ 358              	.L36:
+ 359              	.LBB10:
+ 360              	.LBB11:
+ 361              		.loc 1 489 0
+ 362 01b0 019B     		ldr	r3, [sp, #4]
+ 363 01b2 0098     		ldr	r0, [sp]
+ 364 01b4 0A4A     		ldr	r2, .L46+20
+ 365 01b6 1906     		lsl	r1, r3, #24
+ 366 01b8 0306     		lsl	r3, r0, #24
+ 367 01ba DB0C     		lsr	r3, r3, #19
+ 368 01bc 9B18     		add	r3, r3, r2
+ 369 01be 090E     		lsr	r1, r1, #24
+ 370 01c0 5D22     		mov	r2, #93
+ 371 01c2 5A54     		strb	r2, [r3, r1]
+ 372              	.LVL24:
+ 373              	.L40:
+ 374              	.LBE11:
+ 375              	.LBE10:
+ 376              		.loc 1 563 0
+ 377 01c4 04B0     		add	sp, sp, #16
+ 378              		@ sp needed for prologue
+ 379              	.LVL25:
+ 380              	.LVL26:
+ 381              	.LVL27:
+ 382 01c6 F0BC     		pop	{r4, r5, r6, r7}
+ 383 01c8 01BC     		pop	{r0}
+ 384 01ca 0047     		bx	r0
+ 385              	.L47:
+ 386              		.align	2
+ 387              	.L46:
+ 388 01cc 00000000 		.word	snakeXPos
+ 389 01d0 01000000 		.word	snakeYPos
+ 390 01d4 4C040000 		.word	snakeTailGuard
+ 391 01d8 02000000 		.word	snakeSize
+ 392 01dc 0C040000 		.word	snakeTail
+ 393 01e0 0C000000 		.word	gameArena
+ 394              	.LFE6:
+ 395              		.size	moveField, .-moveField
+ 396              		.align	2
+ 397              		.global	moveSnake
+ 398              		.code 16
+ 399              		.thumb_func
+ 400              		.type	moveSnake, %function
+ 401              	moveSnake:
+ 402              	.LFB10:
+ 610:snake.c       **** }
+ 611:snake.c       **** 
+ 612:snake.c       **** static tU8
+ 613:snake.c       **** mod (tU8 a, tU8 b)
+ 614:snake.c       **** {
+ 615:snake.c       ****    tU8 ret = a % b;
+ 616:snake.c       ****    if(ret < 0)
+ 617:snake.c       ****      ret+=b;
+ 618:snake.c       ****    return ret;
+ 619:snake.c       **** }
+ 620:snake.c       **** 
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 19
+
+
+ 621:snake.c       **** 
+ 622:snake.c       **** 
+ 623:snake.c       **** void
+ 624:snake.c       **** moveSnake(tU8 anyKey)
+ 625:snake.c       **** {
+ 403              		.loc 1 625 0
+ 404 01e4 10B5     		push	{r4, lr}
+ 405              	.LCFI6:
+ 406              	.LVL28:
+ 407              		.loc 1 625 0
+ 408 01e6 0006     		lsl	r0, r0, #24
+ 409              	.LVL29:
+ 410 01e8 000E     		lsr	r0, r0, #24
+ 411              	.LVL30:
+ 626:snake.c       ****     if (anyKey == KEY_UP)
+ 412              		.loc 1 626 0
+ 413 01ea 0128     		cmp	r0, #1
+ 414 01ec 07D1     		bne	.L49
+ 627:snake.c       ****     {
+ 628:snake.c       ****         if(snakeYPos != 1)
+ 415              		.loc 1 628 0
+ 416 01ee 274C     		ldr	r4, .L70
+ 417 01f0 2178     		ldrb	r1, [r4]
+ 418 01f2 0129     		cmp	r1, #1
+ 419 01f4 47D0     		beq	.L65
+ 629:snake.c       ****         {
+ 630:snake.c       ****             moveField(snakeXPos, snakeYPos, MOVE_UP);
+ 420              		.loc 1 630 0
+ 421 01f6 264B     		ldr	r3, .L70+4
+ 422 01f8 1878     		ldrb	r0, [r3]
+ 423              	.LVL31:
+ 424 01fa 0422     		mov	r2, #4
+ 425 01fc 21E0     		b	.L68
+ 426              	.LVL32:
+ 427              	.L49:
+ 631:snake.c       ****             snakeYPos -= 1;
+ 632:snake.c       ****         }
+ 633:snake.c       ****     }
+ 634:snake.c       ****     else if (anyKey == KEY_DOWN)
+ 428              		.loc 1 634 0
+ 429 01fe 0428     		cmp	r0, #4
+ 430 0200 0CD1     		bne	.L53
+ 635:snake.c       ****     {
+ 636:snake.c       ****         if(snakeYPos != ARENA_SIZE - 2)
+ 431              		.loc 1 636 0
+ 432 0202 224C     		ldr	r4, .L70
+ 433 0204 2178     		ldrb	r1, [r4]
+ 434 0206 1E29     		cmp	r1, #30
+ 435 0208 3DD0     		beq	.L65
+ 637:snake.c       ****         {
+ 638:snake.c       ****             moveField(snakeXPos, snakeYPos, MOVE_DOWN);
+ 436              		.loc 1 638 0
+ 437 020a 214B     		ldr	r3, .L70+4
+ 438 020c 1878     		ldrb	r0, [r3]
+ 439              	.LVL33:
+ 440 020e 0122     		mov	r2, #1
+ 441              	.L69:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 20
+
+
+ 442 0210 FFF756FF 		bl	moveField
+ 639:snake.c       ****             snakeYPos += 1;
+ 443              		.loc 1 639 0
+ 444 0214 2378     		ldrb	r3, [r4]
+ 445 0216 0133     		add	r3, r3, #1
+ 446              	.L66:
+ 447 0218 2370     		strb	r3, [r4]
+ 448 021a 34E0     		b	.L65
+ 449              	.LVL34:
+ 450              	.L53:
+ 640:snake.c       ****         }
+ 641:snake.c       ****     }
+ 642:snake.c       ****     else if (anyKey == KEY_RIGHT)
+ 451              		.loc 1 642 0
+ 452 021c 0228     		cmp	r0, #2
+ 453 021e 07D1     		bne	.L56
+ 643:snake.c       ****     {
+ 644:snake.c       ****         if(snakeXPos != ARENA_SIZE - 2)
+ 454              		.loc 1 644 0
+ 455 0220 1B4C     		ldr	r4, .L70+4
+ 456 0222 2078     		ldrb	r0, [r4]
+ 457              	.LVL35:
+ 458 0224 1E28     		cmp	r0, #30
+ 459 0226 2ED0     		beq	.L65
+ 645:snake.c       ****         {
+ 646:snake.c       ****             moveField(snakeXPos, snakeYPos, MOVE_RIGHT);
+ 460              		.loc 1 646 0
+ 461 0228 184B     		ldr	r3, .L70
+ 462 022a 1978     		ldrb	r1, [r3]
+ 463 022c 0322     		mov	r2, #3
+ 464 022e EFE7     		b	.L69
+ 465              	.LVL36:
+ 466              	.L56:
+ 647:snake.c       ****             snakeXPos += 1;
+ 648:snake.c       ****         }
+ 649:snake.c       ****     }
+ 650:snake.c       ****     else if (anyKey == KEY_LEFT)
+ 467              		.loc 1 650 0
+ 468 0230 0828     		cmp	r0, #8
+ 469 0232 0BD1     		bne	.L59
+ 651:snake.c       ****     {
+ 652:snake.c       ****         if(snakeXPos != 1)
+ 470              		.loc 1 652 0
+ 471 0234 164C     		ldr	r4, .L70+4
+ 472 0236 2078     		ldrb	r0, [r4]
+ 473              	.LVL37:
+ 474 0238 0128     		cmp	r0, #1
+ 475 023a 24D0     		beq	.L65
+ 653:snake.c       ****         {
+ 654:snake.c       ****             moveField(snakeXPos, snakeYPos, MOVE_LEFT);
+ 476              		.loc 1 654 0
+ 477 023c 134B     		ldr	r3, .L70
+ 478 023e 1978     		ldrb	r1, [r3]
+ 479 0240 0222     		mov	r2, #2
+ 480              	.L68:
+ 481 0242 FFF73DFF 		bl	moveField
+ 655:snake.c       ****             snakeXPos -= 1;
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 21
+
+
+ 482              		.loc 1 655 0
+ 483 0246 2378     		ldrb	r3, [r4]
+ 484 0248 013B     		sub	r3, r3, #1
+ 485 024a E5E7     		b	.L66
+ 486              	.LVL38:
+ 487              	.L59:
+ 656:snake.c       ****         }
+ 657:snake.c       ****     }
+ 658:snake.c       ****     else if (anyKey == KEY_CENTER)
+ 488              		.loc 1 658 0
+ 489 024c 1028     		cmp	r0, #16
+ 490 024e 1AD1     		bne	.L65
+ 659:snake.c       ****     {
+ 660:snake.c       ****         if (isOn == 0)
+ 491              		.loc 1 660 0
+ 492 0250 104C     		ldr	r4, .L70+8
+ 493 0252 2378     		ldrb	r3, [r4]
+ 494 0254 002B     		cmp	r3, #0
+ 495 0256 09D1     		bne	.L63
+ 661:snake.c       ****         {
+ 662:snake.c       ****             setLED(1, 1);
+ 496              		.loc 1 662 0
+ 497 0258 0121     		mov	r1, #1
+ 498 025a 0120     		mov	r0, #1
+ 499              	.LVL39:
+ 500 025c FFF7FEFF 		bl	setLED
+ 663:snake.c       ****             setLED(2, 1);
+ 501              		.loc 1 663 0
+ 502 0260 0220     		mov	r0, #2
+ 503 0262 0121     		mov	r1, #1
+ 504 0264 FFF7FEFF 		bl	setLED
+ 664:snake.c       ****             isOn = 1;
+ 505              		.loc 1 664 0
+ 506 0268 0123     		mov	r3, #1
+ 507 026a 08E0     		b	.L67
+ 508              	.LVL40:
+ 509              	.L63:
+ 665:snake.c       ****             osSleep(1);
+ 666:snake.c       ****         }
+ 667:snake.c       ****         else
+ 668:snake.c       ****         {
+ 669:snake.c       ****             setLED(1, 0);
+ 510              		.loc 1 669 0
+ 511 026c 0021     		mov	r1, #0
+ 512 026e 0120     		mov	r0, #1
+ 513              	.LVL41:
+ 514 0270 FFF7FEFF 		bl	setLED
+ 670:snake.c       ****             setLED(2, 0);
+ 515              		.loc 1 670 0
+ 516 0274 0220     		mov	r0, #2
+ 517 0276 0021     		mov	r1, #0
+ 518 0278 FFF7FEFF 		bl	setLED
+ 671:snake.c       ****             isOn = 0;
+ 519              		.loc 1 671 0
+ 520 027c 0023     		mov	r3, #0
+ 521              	.L67:
+ 522 027e 2370     		strb	r3, [r4]
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 22
+
+
+ 672:snake.c       ****             osSleep(1);
+ 523              		.loc 1 672 0
+ 524 0280 0120     		mov	r0, #1
+ 525 0282 FFF7FEFF 		bl	osSleep
+ 526              	.LVL42:
+ 527              	.L65:
+ 673:snake.c       ****         }
+ 674:snake.c       ****     }
+ 675:snake.c       **** }
+ 528              		.loc 1 675 0
+ 529              		@ sp needed for prologue
+ 530 0286 10BC     		pop	{r4}
+ 531 0288 01BC     		pop	{r0}
+ 532 028a 0047     		bx	r0
+ 533              	.L71:
+ 534              		.align	2
+ 535              	.L70:
+ 536 028c 01000000 		.word	snakeYPos
+ 537 0290 00000000 		.word	snakeXPos
+ 538 0294 04000000 		.word	isOn
+ 539              	.LFE10:
+ 540              		.size	moveSnake, .-moveSnake
+ 541              		.align	2
+ 542              		.global	playSnake
+ 543              		.code 16
+ 544              		.thumb_func
+ 545              		.type	playSnake, %function
+ 546              	playSnake:
+ 547              	.LFB11:
+ 676:snake.c       **** 
+ 677:snake.c       **** 
+ 678:snake.c       **** /*****************************************************************************
+ 679:snake.c       ****  *
+ 680:snake.c       ****  * Description:
+ 681:snake.c       ****  *    Implements example game
+ 682:snake.c       ****  *
+ 683:snake.c       ****  ****************************************************************************/
+ 684:snake.c       **** void
+ 685:snake.c       **** playSnake(void)
+ 686:snake.c       **** {
+ 548              		.loc 1 686 0
+ 549 0298 F0B5     		push	{r4, r5, r6, r7, lr}
+ 550              	.LCFI7:
+ 687:snake.c       ****     //srand(time(NULL));
+ 688:snake.c       **** 
+ 689:snake.c       ****     snakeXPos = 16;
+ 551              		.loc 1 689 0
+ 552 029a 374B     		ldr	r3, .L97
+ 553 029c 1022     		mov	r2, #16
+ 554 029e 1A70     		strb	r2, [r3]
+ 690:snake.c       ****     snakeYPos = 16;
+ 555              		.loc 1 690 0
+ 556 02a0 364B     		ldr	r3, .L97+4
+ 557 02a2 1A70     		strb	r2, [r3]
+ 691:snake.c       ****     snakeSize = 1; //TODO (nie obslugujemy wiekszych)
+ 558              		.loc 1 691 0
+ 559 02a4 364A     		ldr	r2, .L97+8
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 23
+
+
+ 560 02a6 0123     		mov	r3, #1
+ 561 02a8 1370     		strb	r3, [r2]
+ 692:snake.c       ****     snakeTailGuard = 0;
+ 562              		.loc 1 692 0
+ 563 02aa 364A     		ldr	r2, .L97+12
+ 564 02ac 0023     		mov	r3, #0
+ 565 02ae 1370     		strb	r3, [r2]
+ 693:snake.c       ****     snakeTail[0] = MOVE_RIGHT;
+ 566              		.loc 1 693 0
+ 567 02b0 354A     		ldr	r2, .L97+16
+ 568 02b2 0323     		mov	r3, #3
+ 569              		.loc 1 686 0
+ 570 02b4 81B0     		sub	sp, sp, #4
+ 571              	.LCFI8:
+ 572              		.loc 1 693 0
+ 573 02b6 1370     		strb	r3, [r2]
+ 694:snake.c       ****     lcdClrscr();
+ 574              		.loc 1 694 0
+ 575 02b8 FFF7FEFF 		bl	lcdClrscr
+ 576 02bc 0024     		mov	r4, #0
+ 577 02be 50E0     		b	.L73
+ 578              	.LVL43:
+ 579              	.L74:
+ 580 02c0 2306     		lsl	r3, r4, #24
+ 581              	.LVL44:
+ 582 02c2 180E     		lsr	r0, r3, #24
+ 583              	.LBB19:
+ 584              	.LBB20:
+ 585              		.loc 1 478 0
+ 586 02c4 0028     		cmp	r0, #0
+ 587 02c6 07D0     		beq	.L75
+ 588 02c8 0B06     		lsl	r3, r1, #24
+ 589 02ca 1B0E     		lsr	r3, r3, #24
+ 590              	.LVL45:
+ 591 02cc 002B     		cmp	r3, #0
+ 592 02ce 03D0     		beq	.L75
+ 593 02d0 1F28     		cmp	r0, #31
+ 594 02d2 01D0     		beq	.L75
+ 595 02d4 1F2B     		cmp	r3, #31
+ 596 02d6 02D1     		bne	.L79
+ 597              	.L75:
+ 598              		.loc 1 480 0
+ 599 02d8 0323     		mov	r3, #3
+ 600              	.LVL46:
+ 601 02da 5B42     		neg	r3, r3
+ 602 02dc 1370     		strb	r3, [r2]
+ 603              	.LVL47:
+ 604              	.L79:
+ 605 02de 0131     		add	r1, r1, #1
+ 606 02e0 0132     		add	r2, r2, #1
+ 607              		.loc 1 476 0
+ 608 02e2 2029     		cmp	r1, #32
+ 609 02e4 ECD1     		bne	.L74
+ 610 02e6 0134     		add	r4, r4, #1
+ 611              		.loc 1 474 0
+ 612 02e8 202C     		cmp	r4, #32
+ 613 02ea 3AD1     		bne	.L73
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 24
+
+
+ 614              	.LBE20:
+ 615              	.LBE19:
+ 616              	.LBB21:
+ 617              	.LBB22:
+ 618              		.loc 1 489 0
+ 619 02ec 234B     		ldr	r3, .L97+4
+ 620              	.LVL48:
+ 621 02ee 1978     		ldrb	r1, [r3]
+ 622 02f0 214B     		ldr	r3, .L97
+ 623 02f2 1B78     		ldrb	r3, [r3]
+ 624 02f4 2548     		ldr	r0, .L97+20
+ 625              	.LVL49:
+ 626 02f6 5B01     		lsl	r3, r3, #5
+ 627 02f8 1B18     		add	r3, r3, r0
+ 628 02fa 5D22     		mov	r2, #93
+ 629 02fc 5A54     		strb	r2, [r3, r1]
+ 630              	.LBE22:
+ 631              	.LBE21:
+ 695:snake.c       ****     setBorder(0xfd);
+ 696:snake.c       ****     setField(snakeXPos, snakeYPos, SNAKE_COLOR);
+ 697:snake.c       ****     lastKey = KEY_RIGHT;
+ 632              		.loc 1 697 0
+ 633 02fe 244A     		ldr	r2, .L97+24
+ 634 0300 0223     		mov	r3, #2
+ 635 0302 1370     		strb	r3, [r2]
+ 698:snake.c       ****     isOn = 0;
+ 636              		.loc 1 698 0
+ 637 0304 234A     		ldr	r2, .L97+28
+ 638 0306 0023     		mov	r3, #0
+ 639 0308 1370     		strb	r3, [r2]
+ 699:snake.c       **** 	//init snacks
+ 700:snake.c       **** 	gameArena[10][10] = SNACK_COLOR;
+ 640              		.loc 1 700 0
+ 641 030a A522     		mov	r2, #165
+ 642 030c 7323     		mov	r3, #115
+ 643 030e 5200     		lsl	r2, r2, #1
+ 644 0310 5B42     		neg	r3, r3
+ 645 0312 8354     		strb	r3, [r0, r2]
+ 701:snake.c       **** 	putSnack();
+ 646              		.loc 1 701 0
+ 647 0314 FFF774FE 		bl	putSnack
+ 702:snake.c       **** 	putSnack();
+ 648              		.loc 1 702 0
+ 649 0318 FFF772FE 		bl	putSnack
+ 650              	.L82:
+ 651              	.LBB23:
+ 703:snake.c       ****     for(;;)
+ 704:snake.c       ****     {
+ 705:snake.c       ****         timeVal++;
+ 652              		.loc 1 705 0
+ 653 031c 1E4A     		ldr	r2, .L97+32
+ 654 031e 1368     		ldr	r3, [r2]
+ 655 0320 0133     		add	r3, r3, #1
+ 656 0322 1360     		str	r3, [r2]
+ 706:snake.c       **** 
+ 707:snake.c       **** 
+ 708:snake.c       ****         tU8 anyKey;
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 25
+
+
+ 709:snake.c       **** 
+ 710:snake.c       ****         anyKey = checkKey();
+ 657              		.loc 1 710 0
+ 658 0324 FFF7FEFF 		bl	checkKey
+ 711:snake.c       ****         if (anyKey != KEY_NOTHING)
+ 659              		.loc 1 711 0
+ 660 0328 0028     		cmp	r0, #0
+ 661 032a 04D0     		beq	.L83
+ 712:snake.c       ****         {
+ 713:snake.c       ****             lastKey = anyKey;
+ 662              		.loc 1 713 0
+ 663 032c 184B     		ldr	r3, .L97+24
+ 664 032e 1870     		strb	r0, [r3]
+ 714:snake.c       ****             osSleep(1);
+ 665              		.loc 1 714 0
+ 666 0330 0120     		mov	r0, #1
+ 667 0332 FFF7FEFF 		bl	osSleep
+ 668              	.L83:
+ 715:snake.c       ****         }
+ 716:snake.c       **** 
+ 717:snake.c       ****         moveSnake(lastKey);
+ 669              		.loc 1 717 0
+ 670 0336 164B     		ldr	r3, .L97+24
+ 671 0338 1878     		ldrb	r0, [r3]
+ 672 033a FFF7FEFF 		bl	moveSnake
+ 673 033e 0026     		mov	r6, #0
+ 674 0340 14E0     		b	.L85
+ 675              	.L86:
+ 676              	.LBB24:
+ 677              	.LBB25:
+ 678              		.loc 1 465 0
+ 679 0342 2B78     		ldrb	r3, [r5]
+ 680 0344 211C     		mov	r1, r4
+ 681 0346 0093     		str	r3, [sp]
+ 682 0348 381C     		mov	r0, r7
+ 683 034a 0422     		mov	r2, #4
+ 684 034c 0423     		mov	r3, #4
+ 685 034e 0434     		add	r4, r4, #4
+ 686 0350 FFF7FEFF 		bl	lcdRect
+ 687 0354 0135     		add	r5, r5, #1
+ 688              		.loc 1 463 0
+ 689 0356 802C     		cmp	r4, #128
+ 690 0358 F3D1     		bne	.L86
+ 691 035a 0136     		add	r6, r6, #1
+ 692              		.loc 1 461 0
+ 693 035c 202E     		cmp	r6, #32
+ 694 035e 05D1     		bne	.L85
+ 695 0360 DCE7     		b	.L82
+ 696              	.LVL50:
+ 697              	.L73:
+ 698 0362 0A4B     		ldr	r3, .L97+20
+ 699              	.LVL51:
+ 700 0364 6201     		lsl	r2, r4, #5
+ 701 0366 D218     		add	r2, r2, r3
+ 702 0368 0021     		mov	r1, #0
+ 703 036a A9E7     		b	.L74
+ 704              	.LVL52:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 26
+
+
+ 705              	.L85:
+ 706 036c 074B     		ldr	r3, .L97+20
+ 707 036e 7201     		lsl	r2, r6, #5
+ 708 0370 B700     		lsl	r7, r6, #2
+ 709 0372 D518     		add	r5, r2, r3
+ 710 0374 0024     		mov	r4, #0
+ 711 0376 E4E7     		b	.L86
+ 712              	.L98:
+ 713              		.align	2
+ 714              	.L97:
+ 715 0378 00000000 		.word	snakeXPos
+ 716 037c 01000000 		.word	snakeYPos
+ 717 0380 02000000 		.word	snakeSize
+ 718 0384 4C040000 		.word	snakeTailGuard
+ 719 0388 0C040000 		.word	snakeTail
+ 720 038c 0C000000 		.word	gameArena
+ 721 0390 03000000 		.word	lastKey
+ 722 0394 04000000 		.word	isOn
+ 723 0398 08000000 		.word	timeVal
+ 724              	.LBE25:
+ 725              	.LBE24:
+ 726              	.LBE23:
+ 727              	.LFE11:
+ 728              		.size	playSnake, .-playSnake
+ 729              		.bss
+ 730              	snakeXPos:
+ 731 0000 00       		.space	1
+ 732              	snakeYPos:
+ 733 0001 00       		.space	1
+ 734              	snakeSize:
+ 735 0002 00       		.space	1
+ 736              	lastKey:
+ 737 0003 00       		.space	1
+ 738              	isOn:
+ 739 0004 00       		.space	1
+ 740 0005 000000   		.align	2
+ 741              	timeVal:
+ 742 0008 00000000 		.space	4
+ 743              	gameArena:
+ 744 000c 00000000 		.space	1024
+ 744      00000000 
+ 744      00000000 
+ 744      00000000 
+ 744      00000000 
+ 745              	snakeTail:
+ 746 040c 00000000 		.space	64
+ 746      00000000 
+ 746      00000000 
+ 746      00000000 
+ 746      00000000 
+ 747              	snakeTailGuard:
+ 748 044c 00       		.space	1
+ 749 044d 000000   		.section	.debug_frame,"",%progbits
+ 750              	.Lframe0:
+ 751 0000 0C000000 		.4byte	.LECIE0-.LSCIE0
+ 752              	.LSCIE0:
+ 753 0004 FFFFFFFF 		.4byte	0xffffffff
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 27
+
+
+ 754 0008 01       		.byte	0x1
+ 755 0009 00       		.ascii	"\000"
+ 756 000a 01       		.uleb128 0x1
+ 757 000b 7C       		.sleb128 -4
+ 758 000c 0E       		.byte	0xe
+ 759 000d 0C       		.byte	0xc
+ 760 000e 0D       		.uleb128 0xd
+ 761 000f 00       		.uleb128 0x0
+ 762              		.align	2
+ 763              	.LECIE0:
+ 764              	.LSFDE0:
+ 765 0010 14000000 		.4byte	.LEFDE0-.LASFDE0
+ 766              	.LASFDE0:
+ 767 0014 00000000 		.4byte	.Lframe0
+ 768 0018 00000000 		.4byte	.LFB7
+ 769 001c 58000000 		.4byte	.LFE7-.LFB7
+ 770 0020 42       		.byte	0x4
+ 771              		.4byte	.LCFI0-.LFB7
+ 772 0021 0E       		.byte	0xe
+ 773 0022 08       		.uleb128 0x8
+ 774 0023 84       		.byte	0x84
+ 775 0024 02       		.uleb128 0x2
+ 776 0025 8E       		.byte	0x8e
+ 777 0026 01       		.uleb128 0x1
+ 778 0027 00       		.align	2
+ 779              	.LEFDE0:
+ 780              	.LSFDE2:
+ 781 0028 20000000 		.4byte	.LEFDE2-.LASFDE2
+ 782              	.LASFDE2:
+ 783 002c 00000000 		.4byte	.Lframe0
+ 784 0030 58000000 		.4byte	.LFB5
+ 785 0034 68000000 		.4byte	.LFE5-.LFB5
+ 786 0038 42       		.byte	0x4
+ 787              		.4byte	.LCFI1-.LFB5
+ 788 0039 0E       		.byte	0xe
+ 789 003a 14       		.uleb128 0x14
+ 790 003b 84       		.byte	0x84
+ 791 003c 05       		.uleb128 0x5
+ 792 003d 85       		.byte	0x85
+ 793 003e 04       		.uleb128 0x4
+ 794 003f 86       		.byte	0x86
+ 795 0040 03       		.uleb128 0x3
+ 796 0041 87       		.byte	0x87
+ 797 0042 02       		.uleb128 0x2
+ 798 0043 8E       		.byte	0x8e
+ 799 0044 01       		.uleb128 0x1
+ 800 0045 4C       		.byte	0x4
+ 801              		.4byte	.LCFI2-.LCFI1
+ 802 0046 0E       		.byte	0xe
+ 803 0047 1C       		.uleb128 0x1c
+ 804 0048 44       		.byte	0x4
+ 805              		.4byte	.LCFI3-.LCFI2
+ 806 0049 0D       		.byte	0xd
+ 807 004a 07       		.uleb128 0x7
+ 808 004b 00       		.align	2
+ 809              	.LEFDE2:
+ 810              	.LSFDE4:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 28
+
+
+ 811 004c 1C000000 		.4byte	.LEFDE4-.LASFDE4
+ 812              	.LASFDE4:
+ 813 0050 00000000 		.4byte	.Lframe0
+ 814 0054 C0000000 		.4byte	.LFB6
+ 815 0058 24010000 		.4byte	.LFE6-.LFB6
+ 816 005c 42       		.byte	0x4
+ 817              		.4byte	.LCFI4-.LFB6
+ 818 005d 0E       		.byte	0xe
+ 819 005e 14       		.uleb128 0x14
+ 820 005f 84       		.byte	0x84
+ 821 0060 05       		.uleb128 0x5
+ 822 0061 85       		.byte	0x85
+ 823 0062 04       		.uleb128 0x4
+ 824 0063 86       		.byte	0x86
+ 825 0064 03       		.uleb128 0x3
+ 826 0065 87       		.byte	0x87
+ 827 0066 02       		.uleb128 0x2
+ 828 0067 8E       		.byte	0x8e
+ 829 0068 01       		.uleb128 0x1
+ 830 0069 48       		.byte	0x4
+ 831              		.4byte	.LCFI5-.LCFI4
+ 832 006a 0E       		.byte	0xe
+ 833 006b 24       		.uleb128 0x24
+ 834              		.align	2
+ 835              	.LEFDE4:
+ 836              	.LSFDE6:
+ 837 006c 14000000 		.4byte	.LEFDE6-.LASFDE6
+ 838              	.LASFDE6:
+ 839 0070 00000000 		.4byte	.Lframe0
+ 840 0074 E4010000 		.4byte	.LFB10
+ 841 0078 B4000000 		.4byte	.LFE10-.LFB10
+ 842 007c 42       		.byte	0x4
+ 843              		.4byte	.LCFI6-.LFB10
+ 844 007d 0E       		.byte	0xe
+ 845 007e 08       		.uleb128 0x8
+ 846 007f 84       		.byte	0x84
+ 847 0080 02       		.uleb128 0x2
+ 848 0081 8E       		.byte	0x8e
+ 849 0082 01       		.uleb128 0x1
+ 850 0083 00       		.align	2
+ 851              	.LEFDE6:
+ 852              	.LSFDE8:
+ 853 0084 1C000000 		.4byte	.LEFDE8-.LASFDE8
+ 854              	.LASFDE8:
+ 855 0088 00000000 		.4byte	.Lframe0
+ 856 008c 98020000 		.4byte	.LFB11
+ 857 0090 04010000 		.4byte	.LFE11-.LFB11
+ 858 0094 42       		.byte	0x4
+ 859              		.4byte	.LCFI7-.LFB11
+ 860 0095 0E       		.byte	0xe
+ 861 0096 14       		.uleb128 0x14
+ 862 0097 84       		.byte	0x84
+ 863 0098 05       		.uleb128 0x5
+ 864 0099 85       		.byte	0x85
+ 865 009a 04       		.uleb128 0x4
+ 866 009b 86       		.byte	0x86
+ 867 009c 03       		.uleb128 0x3
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 29
+
+
+ 868 009d 87       		.byte	0x87
+ 869 009e 02       		.uleb128 0x2
+ 870 009f 8E       		.byte	0x8e
+ 871 00a0 01       		.uleb128 0x1
+ 872 00a1 5C       		.byte	0x4
+ 873              		.4byte	.LCFI8-.LCFI7
+ 874 00a2 0E       		.byte	0xe
+ 875 00a3 18       		.uleb128 0x18
+ 876              		.align	2
+ 877              	.LEFDE8:
+ 878              		.file 2 "./startup/../pre_emptive_os/api/../api/general.h"
+ 879              		.text
+ 880              	.Letext0:
+ 881              		.section	.debug_loc,"",%progbits
+ 882              	.Ldebug_loc0:
+ 883              	.LLST0:
+ 884 0000 00000000 		.4byte	.LFB7-.Ltext0
+ 885 0004 02000000 		.4byte	.LCFI0-.Ltext0
+ 886 0008 0100     		.2byte	0x1
+ 887 000a 5D       		.byte	0x5d
+ 888 000b 02000000 		.4byte	.LCFI0-.Ltext0
+ 889 000f 58000000 		.4byte	.LFE7-.Ltext0
+ 890 0013 0200     		.2byte	0x2
+ 891 0015 7D       		.byte	0x7d
+ 892 0016 08       		.sleb128 8
+ 893 0017 00000000 		.4byte	0x0
+ 894 001b 00000000 		.4byte	0x0
+ 895              	.LLST1:
+ 896 001f 58000000 		.4byte	.LFB5-.Ltext0
+ 897 0023 5A000000 		.4byte	.LCFI1-.Ltext0
+ 898 0027 0100     		.2byte	0x1
+ 899 0029 5D       		.byte	0x5d
+ 900 002a 5A000000 		.4byte	.LCFI1-.Ltext0
+ 901 002e 66000000 		.4byte	.LCFI2-.Ltext0
+ 902 0032 0200     		.2byte	0x2
+ 903 0034 7D       		.byte	0x7d
+ 904 0035 14       		.sleb128 20
+ 905 0036 66000000 		.4byte	.LCFI2-.Ltext0
+ 906 003a 6A000000 		.4byte	.LCFI3-.Ltext0
+ 907 003e 0200     		.2byte	0x2
+ 908 0040 7D       		.byte	0x7d
+ 909 0041 1C       		.sleb128 28
+ 910 0042 6A000000 		.4byte	.LCFI3-.Ltext0
+ 911 0046 C0000000 		.4byte	.LFE5-.Ltext0
+ 912 004a 0200     		.2byte	0x2
+ 913 004c 77       		.byte	0x77
+ 914 004d 1C       		.sleb128 28
+ 915 004e 00000000 		.4byte	0x0
+ 916 0052 00000000 		.4byte	0x0
+ 917              	.LLST2:
+ 918 0056 5E000000 		.4byte	.LVL0-.Ltext0
+ 919 005a A0000000 		.4byte	.LVL1-.Ltext0
+ 920 005e 0100     		.2byte	0x1
+ 921 0060 54       		.byte	0x54
+ 922 0061 A0000000 		.4byte	.LVL1-.Ltext0
+ 923 0065 C0000000 		.4byte	.LFE5-.Ltext0
+ 924 0069 0100     		.2byte	0x1
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 30
+
+
+ 925 006b 50       		.byte	0x50
+ 926 006c 00000000 		.4byte	0x0
+ 927 0070 00000000 		.4byte	0x0
+ 928              	.LLST3:
+ 929 0074 C0000000 		.4byte	.LFB6-.Ltext0
+ 930 0078 C2000000 		.4byte	.LCFI4-.Ltext0
+ 931 007c 0100     		.2byte	0x1
+ 932 007e 5D       		.byte	0x5d
+ 933 007f C2000000 		.4byte	.LCFI4-.Ltext0
+ 934 0083 CA000000 		.4byte	.LCFI5-.Ltext0
+ 935 0087 0200     		.2byte	0x2
+ 936 0089 7D       		.byte	0x7d
+ 937 008a 14       		.sleb128 20
+ 938 008b CA000000 		.4byte	.LCFI5-.Ltext0
+ 939 008f E4010000 		.4byte	.LFE6-.Ltext0
+ 940 0093 0200     		.2byte	0x2
+ 941 0095 7D       		.byte	0x7d
+ 942 0096 24       		.sleb128 36
+ 943 0097 00000000 		.4byte	0x0
+ 944 009b 00000000 		.4byte	0x0
+ 945              	.LLST4:
+ 946 009f C2000000 		.4byte	.LVL2-.Ltext0
+ 947 00a3 C4000000 		.4byte	.LVL3-.Ltext0
+ 948 00a7 0100     		.2byte	0x1
+ 949 00a9 50       		.byte	0x50
+ 950 00aa 00000000 		.4byte	0x0
+ 951 00ae 00000000 		.4byte	0x0
+ 952              	.LLST5:
+ 953 00b2 C2000000 		.4byte	.LVL2-.Ltext0
+ 954 00b6 C6000000 		.4byte	.LVL4-.Ltext0
+ 955 00ba 0100     		.2byte	0x1
+ 956 00bc 51       		.byte	0x51
+ 957 00bd CC000000 		.4byte	.LVL6-.Ltext0
+ 958 00c1 EE000000 		.4byte	.LVL10-.Ltext0
+ 959 00c5 0100     		.2byte	0x1
+ 960 00c7 51       		.byte	0x51
+ 961 00c8 F0000000 		.4byte	.LVL11-.Ltext0
+ 962 00cc F2000000 		.4byte	.LVL12-.Ltext0
+ 963 00d0 0100     		.2byte	0x1
+ 964 00d2 51       		.byte	0x51
+ 965 00d3 F6000000 		.4byte	.LVL13-.Ltext0
+ 966 00d7 00010000 		.4byte	.LVL14-.Ltext0
+ 967 00db 0100     		.2byte	0x1
+ 968 00dd 51       		.byte	0x51
+ 969 00de 04010000 		.4byte	.LVL15-.Ltext0
+ 970 00e2 50010000 		.4byte	.LVL20-.Ltext0
+ 971 00e6 0100     		.2byte	0x1
+ 972 00e8 51       		.byte	0x51
+ 973 00e9 72010000 		.4byte	.LVL21-.Ltext0
+ 974 00ed 7C010000 		.4byte	.LVL22-.Ltext0
+ 975 00f1 0100     		.2byte	0x1
+ 976 00f3 51       		.byte	0x51
+ 977 00f4 C4010000 		.4byte	.LVL24-.Ltext0
+ 978 00f8 E4010000 		.4byte	.LFE6-.Ltext0
+ 979 00fc 0100     		.2byte	0x1
+ 980 00fe 51       		.byte	0x51
+ 981 00ff 00000000 		.4byte	0x0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 31
+
+
+ 982 0103 00000000 		.4byte	0x0
+ 983              	.LLST6:
+ 984 0107 C2000000 		.4byte	.LVL2-.Ltext0
+ 985 010b C8000000 		.4byte	.LVL5-.Ltext0
+ 986 010f 0100     		.2byte	0x1
+ 987 0111 52       		.byte	0x52
+ 988 0112 D0000000 		.4byte	.LVL7-.Ltext0
+ 989 0116 C6010000 		.4byte	.LVL27-.Ltext0
+ 990 011a 0100     		.2byte	0x1
+ 991 011c 57       		.byte	0x57
+ 992 011d 00000000 		.4byte	0x0
+ 993 0121 00000000 		.4byte	0x0
+ 994              	.LLST7:
+ 995 0125 08010000 		.4byte	.LVL16-.Ltext0
+ 996 0129 C6010000 		.4byte	.LVL25-.Ltext0
+ 997 012d 0100     		.2byte	0x1
+ 998 012f 55       		.byte	0x55
+ 999 0130 00000000 		.4byte	0x0
+ 1000 0134 00000000 		.4byte	0x0
+ 1001              	.LLST8:
+ 1002 0138 0C010000 		.4byte	.LVL17-.Ltext0
+ 1003 013c C6010000 		.4byte	.LVL26-.Ltext0
+ 1004 0140 0100     		.2byte	0x1
+ 1005 0142 56       		.byte	0x56
+ 1006 0143 00000000 		.4byte	0x0
+ 1007 0147 00000000 		.4byte	0x0
+ 1008              	.LLST9:
+ 1009 014b 12010000 		.4byte	.LVL18-.Ltext0
+ 1010 014f 18010000 		.4byte	.LVL19-.Ltext0
+ 1011 0153 0200     		.2byte	0x2
+ 1012 0155 91       		.byte	0x91
+ 1013 0156 7C       		.sleb128 -4
+ 1014 0157 18010000 		.4byte	.LVL19-.Ltext0
+ 1015 015b 84010000 		.4byte	.LVL23-.Ltext0
+ 1016 015f 0100     		.2byte	0x1
+ 1017 0161 54       		.byte	0x54
+ 1018 0162 00000000 		.4byte	0x0
+ 1019 0166 00000000 		.4byte	0x0
+ 1020              	.LLST10:
+ 1021 016a E4010000 		.4byte	.LFB10-.Ltext0
+ 1022 016e E6010000 		.4byte	.LCFI6-.Ltext0
+ 1023 0172 0100     		.2byte	0x1
+ 1024 0174 5D       		.byte	0x5d
+ 1025 0175 E6010000 		.4byte	.LCFI6-.Ltext0
+ 1026 0179 98020000 		.4byte	.LFE10-.Ltext0
+ 1027 017d 0200     		.2byte	0x2
+ 1028 017f 7D       		.byte	0x7d
+ 1029 0180 08       		.sleb128 8
+ 1030 0181 00000000 		.4byte	0x0
+ 1031 0185 00000000 		.4byte	0x0
+ 1032              	.LLST11:
+ 1033 0189 E6010000 		.4byte	.LVL28-.Ltext0
+ 1034 018d E8010000 		.4byte	.LVL29-.Ltext0
+ 1035 0191 0100     		.2byte	0x1
+ 1036 0193 50       		.byte	0x50
+ 1037 0194 EA010000 		.4byte	.LVL30-.Ltext0
+ 1038 0198 FA010000 		.4byte	.LVL31-.Ltext0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 32
+
+
+ 1039 019c 0100     		.2byte	0x1
+ 1040 019e 50       		.byte	0x50
+ 1041 019f FE010000 		.4byte	.LVL32-.Ltext0
+ 1042 01a3 0E020000 		.4byte	.LVL33-.Ltext0
+ 1043 01a7 0100     		.2byte	0x1
+ 1044 01a9 50       		.byte	0x50
+ 1045 01aa 1C020000 		.4byte	.LVL34-.Ltext0
+ 1046 01ae 24020000 		.4byte	.LVL35-.Ltext0
+ 1047 01b2 0100     		.2byte	0x1
+ 1048 01b4 50       		.byte	0x50
+ 1049 01b5 30020000 		.4byte	.LVL36-.Ltext0
+ 1050 01b9 38020000 		.4byte	.LVL37-.Ltext0
+ 1051 01bd 0100     		.2byte	0x1
+ 1052 01bf 50       		.byte	0x50
+ 1053 01c0 4C020000 		.4byte	.LVL38-.Ltext0
+ 1054 01c4 5C020000 		.4byte	.LVL39-.Ltext0
+ 1055 01c8 0100     		.2byte	0x1
+ 1056 01ca 50       		.byte	0x50
+ 1057 01cb 6C020000 		.4byte	.LVL40-.Ltext0
+ 1058 01cf 70020000 		.4byte	.LVL41-.Ltext0
+ 1059 01d3 0100     		.2byte	0x1
+ 1060 01d5 50       		.byte	0x50
+ 1061 01d6 86020000 		.4byte	.LVL42-.Ltext0
+ 1062 01da 98020000 		.4byte	.LFE10-.Ltext0
+ 1063 01de 0100     		.2byte	0x1
+ 1064 01e0 50       		.byte	0x50
+ 1065 01e1 00000000 		.4byte	0x0
+ 1066 01e5 00000000 		.4byte	0x0
+ 1067              	.LLST12:
+ 1068 01e9 98020000 		.4byte	.LFB11-.Ltext0
+ 1069 01ed 9A020000 		.4byte	.LCFI7-.Ltext0
+ 1070 01f1 0100     		.2byte	0x1
+ 1071 01f3 5D       		.byte	0x5d
+ 1072 01f4 9A020000 		.4byte	.LCFI7-.Ltext0
+ 1073 01f8 B6020000 		.4byte	.LCFI8-.Ltext0
+ 1074 01fc 0200     		.2byte	0x2
+ 1075 01fe 7D       		.byte	0x7d
+ 1076 01ff 14       		.sleb128 20
+ 1077 0200 B6020000 		.4byte	.LCFI8-.Ltext0
+ 1078 0204 9C030000 		.4byte	.LFE11-.Ltext0
+ 1079 0208 0200     		.2byte	0x2
+ 1080 020a 7D       		.byte	0x7d
+ 1081 020b 18       		.sleb128 24
+ 1082 020c 00000000 		.4byte	0x0
+ 1083 0210 00000000 		.4byte	0x0
+ 1084              	.LLST13:
+ 1085 0214 C0020000 		.4byte	.LVL43-.Ltext0
+ 1086 0218 F6020000 		.4byte	.LVL49-.Ltext0
+ 1087 021c 0100     		.2byte	0x1
+ 1088 021e 50       		.byte	0x50
+ 1089 021f 62030000 		.4byte	.LVL50-.Ltext0
+ 1090 0223 6C030000 		.4byte	.LVL52-.Ltext0
+ 1091 0227 0100     		.2byte	0x1
+ 1092 0229 50       		.byte	0x50
+ 1093 022a 00000000 		.4byte	0x0
+ 1094 022e 00000000 		.4byte	0x0
+ 1095              	.LLST14:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 33
+
+
+ 1096 0232 C0020000 		.4byte	.LVL43-.Ltext0
+ 1097 0236 C2020000 		.4byte	.LVL44-.Ltext0
+ 1098 023a 0100     		.2byte	0x1
+ 1099 023c 53       		.byte	0x53
+ 1100 023d CC020000 		.4byte	.LVL45-.Ltext0
+ 1101 0241 DA020000 		.4byte	.LVL46-.Ltext0
+ 1102 0245 0100     		.2byte	0x1
+ 1103 0247 53       		.byte	0x53
+ 1104 0248 DE020000 		.4byte	.LVL47-.Ltext0
+ 1105 024c EE020000 		.4byte	.LVL48-.Ltext0
+ 1106 0250 0100     		.2byte	0x1
+ 1107 0252 53       		.byte	0x53
+ 1108 0253 62030000 		.4byte	.LVL50-.Ltext0
+ 1109 0257 64030000 		.4byte	.LVL51-.Ltext0
+ 1110 025b 0100     		.2byte	0x1
+ 1111 025d 53       		.byte	0x53
+ 1112 025e 00000000 		.4byte	0x0
+ 1113 0262 00000000 		.4byte	0x0
+ 1114              		.section	.debug_info
+ 1115 0000 46040000 		.4byte	0x446
+ 1116 0004 0200     		.2byte	0x2
+ 1117 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1118 000a 04       		.byte	0x4
+ 1119 000b 01       		.uleb128 0x1
+ 1120 000c 00000000 		.4byte	.Ldebug_line0
+ 1121 0010 9C030000 		.4byte	.Letext0
+ 1122 0014 00000000 		.4byte	.Ltext0
+ 1123 0018 9A010000 		.4byte	.LASF39
+ 1124 001c 01       		.byte	0x1
+ 1125 001d D4010000 		.4byte	.LASF40
+ 1126 0021 F3000000 		.4byte	.LASF41
+ 1127 0025 02       		.uleb128 0x2
+ 1128 0026 74553800 		.ascii	"tU8\000"
+ 1129 002a 02       		.byte	0x2
+ 1130 002b 47       		.byte	0x47
+ 1131 002c 30000000 		.4byte	0x30
+ 1132 0030 03       		.uleb128 0x3
+ 1133 0031 8C010000 		.4byte	.LASF0
+ 1134 0035 01       		.byte	0x1
+ 1135 0036 08       		.byte	0x8
+ 1136 0037 03       		.uleb128 0x3
+ 1137 0038 DB000000 		.4byte	.LASF1
+ 1138 003c 02       		.byte	0x2
+ 1139 003d 07       		.byte	0x7
+ 1140 003e 04       		.uleb128 0x4
+ 1141 003f 46010000 		.4byte	.LASF2
+ 1142 0043 02       		.byte	0x2
+ 1143 0044 49       		.byte	0x49
+ 1144 0045 49000000 		.4byte	0x49
+ 1145 0049 03       		.uleb128 0x3
+ 1146 004a A7000000 		.4byte	.LASF3
+ 1147 004e 04       		.byte	0x4
+ 1148 004f 07       		.byte	0x7
+ 1149 0050 03       		.uleb128 0x3
+ 1150 0051 1A000000 		.4byte	.LASF4
+ 1151 0055 01       		.byte	0x1
+ 1152 0056 06       		.byte	0x6
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 34
+
+
+ 1153 0057 03       		.uleb128 0x3
+ 1154 0058 AB010000 		.4byte	.LASF5
+ 1155 005c 02       		.byte	0x2
+ 1156 005d 05       		.byte	0x5
+ 1157 005e 05       		.uleb128 0x5
+ 1158 005f 696E7400 		.ascii	"int\000"
+ 1159 0063 04       		.byte	0x4
+ 1160 0064 05       		.byte	0x5
+ 1161 0065 03       		.uleb128 0x3
+ 1162 0066 C9000000 		.4byte	.LASF6
+ 1163 006a 04       		.byte	0x4
+ 1164 006b 07       		.byte	0x7
+ 1165 006c 03       		.uleb128 0x3
+ 1166 006d C9000000 		.4byte	.LASF6
+ 1167 0071 04       		.byte	0x4
+ 1168 0072 07       		.byte	0x7
+ 1169 0073 03       		.uleb128 0x3
+ 1170 0074 74000000 		.4byte	.LASF7
+ 1171 0078 04       		.byte	0x4
+ 1172 0079 05       		.byte	0x5
+ 1173 007a 03       		.uleb128 0x3
+ 1174 007b 5C000000 		.4byte	.LASF8
+ 1175 007f 08       		.byte	0x8
+ 1176 0080 05       		.byte	0x5
+ 1177 0081 03       		.uleb128 0x3
+ 1178 0082 BF010000 		.4byte	.LASF9
+ 1179 0086 01       		.byte	0x1
+ 1180 0087 08       		.byte	0x8
+ 1181 0088 03       		.uleb128 0x3
+ 1182 0089 45000000 		.4byte	.LASF10
+ 1183 008d 08       		.byte	0x8
+ 1184 008e 07       		.byte	0x7
+ 1185 008f 06       		.uleb128 0x6
+ 1186 0090 BE000000 		.4byte	0xbe
+ 1187 0094 9E000000 		.4byte	.LASF12
+ 1188 0098 01       		.byte	0x1
+ 1189 0099 E801     		.2byte	0x1e8
+ 1190 009b 01       		.byte	0x1
+ 1191 009c 01       		.byte	0x1
+ 1192 009d 07       		.uleb128 0x7
+ 1193 009e 7800     		.ascii	"x\000"
+ 1194 00a0 01       		.byte	0x1
+ 1195 00a1 E701     		.2byte	0x1e7
+ 1196 00a3 25000000 		.4byte	0x25
+ 1197 00a7 07       		.uleb128 0x7
+ 1198 00a8 7900     		.ascii	"y\000"
+ 1199 00aa 01       		.byte	0x1
+ 1200 00ab E701     		.2byte	0x1e7
+ 1201 00ad 25000000 		.4byte	0x25
+ 1202 00b1 08       		.uleb128 0x8
+ 1203 00b2 5F010000 		.4byte	.LASF11
+ 1204 00b6 01       		.byte	0x1
+ 1205 00b7 E701     		.2byte	0x1e7
+ 1206 00b9 25000000 		.4byte	0x25
+ 1207 00bd 00       		.byte	0x0
+ 1208 00be 09       		.uleb128 0x9
+ 1209 00bf F7000000 		.4byte	0xf7
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 35
+
+
+ 1210 00c3 87000000 		.4byte	.LASF13
+ 1211 00c7 01       		.byte	0x1
+ 1212 00c8 3702     		.2byte	0x237
+ 1213 00ca 00000000 		.4byte	.LFB7
+ 1214 00ce 58000000 		.4byte	.LFE7
+ 1215 00d2 00000000 		.4byte	.LLST0
+ 1216 00d6 0A       		.uleb128 0xa
+ 1217 00d7 7800     		.ascii	"x\000"
+ 1218 00d9 01       		.byte	0x1
+ 1219 00da 3802     		.2byte	0x238
+ 1220 00dc 25000000 		.4byte	0x25
+ 1221 00e0 0A       		.uleb128 0xa
+ 1222 00e1 7900     		.ascii	"y\000"
+ 1223 00e3 01       		.byte	0x1
+ 1224 00e4 3802     		.2byte	0x238
+ 1225 00e6 25000000 		.4byte	0x25
+ 1226 00ea 0B       		.uleb128 0xb
+ 1227 00eb CB010000 		.4byte	.LASF14
+ 1228 00ef 01       		.byte	0x1
+ 1229 00f0 3802     		.2byte	0x238
+ 1230 00f2 25000000 		.4byte	0x25
+ 1231 00f6 00       		.byte	0x0
+ 1232 00f7 09       		.uleb128 0x9
+ 1233 00f8 40010000 		.4byte	0x140
+ 1234 00fc BE000000 		.4byte	.LASF15
+ 1235 0100 01       		.byte	0x1
+ 1236 0101 EE01     		.2byte	0x1ee
+ 1237 0103 58000000 		.4byte	.LFB5
+ 1238 0107 C0000000 		.4byte	.LFE5
+ 1239 010b 1F000000 		.4byte	.LLST1
+ 1240 010f 0A       		.uleb128 0xa
+ 1241 0110 6A00     		.ascii	"j\000"
+ 1242 0112 01       		.byte	0x1
+ 1243 0113 EF01     		.2byte	0x1ef
+ 1244 0115 5E000000 		.4byte	0x5e
+ 1245 0119 0C       		.uleb128 0xc
+ 1246 011a 6900     		.ascii	"i\000"
+ 1247 011c 01       		.byte	0x1
+ 1248 011d EF01     		.2byte	0x1ef
+ 1249 011f 5E000000 		.4byte	0x5e
+ 1250 0123 56000000 		.4byte	.LLST2
+ 1251 0127 0B       		.uleb128 0xb
+ 1252 0128 3F000000 		.4byte	.LASF16
+ 1253 012c 01       		.byte	0x1
+ 1254 012d F001     		.2byte	0x1f0
+ 1255 012f 5E000000 		.4byte	0x5e
+ 1256 0133 0B       		.uleb128 0xb
+ 1257 0134 90000000 		.4byte	.LASF17
+ 1258 0138 01       		.byte	0x1
+ 1259 0139 F101     		.2byte	0x1f1
+ 1260 013b 40010000 		.4byte	0x140
+ 1261 013f 00       		.byte	0x0
+ 1262 0140 0D       		.uleb128 0xd
+ 1263 0141 4F010000 		.4byte	0x14f
+ 1264 0145 25000000 		.4byte	0x25
+ 1265 0149 0E       		.uleb128 0xe
+ 1266 014a 65000000 		.4byte	0x65
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 36
+
+
+ 1267 014e 00       		.byte	0x0
+ 1268 014f 0F       		.uleb128 0xf
+ 1269 0150 83010000 		.4byte	0x183
+ 1270 0154 DC010000 		.4byte	.LASF18
+ 1271 0158 01       		.byte	0x1
+ 1272 0159 4702     		.2byte	0x247
+ 1273 015b 25000000 		.4byte	0x25
+ 1274 015f 01       		.byte	0x1
+ 1275 0160 0B       		.uleb128 0xb
+ 1276 0161 00000000 		.4byte	.LASF19
+ 1277 0165 01       		.byte	0x1
+ 1278 0166 4802     		.2byte	0x248
+ 1279 0168 25000000 		.4byte	0x25
+ 1280 016c 0B       		.uleb128 0xb
+ 1281 016d 08000000 		.4byte	.LASF20
+ 1282 0171 01       		.byte	0x1
+ 1283 0172 4902     		.2byte	0x249
+ 1284 0174 25000000 		.4byte	0x25
+ 1285 0178 0A       		.uleb128 0xa
+ 1286 0179 6900     		.ascii	"i\000"
+ 1287 017b 01       		.byte	0x1
+ 1288 017c 4A02     		.2byte	0x24a
+ 1289 017e 25000000 		.4byte	0x25
+ 1290 0182 00       		.byte	0x0
+ 1291 0183 10       		.uleb128 0x10
+ 1292 0184 41020000 		.4byte	0x241
+ 1293 0188 7D000000 		.4byte	.LASF21
+ 1294 018c 01       		.byte	0x1
+ 1295 018d 0202     		.2byte	0x202
+ 1296 018f 01       		.byte	0x1
+ 1297 0190 C0000000 		.4byte	.LFB6
+ 1298 0194 E4010000 		.4byte	.LFE6
+ 1299 0198 74000000 		.4byte	.LLST3
+ 1300 019c 11       		.uleb128 0x11
+ 1301 019d 7800     		.ascii	"x\000"
+ 1302 019f 01       		.byte	0x1
+ 1303 01a0 0102     		.2byte	0x201
+ 1304 01a2 25000000 		.4byte	0x25
+ 1305 01a6 9F000000 		.4byte	.LLST4
+ 1306 01aa 11       		.uleb128 0x11
+ 1307 01ab 7900     		.ascii	"y\000"
+ 1308 01ad 01       		.byte	0x1
+ 1309 01ae 0102     		.2byte	0x201
+ 1310 01b0 25000000 		.4byte	0x25
+ 1311 01b4 B2000000 		.4byte	.LLST5
+ 1312 01b8 12       		.uleb128 0x12
+ 1313 01b9 6F010000 		.4byte	.LASF22
+ 1314 01bd 01       		.byte	0x1
+ 1315 01be 0102     		.2byte	0x201
+ 1316 01c0 25000000 		.4byte	0x25
+ 1317 01c4 07010000 		.4byte	.LLST6
+ 1318 01c8 13       		.uleb128 0x13
+ 1319 01c9 00000000 		.4byte	.LASF19
+ 1320 01cd 01       		.byte	0x1
+ 1321 01ce 0302     		.2byte	0x203
+ 1322 01d0 5E000000 		.4byte	0x5e
+ 1323 01d4 02       		.byte	0x2
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 37
+
+
+ 1324 01d5 91       		.byte	0x91
+ 1325 01d6 70       		.sleb128 -16
+ 1326 01d7 13       		.uleb128 0x13
+ 1327 01d8 08000000 		.4byte	.LASF20
+ 1328 01dc 01       		.byte	0x1
+ 1329 01dd 0402     		.2byte	0x204
+ 1330 01df 5E000000 		.4byte	0x5e
+ 1331 01e3 02       		.byte	0x2
+ 1332 01e4 91       		.byte	0x91
+ 1333 01e5 74       		.sleb128 -12
+ 1334 01e6 14       		.uleb128 0x14
+ 1335 01e7 20020000 		.4byte	0x220
+ 1336 01eb 4F010000 		.4byte	0x14f
+ 1337 01ef 04010000 		.4byte	.LBB8
+ 1338 01f3 72010000 		.4byte	.LBE8
+ 1339 01f7 01       		.byte	0x1
+ 1340 01f8 1802     		.2byte	0x218
+ 1341 01fa 15       		.uleb128 0x15
+ 1342 01fb 04010000 		.4byte	.LBB9
+ 1343 01ff 72010000 		.4byte	.LBE9
+ 1344 0203 16       		.uleb128 0x16
+ 1345 0204 60010000 		.4byte	0x160
+ 1346 0208 25010000 		.4byte	.LLST7
+ 1347 020c 16       		.uleb128 0x16
+ 1348 020d 6C010000 		.4byte	0x16c
+ 1349 0211 38010000 		.4byte	.LLST8
+ 1350 0215 16       		.uleb128 0x16
+ 1351 0216 78010000 		.4byte	0x178
+ 1352 021a 4B010000 		.4byte	.LLST9
+ 1353 021e 00       		.byte	0x0
+ 1354 021f 00       		.byte	0x0
+ 1355 0220 17       		.uleb128 0x17
+ 1356 0221 8F000000 		.4byte	0x8f
+ 1357 0225 B0010000 		.4byte	.LBB10
+ 1358 0229 C4010000 		.4byte	.LBE10
+ 1359 022d 01       		.byte	0x1
+ 1360 022e 3202     		.2byte	0x232
+ 1361 0230 18       		.uleb128 0x18
+ 1362 0231 B1000000 		.4byte	0xb1
+ 1363 0235 18       		.uleb128 0x18
+ 1364 0236 A7000000 		.4byte	0xa7
+ 1365 023a 18       		.uleb128 0x18
+ 1366 023b 9D000000 		.4byte	0x9d
+ 1367 023f 00       		.byte	0x0
+ 1368 0240 00       		.byte	0x0
+ 1369 0241 19       		.uleb128 0x19
+ 1370 0242 6C020000 		.4byte	0x26c
+ 1371 0246 01       		.byte	0x1
+ 1372 0247 4B010000 		.4byte	.LASF27
+ 1373 024b 01       		.byte	0x1
+ 1374 024c 7102     		.2byte	0x271
+ 1375 024e 01       		.byte	0x1
+ 1376 024f E4010000 		.4byte	.LFB10
+ 1377 0253 98020000 		.4byte	.LFE10
+ 1378 0257 6A010000 		.4byte	.LLST10
+ 1379 025b 12       		.uleb128 0x12
+ 1380 025c C4010000 		.4byte	.LASF23
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 38
+
+
+ 1381 0260 01       		.byte	0x1
+ 1382 0261 7002     		.2byte	0x270
+ 1383 0263 25000000 		.4byte	0x25
+ 1384 0267 89010000 		.4byte	.LLST11
+ 1385 026b 00       		.byte	0x0
+ 1386 026c 06       		.uleb128 0x6
+ 1387 026d 9B020000 		.4byte	0x29b
+ 1388 0271 10000000 		.4byte	.LASF24
+ 1389 0275 01       		.byte	0x1
+ 1390 0276 D801     		.2byte	0x1d8
+ 1391 0278 01       		.byte	0x1
+ 1392 0279 01       		.byte	0x1
+ 1393 027a 08       		.uleb128 0x8
+ 1394 027b 5F010000 		.4byte	.LASF11
+ 1395 027f 01       		.byte	0x1
+ 1396 0280 D701     		.2byte	0x1d7
+ 1397 0282 25000000 		.4byte	0x25
+ 1398 0286 0A       		.uleb128 0xa
+ 1399 0287 6900     		.ascii	"i\000"
+ 1400 0289 01       		.byte	0x1
+ 1401 028a D901     		.2byte	0x1d9
+ 1402 028c 25000000 		.4byte	0x25
+ 1403 0290 0A       		.uleb128 0xa
+ 1404 0291 6A00     		.ascii	"j\000"
+ 1405 0293 01       		.byte	0x1
+ 1406 0294 D901     		.2byte	0x1d9
+ 1407 0296 25000000 		.4byte	0x25
+ 1408 029a 00       		.byte	0x0
+ 1409 029b 06       		.uleb128 0x6
+ 1410 029c CA020000 		.4byte	0x2ca
+ 1411 02a0 B5010000 		.4byte	.LASF25
+ 1412 02a4 01       		.byte	0x1
+ 1413 02a5 CA01     		.2byte	0x1ca
+ 1414 02a7 01       		.byte	0x1
+ 1415 02a8 01       		.byte	0x1
+ 1416 02a9 0B       		.uleb128 0xb
+ 1417 02aa A6010000 		.4byte	.LASF26
+ 1418 02ae 01       		.byte	0x1
+ 1419 02af CB01     		.2byte	0x1cb
+ 1420 02b1 25000000 		.4byte	0x25
+ 1421 02b5 0A       		.uleb128 0xa
+ 1422 02b6 6900     		.ascii	"i\000"
+ 1423 02b8 01       		.byte	0x1
+ 1424 02b9 CC01     		.2byte	0x1cc
+ 1425 02bb 25000000 		.4byte	0x25
+ 1426 02bf 0A       		.uleb128 0xa
+ 1427 02c0 6A00     		.ascii	"j\000"
+ 1428 02c2 01       		.byte	0x1
+ 1429 02c3 CC01     		.2byte	0x1cc
+ 1430 02c5 25000000 		.4byte	0x25
+ 1431 02c9 00       		.byte	0x0
+ 1432 02ca 19       		.uleb128 0x19
+ 1433 02cb 7F030000 		.4byte	0x37f
+ 1434 02cf 01       		.byte	0x1
+ 1435 02d0 35000000 		.4byte	.LASF28
+ 1436 02d4 01       		.byte	0x1
+ 1437 02d5 AE02     		.2byte	0x2ae
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 39
+
+
+ 1438 02d7 01       		.byte	0x1
+ 1439 02d8 98020000 		.4byte	.LFB11
+ 1440 02dc 9C030000 		.4byte	.LFE11
+ 1441 02e0 E9010000 		.4byte	.LLST12
+ 1442 02e4 14       		.uleb128 0x14
+ 1443 02e5 1A030000 		.4byte	0x31a
+ 1444 02e9 6C020000 		.4byte	0x26c
+ 1445 02ed C4020000 		.4byte	.LBB19
+ 1446 02f1 EC020000 		.4byte	.LBE19
+ 1447 02f5 01       		.byte	0x1
+ 1448 02f6 B702     		.2byte	0x2b7
+ 1449 02f8 18       		.uleb128 0x18
+ 1450 02f9 7A020000 		.4byte	0x27a
+ 1451 02fd 15       		.uleb128 0x15
+ 1452 02fe C4020000 		.4byte	.LBB20
+ 1453 0302 EC020000 		.4byte	.LBE20
+ 1454 0306 16       		.uleb128 0x16
+ 1455 0307 86020000 		.4byte	0x286
+ 1456 030b 14020000 		.4byte	.LLST13
+ 1457 030f 16       		.uleb128 0x16
+ 1458 0310 90020000 		.4byte	0x290
+ 1459 0314 32020000 		.4byte	.LLST14
+ 1460 0318 00       		.byte	0x0
+ 1461 0319 00       		.byte	0x0
+ 1462 031a 14       		.uleb128 0x14
+ 1463 031b 3E030000 		.4byte	0x33e
+ 1464 031f 8F000000 		.4byte	0x8f
+ 1465 0323 EC020000 		.4byte	.LBB21
+ 1466 0327 FE020000 		.4byte	.LBE21
+ 1467 032b 01       		.byte	0x1
+ 1468 032c B802     		.2byte	0x2b8
+ 1469 032e 18       		.uleb128 0x18
+ 1470 032f B1000000 		.4byte	0xb1
+ 1471 0333 18       		.uleb128 0x18
+ 1472 0334 A7000000 		.4byte	0xa7
+ 1473 0338 18       		.uleb128 0x18
+ 1474 0339 9D000000 		.4byte	0x9d
+ 1475 033d 00       		.byte	0x0
+ 1476 033e 15       		.uleb128 0x15
+ 1477 033f 1C030000 		.4byte	.LBB23
+ 1478 0343 9C030000 		.4byte	.LBE23
+ 1479 0347 0B       		.uleb128 0xb
+ 1480 0348 C4010000 		.4byte	.LASF23
+ 1481 034c 01       		.byte	0x1
+ 1482 034d C402     		.2byte	0x2c4
+ 1483 034f 25000000 		.4byte	0x25
+ 1484 0353 17       		.uleb128 0x17
+ 1485 0354 9B020000 		.4byte	0x29b
+ 1486 0358 42030000 		.4byte	.LBB24
+ 1487 035c 9C030000 		.4byte	.LBE24
+ 1488 0360 01       		.byte	0x1
+ 1489 0361 CE02     		.2byte	0x2ce
+ 1490 0363 15       		.uleb128 0x15
+ 1491 0364 42030000 		.4byte	.LBB25
+ 1492 0368 9C030000 		.4byte	.LBE25
+ 1493 036c 1A       		.uleb128 0x1a
+ 1494 036d A9020000 		.4byte	0x2a9
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 40
+
+
+ 1495 0371 1A       		.uleb128 0x1a
+ 1496 0372 B5020000 		.4byte	0x2b5
+ 1497 0376 1A       		.uleb128 0x1a
+ 1498 0377 BF020000 		.4byte	0x2bf
+ 1499 037b 00       		.byte	0x0
+ 1500 037c 00       		.byte	0x0
+ 1501 037d 00       		.byte	0x0
+ 1502 037e 00       		.byte	0x0
+ 1503 037f 1B       		.uleb128 0x1b
+ 1504 0380 79010000 		.4byte	.LASF29
+ 1505 0384 01       		.byte	0x1
+ 1506 0385 3B       		.byte	0x3b
+ 1507 0386 25000000 		.4byte	0x25
+ 1508 038a 1C       		.uleb128 0x1c
+ 1509 038b B4000000 		.4byte	.LASF30
+ 1510 038f 01       		.byte	0x1
+ 1511 0390 3C       		.byte	0x3c
+ 1512 0391 25000000 		.4byte	0x25
+ 1513 0395 05       		.byte	0x5
+ 1514 0396 03       		.byte	0x3
+ 1515 0397 00000000 		.4byte	snakeXPos
+ 1516 039b 1C       		.uleb128 0x1c
+ 1517 039c 3C010000 		.4byte	.LASF31
+ 1518 03a0 01       		.byte	0x1
+ 1519 03a1 3D       		.byte	0x3d
+ 1520 03a2 25000000 		.4byte	0x25
+ 1521 03a6 05       		.byte	0x5
+ 1522 03a7 03       		.byte	0x3
+ 1523 03a8 01000000 		.4byte	snakeYPos
+ 1524 03ac 1C       		.uleb128 0x1c
+ 1525 03ad 55010000 		.4byte	.LASF32
+ 1526 03b1 01       		.byte	0x1
+ 1527 03b2 3E       		.byte	0x3e
+ 1528 03b3 25000000 		.4byte	0x25
+ 1529 03b7 05       		.byte	0x5
+ 1530 03b8 03       		.byte	0x3
+ 1531 03b9 02000000 		.4byte	snakeSize
+ 1532 03bd 1C       		.uleb128 0x1c
+ 1533 03be EB010000 		.4byte	.LASF33
+ 1534 03c2 01       		.byte	0x1
+ 1535 03c3 3F       		.byte	0x3f
+ 1536 03c4 25000000 		.4byte	0x25
+ 1537 03c8 05       		.byte	0x5
+ 1538 03c9 03       		.byte	0x3
+ 1539 03ca 03000000 		.4byte	lastKey
+ 1540 03ce 1C       		.uleb128 0x1c
+ 1541 03cf EE000000 		.4byte	.LASF34
+ 1542 03d3 01       		.byte	0x1
+ 1543 03d4 40       		.byte	0x40
+ 1544 03d5 25000000 		.4byte	0x25
+ 1545 03d9 05       		.byte	0x5
+ 1546 03da 03       		.byte	0x3
+ 1547 03db 04000000 		.4byte	isOn
+ 1548 03df 1C       		.uleb128 0x1c
+ 1549 03e0 84010000 		.4byte	.LASF35
+ 1550 03e4 01       		.byte	0x1
+ 1551 03e5 42       		.byte	0x42
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 41
+
+
+ 1552 03e6 3E000000 		.4byte	0x3e
+ 1553 03ea 05       		.byte	0x5
+ 1554 03eb 03       		.byte	0x3
+ 1555 03ec 08000000 		.4byte	timeVal
+ 1556 03f0 0D       		.uleb128 0xd
+ 1557 03f1 06040000 		.4byte	0x406
+ 1558 03f5 25000000 		.4byte	0x25
+ 1559 03f9 1D       		.uleb128 0x1d
+ 1560 03fa 65000000 		.4byte	0x65
+ 1561 03fe 1F       		.byte	0x1f
+ 1562 03ff 1D       		.uleb128 0x1d
+ 1563 0400 65000000 		.4byte	0x65
+ 1564 0404 1F       		.byte	0x1f
+ 1565 0405 00       		.byte	0x0
+ 1566 0406 1C       		.uleb128 0x1c
+ 1567 0407 6A000000 		.4byte	.LASF36
+ 1568 040b 01       		.byte	0x1
+ 1569 040c 43       		.byte	0x43
+ 1570 040d F0030000 		.4byte	0x3f0
+ 1571 0411 05       		.byte	0x5
+ 1572 0412 03       		.byte	0x3
+ 1573 0413 0C000000 		.4byte	gameArena
+ 1574 0417 0D       		.uleb128 0xd
+ 1575 0418 27040000 		.4byte	0x427
+ 1576 041c 25000000 		.4byte	0x25
+ 1577 0420 1D       		.uleb128 0x1d
+ 1578 0421 65000000 		.4byte	0x65
+ 1579 0425 3F       		.byte	0x3f
+ 1580 0426 00       		.byte	0x0
+ 1581 0427 1C       		.uleb128 0x1c
+ 1582 0428 65010000 		.4byte	.LASF37
+ 1583 042c 01       		.byte	0x1
+ 1584 042d 44       		.byte	0x44
+ 1585 042e 17040000 		.4byte	0x417
+ 1586 0432 05       		.byte	0x5
+ 1587 0433 03       		.byte	0x3
+ 1588 0434 0C040000 		.4byte	snakeTail
+ 1589 0438 1C       		.uleb128 0x1c
+ 1590 0439 26000000 		.4byte	.LASF38
+ 1591 043d 01       		.byte	0x1
+ 1592 043e 45       		.byte	0x45
+ 1593 043f 25000000 		.4byte	0x25
+ 1594 0443 05       		.byte	0x5
+ 1595 0444 03       		.byte	0x3
+ 1596 0445 4C040000 		.4byte	snakeTailGuard
+ 1597 0449 00       		.byte	0x0
+ 1598              		.section	.debug_abbrev
+ 1599 0000 01       		.uleb128 0x1
+ 1600 0001 11       		.uleb128 0x11
+ 1601 0002 01       		.byte	0x1
+ 1602 0003 10       		.uleb128 0x10
+ 1603 0004 06       		.uleb128 0x6
+ 1604 0005 12       		.uleb128 0x12
+ 1605 0006 01       		.uleb128 0x1
+ 1606 0007 11       		.uleb128 0x11
+ 1607 0008 01       		.uleb128 0x1
+ 1608 0009 25       		.uleb128 0x25
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 42
+
+
+ 1609 000a 0E       		.uleb128 0xe
+ 1610 000b 13       		.uleb128 0x13
+ 1611 000c 0B       		.uleb128 0xb
+ 1612 000d 03       		.uleb128 0x3
+ 1613 000e 0E       		.uleb128 0xe
+ 1614 000f 1B       		.uleb128 0x1b
+ 1615 0010 0E       		.uleb128 0xe
+ 1616 0011 00       		.byte	0x0
+ 1617 0012 00       		.byte	0x0
+ 1618 0013 02       		.uleb128 0x2
+ 1619 0014 16       		.uleb128 0x16
+ 1620 0015 00       		.byte	0x0
+ 1621 0016 03       		.uleb128 0x3
+ 1622 0017 08       		.uleb128 0x8
+ 1623 0018 3A       		.uleb128 0x3a
+ 1624 0019 0B       		.uleb128 0xb
+ 1625 001a 3B       		.uleb128 0x3b
+ 1626 001b 0B       		.uleb128 0xb
+ 1627 001c 49       		.uleb128 0x49
+ 1628 001d 13       		.uleb128 0x13
+ 1629 001e 00       		.byte	0x0
+ 1630 001f 00       		.byte	0x0
+ 1631 0020 03       		.uleb128 0x3
+ 1632 0021 24       		.uleb128 0x24
+ 1633 0022 00       		.byte	0x0
+ 1634 0023 03       		.uleb128 0x3
+ 1635 0024 0E       		.uleb128 0xe
+ 1636 0025 0B       		.uleb128 0xb
+ 1637 0026 0B       		.uleb128 0xb
+ 1638 0027 3E       		.uleb128 0x3e
+ 1639 0028 0B       		.uleb128 0xb
+ 1640 0029 00       		.byte	0x0
+ 1641 002a 00       		.byte	0x0
+ 1642 002b 04       		.uleb128 0x4
+ 1643 002c 16       		.uleb128 0x16
+ 1644 002d 00       		.byte	0x0
+ 1645 002e 03       		.uleb128 0x3
+ 1646 002f 0E       		.uleb128 0xe
+ 1647 0030 3A       		.uleb128 0x3a
+ 1648 0031 0B       		.uleb128 0xb
+ 1649 0032 3B       		.uleb128 0x3b
+ 1650 0033 0B       		.uleb128 0xb
+ 1651 0034 49       		.uleb128 0x49
+ 1652 0035 13       		.uleb128 0x13
+ 1653 0036 00       		.byte	0x0
+ 1654 0037 00       		.byte	0x0
+ 1655 0038 05       		.uleb128 0x5
+ 1656 0039 24       		.uleb128 0x24
+ 1657 003a 00       		.byte	0x0
+ 1658 003b 03       		.uleb128 0x3
+ 1659 003c 08       		.uleb128 0x8
+ 1660 003d 0B       		.uleb128 0xb
+ 1661 003e 0B       		.uleb128 0xb
+ 1662 003f 3E       		.uleb128 0x3e
+ 1663 0040 0B       		.uleb128 0xb
+ 1664 0041 00       		.byte	0x0
+ 1665 0042 00       		.byte	0x0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 43
+
+
+ 1666 0043 06       		.uleb128 0x6
+ 1667 0044 2E       		.uleb128 0x2e
+ 1668 0045 01       		.byte	0x1
+ 1669 0046 01       		.uleb128 0x1
+ 1670 0047 13       		.uleb128 0x13
+ 1671 0048 03       		.uleb128 0x3
+ 1672 0049 0E       		.uleb128 0xe
+ 1673 004a 3A       		.uleb128 0x3a
+ 1674 004b 0B       		.uleb128 0xb
+ 1675 004c 3B       		.uleb128 0x3b
+ 1676 004d 05       		.uleb128 0x5
+ 1677 004e 27       		.uleb128 0x27
+ 1678 004f 0C       		.uleb128 0xc
+ 1679 0050 20       		.uleb128 0x20
+ 1680 0051 0B       		.uleb128 0xb
+ 1681 0052 00       		.byte	0x0
+ 1682 0053 00       		.byte	0x0
+ 1683 0054 07       		.uleb128 0x7
+ 1684 0055 05       		.uleb128 0x5
+ 1685 0056 00       		.byte	0x0
+ 1686 0057 03       		.uleb128 0x3
+ 1687 0058 08       		.uleb128 0x8
+ 1688 0059 3A       		.uleb128 0x3a
+ 1689 005a 0B       		.uleb128 0xb
+ 1690 005b 3B       		.uleb128 0x3b
+ 1691 005c 05       		.uleb128 0x5
+ 1692 005d 49       		.uleb128 0x49
+ 1693 005e 13       		.uleb128 0x13
+ 1694 005f 00       		.byte	0x0
+ 1695 0060 00       		.byte	0x0
+ 1696 0061 08       		.uleb128 0x8
+ 1697 0062 05       		.uleb128 0x5
+ 1698 0063 00       		.byte	0x0
+ 1699 0064 03       		.uleb128 0x3
+ 1700 0065 0E       		.uleb128 0xe
+ 1701 0066 3A       		.uleb128 0x3a
+ 1702 0067 0B       		.uleb128 0xb
+ 1703 0068 3B       		.uleb128 0x3b
+ 1704 0069 05       		.uleb128 0x5
+ 1705 006a 49       		.uleb128 0x49
+ 1706 006b 13       		.uleb128 0x13
+ 1707 006c 00       		.byte	0x0
+ 1708 006d 00       		.byte	0x0
+ 1709 006e 09       		.uleb128 0x9
+ 1710 006f 2E       		.uleb128 0x2e
+ 1711 0070 01       		.byte	0x1
+ 1712 0071 01       		.uleb128 0x1
+ 1713 0072 13       		.uleb128 0x13
+ 1714 0073 03       		.uleb128 0x3
+ 1715 0074 0E       		.uleb128 0xe
+ 1716 0075 3A       		.uleb128 0x3a
+ 1717 0076 0B       		.uleb128 0xb
+ 1718 0077 3B       		.uleb128 0x3b
+ 1719 0078 05       		.uleb128 0x5
+ 1720 0079 11       		.uleb128 0x11
+ 1721 007a 01       		.uleb128 0x1
+ 1722 007b 12       		.uleb128 0x12
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 44
+
+
+ 1723 007c 01       		.uleb128 0x1
+ 1724 007d 40       		.uleb128 0x40
+ 1725 007e 06       		.uleb128 0x6
+ 1726 007f 00       		.byte	0x0
+ 1727 0080 00       		.byte	0x0
+ 1728 0081 0A       		.uleb128 0xa
+ 1729 0082 34       		.uleb128 0x34
+ 1730 0083 00       		.byte	0x0
+ 1731 0084 03       		.uleb128 0x3
+ 1732 0085 08       		.uleb128 0x8
+ 1733 0086 3A       		.uleb128 0x3a
+ 1734 0087 0B       		.uleb128 0xb
+ 1735 0088 3B       		.uleb128 0x3b
+ 1736 0089 05       		.uleb128 0x5
+ 1737 008a 49       		.uleb128 0x49
+ 1738 008b 13       		.uleb128 0x13
+ 1739 008c 00       		.byte	0x0
+ 1740 008d 00       		.byte	0x0
+ 1741 008e 0B       		.uleb128 0xb
+ 1742 008f 34       		.uleb128 0x34
+ 1743 0090 00       		.byte	0x0
+ 1744 0091 03       		.uleb128 0x3
+ 1745 0092 0E       		.uleb128 0xe
+ 1746 0093 3A       		.uleb128 0x3a
+ 1747 0094 0B       		.uleb128 0xb
+ 1748 0095 3B       		.uleb128 0x3b
+ 1749 0096 05       		.uleb128 0x5
+ 1750 0097 49       		.uleb128 0x49
+ 1751 0098 13       		.uleb128 0x13
+ 1752 0099 00       		.byte	0x0
+ 1753 009a 00       		.byte	0x0
+ 1754 009b 0C       		.uleb128 0xc
+ 1755 009c 34       		.uleb128 0x34
+ 1756 009d 00       		.byte	0x0
+ 1757 009e 03       		.uleb128 0x3
+ 1758 009f 08       		.uleb128 0x8
+ 1759 00a0 3A       		.uleb128 0x3a
+ 1760 00a1 0B       		.uleb128 0xb
+ 1761 00a2 3B       		.uleb128 0x3b
+ 1762 00a3 05       		.uleb128 0x5
+ 1763 00a4 49       		.uleb128 0x49
+ 1764 00a5 13       		.uleb128 0x13
+ 1765 00a6 02       		.uleb128 0x2
+ 1766 00a7 06       		.uleb128 0x6
+ 1767 00a8 00       		.byte	0x0
+ 1768 00a9 00       		.byte	0x0
+ 1769 00aa 0D       		.uleb128 0xd
+ 1770 00ab 01       		.uleb128 0x1
+ 1771 00ac 01       		.byte	0x1
+ 1772 00ad 01       		.uleb128 0x1
+ 1773 00ae 13       		.uleb128 0x13
+ 1774 00af 49       		.uleb128 0x49
+ 1775 00b0 13       		.uleb128 0x13
+ 1776 00b1 00       		.byte	0x0
+ 1777 00b2 00       		.byte	0x0
+ 1778 00b3 0E       		.uleb128 0xe
+ 1779 00b4 21       		.uleb128 0x21
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 45
+
+
+ 1780 00b5 00       		.byte	0x0
+ 1781 00b6 49       		.uleb128 0x49
+ 1782 00b7 13       		.uleb128 0x13
+ 1783 00b8 00       		.byte	0x0
+ 1784 00b9 00       		.byte	0x0
+ 1785 00ba 0F       		.uleb128 0xf
+ 1786 00bb 2E       		.uleb128 0x2e
+ 1787 00bc 01       		.byte	0x1
+ 1788 00bd 01       		.uleb128 0x1
+ 1789 00be 13       		.uleb128 0x13
+ 1790 00bf 03       		.uleb128 0x3
+ 1791 00c0 0E       		.uleb128 0xe
+ 1792 00c1 3A       		.uleb128 0x3a
+ 1793 00c2 0B       		.uleb128 0xb
+ 1794 00c3 3B       		.uleb128 0x3b
+ 1795 00c4 05       		.uleb128 0x5
+ 1796 00c5 49       		.uleb128 0x49
+ 1797 00c6 13       		.uleb128 0x13
+ 1798 00c7 20       		.uleb128 0x20
+ 1799 00c8 0B       		.uleb128 0xb
+ 1800 00c9 00       		.byte	0x0
+ 1801 00ca 00       		.byte	0x0
+ 1802 00cb 10       		.uleb128 0x10
+ 1803 00cc 2E       		.uleb128 0x2e
+ 1804 00cd 01       		.byte	0x1
+ 1805 00ce 01       		.uleb128 0x1
+ 1806 00cf 13       		.uleb128 0x13
+ 1807 00d0 03       		.uleb128 0x3
+ 1808 00d1 0E       		.uleb128 0xe
+ 1809 00d2 3A       		.uleb128 0x3a
+ 1810 00d3 0B       		.uleb128 0xb
+ 1811 00d4 3B       		.uleb128 0x3b
+ 1812 00d5 05       		.uleb128 0x5
+ 1813 00d6 27       		.uleb128 0x27
+ 1814 00d7 0C       		.uleb128 0xc
+ 1815 00d8 11       		.uleb128 0x11
+ 1816 00d9 01       		.uleb128 0x1
+ 1817 00da 12       		.uleb128 0x12
+ 1818 00db 01       		.uleb128 0x1
+ 1819 00dc 40       		.uleb128 0x40
+ 1820 00dd 06       		.uleb128 0x6
+ 1821 00de 00       		.byte	0x0
+ 1822 00df 00       		.byte	0x0
+ 1823 00e0 11       		.uleb128 0x11
+ 1824 00e1 05       		.uleb128 0x5
+ 1825 00e2 00       		.byte	0x0
+ 1826 00e3 03       		.uleb128 0x3
+ 1827 00e4 08       		.uleb128 0x8
+ 1828 00e5 3A       		.uleb128 0x3a
+ 1829 00e6 0B       		.uleb128 0xb
+ 1830 00e7 3B       		.uleb128 0x3b
+ 1831 00e8 05       		.uleb128 0x5
+ 1832 00e9 49       		.uleb128 0x49
+ 1833 00ea 13       		.uleb128 0x13
+ 1834 00eb 02       		.uleb128 0x2
+ 1835 00ec 06       		.uleb128 0x6
+ 1836 00ed 00       		.byte	0x0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 46
+
+
+ 1837 00ee 00       		.byte	0x0
+ 1838 00ef 12       		.uleb128 0x12
+ 1839 00f0 05       		.uleb128 0x5
+ 1840 00f1 00       		.byte	0x0
+ 1841 00f2 03       		.uleb128 0x3
+ 1842 00f3 0E       		.uleb128 0xe
+ 1843 00f4 3A       		.uleb128 0x3a
+ 1844 00f5 0B       		.uleb128 0xb
+ 1845 00f6 3B       		.uleb128 0x3b
+ 1846 00f7 05       		.uleb128 0x5
+ 1847 00f8 49       		.uleb128 0x49
+ 1848 00f9 13       		.uleb128 0x13
+ 1849 00fa 02       		.uleb128 0x2
+ 1850 00fb 06       		.uleb128 0x6
+ 1851 00fc 00       		.byte	0x0
+ 1852 00fd 00       		.byte	0x0
+ 1853 00fe 13       		.uleb128 0x13
+ 1854 00ff 34       		.uleb128 0x34
+ 1855 0100 00       		.byte	0x0
+ 1856 0101 03       		.uleb128 0x3
+ 1857 0102 0E       		.uleb128 0xe
+ 1858 0103 3A       		.uleb128 0x3a
+ 1859 0104 0B       		.uleb128 0xb
+ 1860 0105 3B       		.uleb128 0x3b
+ 1861 0106 05       		.uleb128 0x5
+ 1862 0107 49       		.uleb128 0x49
+ 1863 0108 13       		.uleb128 0x13
+ 1864 0109 02       		.uleb128 0x2
+ 1865 010a 0A       		.uleb128 0xa
+ 1866 010b 00       		.byte	0x0
+ 1867 010c 00       		.byte	0x0
+ 1868 010d 14       		.uleb128 0x14
+ 1869 010e 1D       		.uleb128 0x1d
+ 1870 010f 01       		.byte	0x1
+ 1871 0110 01       		.uleb128 0x1
+ 1872 0111 13       		.uleb128 0x13
+ 1873 0112 31       		.uleb128 0x31
+ 1874 0113 13       		.uleb128 0x13
+ 1875 0114 11       		.uleb128 0x11
+ 1876 0115 01       		.uleb128 0x1
+ 1877 0116 12       		.uleb128 0x12
+ 1878 0117 01       		.uleb128 0x1
+ 1879 0118 58       		.uleb128 0x58
+ 1880 0119 0B       		.uleb128 0xb
+ 1881 011a 59       		.uleb128 0x59
+ 1882 011b 05       		.uleb128 0x5
+ 1883 011c 00       		.byte	0x0
+ 1884 011d 00       		.byte	0x0
+ 1885 011e 15       		.uleb128 0x15
+ 1886 011f 0B       		.uleb128 0xb
+ 1887 0120 01       		.byte	0x1
+ 1888 0121 11       		.uleb128 0x11
+ 1889 0122 01       		.uleb128 0x1
+ 1890 0123 12       		.uleb128 0x12
+ 1891 0124 01       		.uleb128 0x1
+ 1892 0125 00       		.byte	0x0
+ 1893 0126 00       		.byte	0x0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 47
+
+
+ 1894 0127 16       		.uleb128 0x16
+ 1895 0128 34       		.uleb128 0x34
+ 1896 0129 00       		.byte	0x0
+ 1897 012a 31       		.uleb128 0x31
+ 1898 012b 13       		.uleb128 0x13
+ 1899 012c 02       		.uleb128 0x2
+ 1900 012d 06       		.uleb128 0x6
+ 1901 012e 00       		.byte	0x0
+ 1902 012f 00       		.byte	0x0
+ 1903 0130 17       		.uleb128 0x17
+ 1904 0131 1D       		.uleb128 0x1d
+ 1905 0132 01       		.byte	0x1
+ 1906 0133 31       		.uleb128 0x31
+ 1907 0134 13       		.uleb128 0x13
+ 1908 0135 11       		.uleb128 0x11
+ 1909 0136 01       		.uleb128 0x1
+ 1910 0137 12       		.uleb128 0x12
+ 1911 0138 01       		.uleb128 0x1
+ 1912 0139 58       		.uleb128 0x58
+ 1913 013a 0B       		.uleb128 0xb
+ 1914 013b 59       		.uleb128 0x59
+ 1915 013c 05       		.uleb128 0x5
+ 1916 013d 00       		.byte	0x0
+ 1917 013e 00       		.byte	0x0
+ 1918 013f 18       		.uleb128 0x18
+ 1919 0140 05       		.uleb128 0x5
+ 1920 0141 00       		.byte	0x0
+ 1921 0142 31       		.uleb128 0x31
+ 1922 0143 13       		.uleb128 0x13
+ 1923 0144 00       		.byte	0x0
+ 1924 0145 00       		.byte	0x0
+ 1925 0146 19       		.uleb128 0x19
+ 1926 0147 2E       		.uleb128 0x2e
+ 1927 0148 01       		.byte	0x1
+ 1928 0149 01       		.uleb128 0x1
+ 1929 014a 13       		.uleb128 0x13
+ 1930 014b 3F       		.uleb128 0x3f
+ 1931 014c 0C       		.uleb128 0xc
+ 1932 014d 03       		.uleb128 0x3
+ 1933 014e 0E       		.uleb128 0xe
+ 1934 014f 3A       		.uleb128 0x3a
+ 1935 0150 0B       		.uleb128 0xb
+ 1936 0151 3B       		.uleb128 0x3b
+ 1937 0152 05       		.uleb128 0x5
+ 1938 0153 27       		.uleb128 0x27
+ 1939 0154 0C       		.uleb128 0xc
+ 1940 0155 11       		.uleb128 0x11
+ 1941 0156 01       		.uleb128 0x1
+ 1942 0157 12       		.uleb128 0x12
+ 1943 0158 01       		.uleb128 0x1
+ 1944 0159 40       		.uleb128 0x40
+ 1945 015a 06       		.uleb128 0x6
+ 1946 015b 00       		.byte	0x0
+ 1947 015c 00       		.byte	0x0
+ 1948 015d 1A       		.uleb128 0x1a
+ 1949 015e 34       		.uleb128 0x34
+ 1950 015f 00       		.byte	0x0
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 48
+
+
+ 1951 0160 31       		.uleb128 0x31
+ 1952 0161 13       		.uleb128 0x13
+ 1953 0162 00       		.byte	0x0
+ 1954 0163 00       		.byte	0x0
+ 1955 0164 1B       		.uleb128 0x1b
+ 1956 0165 34       		.uleb128 0x34
+ 1957 0166 00       		.byte	0x0
+ 1958 0167 03       		.uleb128 0x3
+ 1959 0168 0E       		.uleb128 0xe
+ 1960 0169 3A       		.uleb128 0x3a
+ 1961 016a 0B       		.uleb128 0xb
+ 1962 016b 3B       		.uleb128 0x3b
+ 1963 016c 0B       		.uleb128 0xb
+ 1964 016d 49       		.uleb128 0x49
+ 1965 016e 13       		.uleb128 0x13
+ 1966 016f 00       		.byte	0x0
+ 1967 0170 00       		.byte	0x0
+ 1968 0171 1C       		.uleb128 0x1c
+ 1969 0172 34       		.uleb128 0x34
+ 1970 0173 00       		.byte	0x0
+ 1971 0174 03       		.uleb128 0x3
+ 1972 0175 0E       		.uleb128 0xe
+ 1973 0176 3A       		.uleb128 0x3a
+ 1974 0177 0B       		.uleb128 0xb
+ 1975 0178 3B       		.uleb128 0x3b
+ 1976 0179 0B       		.uleb128 0xb
+ 1977 017a 49       		.uleb128 0x49
+ 1978 017b 13       		.uleb128 0x13
+ 1979 017c 02       		.uleb128 0x2
+ 1980 017d 0A       		.uleb128 0xa
+ 1981 017e 00       		.byte	0x0
+ 1982 017f 00       		.byte	0x0
+ 1983 0180 1D       		.uleb128 0x1d
+ 1984 0181 21       		.uleb128 0x21
+ 1985 0182 00       		.byte	0x0
+ 1986 0183 49       		.uleb128 0x49
+ 1987 0184 13       		.uleb128 0x13
+ 1988 0185 2F       		.uleb128 0x2f
+ 1989 0186 0B       		.uleb128 0xb
+ 1990 0187 00       		.byte	0x0
+ 1991 0188 00       		.byte	0x0
+ 1992 0189 00       		.byte	0x0
+ 1993              		.section	.debug_pubnames,"",%progbits
+ 1994 0000 2A000000 		.4byte	0x2a
+ 1995 0004 0200     		.2byte	0x2
+ 1996 0006 00000000 		.4byte	.Ldebug_info0
+ 1997 000a 4A040000 		.4byte	0x44a
+ 1998 000e 41020000 		.4byte	0x241
+ 1999 0012 6D6F7665 		.ascii	"moveSnake\000"
+ 1999      536E616B 
+ 1999      6500
+ 2000 001c CA020000 		.4byte	0x2ca
+ 2001 0020 706C6179 		.ascii	"playSnake\000"
+ 2001      536E616B 
+ 2001      6500
+ 2002 002a 00000000 		.4byte	0x0
+ 2003              		.section	.debug_aranges,"",%progbits
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 49
+
+
+ 2004 0000 1C000000 		.4byte	0x1c
+ 2005 0004 0200     		.2byte	0x2
+ 2006 0006 00000000 		.4byte	.Ldebug_info0
+ 2007 000a 04       		.byte	0x4
+ 2008 000b 00       		.byte	0x0
+ 2009 000c 0000     		.2byte	0x0
+ 2010 000e 0000     		.2byte	0x0
+ 2011 0010 00000000 		.4byte	.Ltext0
+ 2012 0014 9C030000 		.4byte	.Letext0-.Ltext0
+ 2013 0018 00000000 		.4byte	0x0
+ 2014 001c 00000000 		.4byte	0x0
+ 2015              		.section	.debug_str,"MS",%progbits,1
+ 2016              	.LASF19:
+ 2017 0000 61637475 		.ascii	"actualX\000"
+ 2017      616C5800 
+ 2018              	.LASF20:
+ 2019 0008 61637475 		.ascii	"actualY\000"
+ 2019      616C5900 
+ 2020              	.LASF24:
+ 2021 0010 73657442 		.ascii	"setBorder\000"
+ 2021      6F726465 
+ 2021      7200
+ 2022              	.LASF4:
+ 2023 001a 7369676E 		.ascii	"signed char\000"
+ 2023      65642063 
+ 2023      68617200 
+ 2024              	.LASF38:
+ 2025 0026 736E616B 		.ascii	"snakeTailGuard\000"
+ 2025      65546169 
+ 2025      6C477561 
+ 2025      726400
+ 2026              	.LASF28:
+ 2027 0035 706C6179 		.ascii	"playSnake\000"
+ 2027      536E616B 
+ 2027      6500
+ 2028              	.LASF16:
+ 2029 003f 696E6465 		.ascii	"index\000"
+ 2029      7800
+ 2030              	.LASF10:
+ 2031 0045 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2031      206C6F6E 
+ 2031      6720756E 
+ 2031      7369676E 
+ 2031      65642069 
+ 2032              	.LASF8:
+ 2033 005c 6C6F6E67 		.ascii	"long long int\000"
+ 2033      206C6F6E 
+ 2033      6720696E 
+ 2033      7400
+ 2034              	.LASF36:
+ 2035 006a 67616D65 		.ascii	"gameArena\000"
+ 2035      4172656E 
+ 2035      6100
+ 2036              	.LASF7:
+ 2037 0074 6C6F6E67 		.ascii	"long int\000"
+ 2037      20696E74 
+ 2037      00
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 50
+
+
+ 2038              	.LASF21:
+ 2039 007d 6D6F7665 		.ascii	"moveField\000"
+ 2039      4669656C 
+ 2039      6400
+ 2040              	.LASF13:
+ 2041 0087 70757453 		.ascii	"putSnack\000"
+ 2041      6E61636B 
+ 2041      00
+ 2042              	.LASF17:
+ 2043 0090 736E616B 		.ascii	"snakeTailCopy\000"
+ 2043      65546169 
+ 2043      6C436F70 
+ 2043      7900
+ 2044              	.LASF12:
+ 2045 009e 73657446 		.ascii	"setField\000"
+ 2045      69656C64 
+ 2045      00
+ 2046              	.LASF3:
+ 2047 00a7 756E7369 		.ascii	"unsigned int\000"
+ 2047      676E6564 
+ 2047      20696E74 
+ 2047      00
+ 2048              	.LASF30:
+ 2049 00b4 736E616B 		.ascii	"snakeXPos\000"
+ 2049      6558506F 
+ 2049      7300
+ 2050              	.LASF15:
+ 2051 00be 72657365 		.ascii	"resetSnake\000"
+ 2051      74536E61 
+ 2051      6B6500
+ 2052              	.LASF6:
+ 2053 00c9 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2053      20756E73 
+ 2053      69676E65 
+ 2053      6420696E 
+ 2053      7400
+ 2054              	.LASF1:
+ 2055 00db 73686F72 		.ascii	"short unsigned int\000"
+ 2055      7420756E 
+ 2055      7369676E 
+ 2055      65642069 
+ 2055      6E7400
+ 2056              	.LASF34:
+ 2057 00ee 69734F6E 		.ascii	"isOn\000"
+ 2057      00
+ 2058              	.LASF41:
+ 2059 00f3 2F637967 		.ascii	"/cygdrive/c/Documents and Settings/witaj/Moje dokum"
+ 2059      64726976 
+ 2059      652F632F 
+ 2059      446F6375 
+ 2059      6D656E74 
+ 2060 0126 656E7479 		.ascii	"enty/GitHub/Snake/src\000"
+ 2060      2F476974 
+ 2060      4875622F 
+ 2060      536E616B 
+ 2060      652F7372 
+ 2061              	.LASF31:
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 51
+
+
+ 2062 013c 736E616B 		.ascii	"snakeYPos\000"
+ 2062      6559506F 
+ 2062      7300
+ 2063              	.LASF2:
+ 2064 0146 74553332 		.ascii	"tU32\000"
+ 2064      00
+ 2065              	.LASF27:
+ 2066 014b 6D6F7665 		.ascii	"moveSnake\000"
+ 2066      536E616B 
+ 2066      6500
+ 2067              	.LASF32:
+ 2068 0155 736E616B 		.ascii	"snakeSize\000"
+ 2068      6553697A 
+ 2068      6500
+ 2069              	.LASF11:
+ 2070 015f 636F6C6F 		.ascii	"color\000"
+ 2070      7200
+ 2071              	.LASF37:
+ 2072 0165 736E616B 		.ascii	"snakeTail\000"
+ 2072      65546169 
+ 2072      6C00
+ 2073              	.LASF22:
+ 2074 016f 64697265 		.ascii	"direction\000"
+ 2074      6374696F 
+ 2074      6E00
+ 2075              	.LASF29:
+ 2076 0179 67616D65 		.ascii	"gameStatus\000"
+ 2076      53746174 
+ 2076      757300
+ 2077              	.LASF35:
+ 2078 0184 74696D65 		.ascii	"timeVal\000"
+ 2078      56616C00 
+ 2079              	.LASF0:
+ 2080 018c 756E7369 		.ascii	"unsigned char\000"
+ 2080      676E6564 
+ 2080      20636861 
+ 2080      7200
+ 2081              	.LASF39:
+ 2082 019a 474E5520 		.ascii	"GNU C 4.1.1\000"
+ 2082      4320342E 
+ 2082      312E3100 
+ 2083              	.LASF26:
+ 2084 01a6 73746570 		.ascii	"step\000"
+ 2084      00
+ 2085              	.LASF5:
+ 2086 01ab 73686F72 		.ascii	"short int\000"
+ 2086      7420696E 
+ 2086      7400
+ 2087              	.LASF25:
+ 2088 01b5 64726177 		.ascii	"drawArena\000"
+ 2088      4172656E 
+ 2088      6100
+ 2089              	.LASF9:
+ 2090 01bf 63686172 		.ascii	"char\000"
+ 2090      00
+ 2091              	.LASF23:
+ 2092 01c4 616E794B 		.ascii	"anyKey\000"
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 52
+
+
+ 2092      657900
+ 2093              	.LASF14:
+ 2094 01cb 736E6163 		.ascii	"snackSet\000"
+ 2094      6B536574 
+ 2094      00
+ 2095              	.LASF40:
+ 2096 01d4 736E616B 		.ascii	"snake.c\000"
+ 2096      652E6300 
+ 2097              	.LASF18:
+ 2098 01dc 636C6561 		.ascii	"cleanEndOfTail\000"
+ 2098      6E456E64 
+ 2098      4F665461 
+ 2098      696C00
+ 2099              	.LASF33:
+ 2100 01eb 6C617374 		.ascii	"lastKey\000"
+ 2100      4B657900 
+ 2101              		.ident	"GCC: (GNU) 4.1.1"
+ARM GAS  /cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s 			page 53
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 snake.c
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:1      .text:00000000 $t
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:15     .text:00000000 putSnack
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:69     .text:00000050 $d
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:743    .bss:0000000c gameArena
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:76     .text:00000058 $t
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:79     .text:00000058 resetSnake
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:155    .text:000000b4 $d
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:747    .bss:0000044c snakeTailGuard
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:734    .bss:00000002 snakeSize
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:745    .bss:0000040c snakeTail
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:161    .text:000000c0 $t
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:164    .text:000000c0 moveField
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:388    .text:000001cc $d
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:730    .bss:00000000 snakeXPos
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:732    .bss:00000001 snakeYPos
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:401    .text:000001e4 moveSnake
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:398    .text:000001e4 $t
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:536    .text:0000028c $d
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:738    .bss:00000004 isOn
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:546    .text:00000298 playSnake
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:543    .text:00000298 $t
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:715    .text:00000378 $d
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:736    .bss:00000003 lastKey
+/cygdrive/c/Documents and Settings/witaj/Ustawienia lokalne/Temp/ccXO34Ic.s:741    .bss:00000008 timeVal
+
+UNDEFINED SYMBOLS
+rand
+__umodsi3
+__modsi3
+setLED
+osSleep
+lcdClrscr
+checkKey
+lcdRect

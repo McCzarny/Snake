@@ -22,6 +22,7 @@
 #include "lcd.h"
 #include "key.h"
 #include "select.h"
+#include "time.h"
 
 #include "configAppl.h"
 
@@ -38,7 +39,7 @@
 #define SNAKE_COLOR 0x5d
 #define SNACK_COLOR 0x8d
 
-#define MOVE_UP         0
+#define MOVE_UP         4
 #define MOVE_DOWN       1
 #define MOVE_LEFT       2
 #define MOVE_RIGHT      3
@@ -62,7 +63,7 @@ static tU8 snakeSize;
 static tU8 lastKey;
 static tU8 isOn;
 
-static tU32 time;
+static tU32 timeVal;
 static tU8 gameArena[ARENA_SIZE][ARENA_SIZE];
 static tU8 snakeTail[MAX_SNAKE_SIZE];
 static tU8 snakeTailGuard;
@@ -489,6 +490,26 @@ setField(tU8 x, tU8 y, tU8 color)
 }
 
 static void
+resetSnake()
+{
+	int j = 0, i = snakeTailGuard;
+	int index;
+	tU8 snakeTailCopy[snakeSize];
+	/*
+	for(index = 0; index < snakeSize; index++)
+	{
+		snakeTailCopy[snakeSize-index-1] = snakeTail[(snakeTailGuard+index)%snakeSize];
+	}
+	*/
+	do 
+    {
+		snakeTailCopy[snakeSize-1-i] = snakeTail[i];
+        i = (i + 1) % snakeSize;
+    }while(i != snakeTailGuard % snakeSize);
+	snakeTailGuard = snakeSize - 1;
+}
+
+static void
 moveField(tU8 x, tU8 y, tU8 direction)
 {
     int actualX = x;
@@ -511,28 +532,50 @@ moveField(tU8 x, tU8 y, tU8 direction)
     default:
         return;
     }
-    if(gameArena[actualX][actualY] == SNAKE_COLOR)
-    {
+
+	cleanEndOfTail();
+	
+
+	
+    // Remember move
+    snakeTail[snakeTailGuard] = direction;
+    snakeTailGuard = (snakeTailGuard + 1) % snakeSize;
+	
+	if(gameArena[actualX][actualY] == SNAKE_COLOR)
+    {		
         //GAMEOVER
     }
     else if (gameArena[actualX][actualY] == SNACK_COLOR && snakeSize < MAX_SNAKE_SIZE)
     {
+		//Move and eat.
+		//TODO brzeczyk zjadania
+		resetSnake();
         snakeSize++;
+		putSnack();
     }
-
-    // Erase last point
-    cleanEndOfTail();
-    // Remember move
-    snakeTail[snakeTailGuard] = direction;
-    snakeTailGuard = (snakeTailGuard + 1) % snakeSize;
+	else
+	{
+		//Normal move. Erase last point
+	}
+	
+	//add snake point
+	setField(actualX, actualY, SNAKE_COLOR);
 }
 
 static void
 putSnack()
 {
-    tU8 x = rand() % ARENA_SIZE;
-    tU8 y = rand() % ARENA_SIZE;
-    gameArena[x][y] = SNACK_COLOR;
+	tU8 x,y, snackSet = 0;
+	do
+	{
+		x = rand() % ARENA_SIZE;
+		y = rand() % ARENA_SIZE;
+		if (gameArena[x][y]==BACKGROUND_COLOR)
+		{
+			snackSet = 1;
+			gameArena[x][y] = SNACK_COLOR;
+		}
+	}while(!snackSet);
 }
 
 static tU8
@@ -540,13 +583,9 @@ cleanEndOfTail()
 {
     tU8 actualX = snakeXPos;
     tU8 actualY = snakeYPos;
-    for(tU8 i = snakeTailGuard; i != mod((snakeTailGuard - 1), snakeSize);)
+	tU8 i = snakeTailGuard;
+    do 
     {
-        if(snakeTail[i] == NULL)
-        {
-            break;
-        }
-
         switch(snakeTail[i])
         {
         case MOVE_DOWN:
@@ -564,9 +603,9 @@ cleanEndOfTail()
         default:
             return;
         }
-
         i = (i + 1) % snakeSize;
-    }
+    }while(i != snakeTailGuard % snakeSize);
+	
     gameArena[actualX][actualY] = BACKGROUND_COLOR;
 }
 
@@ -618,7 +657,7 @@ moveSnake(tU8 anyKey)
     }
     else if (anyKey == KEY_CENTER)
     {
-        iisOnf (isOn == 0)
+        if (isOn == 0)
         {
             setLED(1, 1);
             setLED(2, 1);
@@ -645,21 +684,25 @@ moveSnake(tU8 anyKey)
 void
 playSnake(void)
 {
-    srand(time(NULL));
+    //srand(time(NULL));
 
     snakeXPos = 16;
     snakeYPos = 16;
-    snakeSize = 5;
+    snakeSize = 1; //TODO (nie obslugujemy wiekszych)
     snakeTailGuard = 0;
-    snakeTail[0] = MOVE_UP;
+    snakeTail[0] = MOVE_RIGHT;
     lcdClrscr();
     setBorder(0xfd);
-    setField(snakeXPos, snakeYPos, 0x5d);
-    lastKey = KEY_UP;
+    setField(snakeXPos, snakeYPos, SNAKE_COLOR);
+    lastKey = KEY_RIGHT;
     isOn = 0;
+	//init snacks
+	gameArena[10][10] = SNACK_COLOR;
+	putSnack();
+	putSnack();
     for(;;)
     {
-        time++;
+        timeVal++;
 
 
         tU8 anyKey;
