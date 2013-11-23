@@ -55,6 +55,13 @@
 #define LED_GREEN 0
 #define LED_RED 1
 
+#define SOH 1
+#define NAK 21
+#define ACK 6
+#define EOT 4
+#define CAN 24
+#define C 67
+
 
 /*****************************************************************************
  * Local variables
@@ -792,7 +799,7 @@ moveSnake(tU8 anyKey)
             osSleep(1);
         }
         waitUp();
-        enterSleepMode();
+        //enterSleepMode();
     }
 }
 
@@ -933,3 +940,83 @@ playSnake(void)
     //  }
 }
 
+void
+sendScore(tU8 *memblock, int rozmiar)
+{
+    tU8 i;
+    //Wyliczenie liczby pakietow
+    int liczba_pakietow = rozmiar / 16;
+    if (liczba_pakietow * 16 != rozmiar)
+    {
+        liczba_pakietow++;
+    }
+
+    //Sprawdzenie czy odbiornik jest gotowy do przyjecia pliku, tj. czy wyslany jest sygnal NAK
+    tU8 brak_odpowiedzi = TRUE;
+    for (i = 0; i < 20; i++)
+    {
+        tU8 sprawdz = uart1GetCh();
+        if(sprawdz == NAK)
+        {
+            brak_odpowiedzi = FALSE;
+            break;
+        }
+        else
+        {
+            osSleep(10);
+        }
+    }
+    if(brak_odpowiedzi)
+    {
+        setLED(2, 1);
+    }
+    else
+    {
+        tU8 nr_pakietu = 1;
+        tU8 zmienna;
+        tU8 naglowek[3];
+        tU8 checksum;
+        for (i = 0; i < liczba_pakietow; )
+        {
+            checksum = 0;
+            naglowek[0] = SOH;
+            naglowek[1] = nr_pakietu;
+            naglowek[2] = 255 - nr_pakietu;
+
+            uart1SendChar(naglowek[0]);
+            uart1SendChar(naglowek[1]);
+            uart1SendChar(naglowek[2]);
+            tU8 j;
+            for(j = 0; j < 16; j++)
+            {
+                if(((nr_pakietu - 1) * 16 + j) < rozmiar)
+                {
+                    uart1SendChar(memblock[(nr_pakietu - 1) * 16 + j]);
+                    checksum += memblock[(nr_pakietu - 1) * 16 + j];
+                }
+                else
+                {
+                    uart1SendChar(26);
+                    checksum += 26;
+                }
+            }
+
+            uart1SendChar(checksum);
+
+            while(zmienna != ACK && zmienna != NAK)
+            {
+                zmienna = uart1GetCh();
+            }
+            if(zmienna == ACK || zmienna == C)
+            {
+                nr_pakietu++;
+                i++;
+            }
+        }
+        do
+        {
+            uart1SendChar(EOT);
+            osSleep(100);
+        }while(uart1GetCh() != ACK);
+    }
+}

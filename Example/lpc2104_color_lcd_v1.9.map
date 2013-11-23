@@ -1,0 +1,2260 @@
+Archive member included because of file (symbol)
+
+startup/libea_startup_thumb.a(consol.o)
+                              bt.o (consolGetChar)
+startup/libea_startup_thumb.a(framework.o)
+                              main.o (eaInit)
+startup/libea_startup_thumb.a(startup.o)
+                              (_startup)
+irq_code/irqUart.a(irqUart.o)
+                              uart.o (disIrq)
+gcc_files/libm.a(s_cos.o)     pong.o (cos)
+gcc_files/libm.a(s_floor.o)   pong.o (floor)
+gcc_files/libm.a(s_sin.o)     pong.o (sin)
+gcc_files/libm.a(w_sqrt.o)    pong.o (sqrt)
+gcc_files/libm.a(e_rem_pio2.o)
+                              gcc_files/libm.a(s_cos.o) (__ieee754_rem_pio2)
+gcc_files/libm.a(e_sqrt.o)    gcc_files/libm.a(w_sqrt.o) (__ieee754_sqrt)
+gcc_files/libm.a(k_cos.o)     gcc_files/libm.a(s_cos.o) (__kernel_cos)
+gcc_files/libm.a(k_rem_pio2.o)
+                              gcc_files/libm.a(e_rem_pio2.o) (__kernel_rem_pio2)
+gcc_files/libm.a(k_sin.o)     gcc_files/libm.a(s_cos.o) (__kernel_sin)
+gcc_files/libm.a(s_fabs.o)    gcc_files/libm.a(e_rem_pio2.o) (fabs)
+gcc_files/libm.a(s_isnan.o)   gcc_files/libm.a(w_sqrt.o) (isnan)
+gcc_files/libm.a(s_lib_ver.o)
+                              gcc_files/libm.a(w_sqrt.o) (__fdlib_version)
+gcc_files/libm.a(s_matherr.o)
+                              gcc_files/libm.a(w_sqrt.o) (matherr)
+gcc_files/libm.a(s_scalbn.o)  gcc_files/libm.a(k_rem_pio2.o) (scalbn)
+gcc_files/libm.a(s_copysign.o)
+                              gcc_files/libm.a(s_scalbn.o) (copysign)
+pre_emptive_os/pre_emptive_os.a(kernel.o)
+                              main.o (osInit)
+pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                              pre_emptive_os/pre_emptive_os.a(kernel.o) (initPrioQueue)
+pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                              uart.o (osSemInit)
+pre_emptive_os/pre_emptive_os.a(timer.o)
+                              pre_emptive_os/pre_emptive_os.a(kernel.o) (timerTick)
+pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+                              pre_emptive_os/pre_emptive_os.a(kernel.o) (createStackPattern)
+pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                              pre_emptive_os/pre_emptive_os.a(kernel.o) (stkFrameInit_oshal)
+pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                              pre_emptive_os/pre_emptive_os.a(kernel.o) (startHighProc_oshal)
+pre_emptive_os/pre_emptive_os.a(event.o)
+                              pre_emptive_os/pre_emptive_os.a(count_sem.o) (eventInit)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+                              bt.o (__udivsi3)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+                              snake.o (__divsi3)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+                              bt.o (__umodsi3)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+                              snake.o (__modsi3)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o) (__div0)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+                              pre_emptive_os/pre_emptive_os.a(timer.o) (_call_via_r4)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+                              pong.o (__subdf3)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+                              pong.o (__muldf3)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                              pong.o (__gtdf2)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+                              gcc_files/libm.a(e_rem_pio2.o) (__fixdfsi)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+                              pong.o (__fixunsdfsi)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+                              startup/libea_startup_thumb.a(consol.o) (atoi)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+                              gcc_files/libm.a(w_sqrt.o) (__errno)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o) (_impure_ptr)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+                              bt.o (memcmp)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+                              bt.o (memcpy)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+                              snake.o (srand)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+                              bt.o (strchr)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+                              pong.o (strcpy)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+                              startup/libea_startup_thumb.a(consol.o) (strlen)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+                              pong.o (strncmp)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o) (_strtol_r)
+/cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o) (__ctype_ptr)
+
+Allocating common symbols
+Common symbol       size              file
+
+snake               0x320             snake.o
+uart1RxBuf          0x400             uart.o
+receiveSem          0x1c              uart.o
+ms                  0x4               main.o
+ver1_1              0x1               hw.o
+pHeapEnd            0x4               startup/libea_startup_thumb.a(framework.o)
+pHeapStart          0x4               startup/libea_startup_thumb.a(framework.o)
+uart1TxBuf          0x100             uart.o
+ver1_0              0x1               hw.o
+processControlBlocks
+                    0xc8              pre_emptive_os/pre_emptive_os.a(kernel.o)
+
+Discarded input sections
+
+ .stabstr       0x00000000        0x0 startup/libea_startup_thumb.a(startup.o)
+ .stabstr       0x00000000        0x0 pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x00000000         0x00020000         xr
+RAM              0x40000000         0x00004000         rw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD lcd.o
+LOAD startupDisplay.o
+LOAD key.o
+LOAD select.o
+LOAD uart.o
+LOAD bt.o
+LOAD snake.o
+LOAD exampleGame.o
+LOAD pong.o
+LOAD eeprom.o
+LOAD i2c.o
+LOAD hw.o
+LOAD startup/libea_startup_thumb.a
+LOAD irq_code/irqUart.a
+LOAD gcc_files/libm.a
+LOAD pre_emptive_os/pre_emptive_os.a
+START GROUP
+LOAD /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a
+LOAD /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a
+END GROUP
+
+.text           0x00000000     0xa03c
+ *startup.o(.text)
+ .text          0x00000000      0x1d8 startup/libea_startup_thumb.a(startup.o)
+                0x00000000                _startup
+ *(.text)
+ .text          0x000001d8      0x410 main.o
+                0x000001d8                appTick
+                0x000001e8                main
+ .text          0x000005e8      0x570 lcd.o
+                0x000005e8                lcdColor
+                0x000007b4                lcdWindow
+                0x000009f4                lcdClrscr
+                0x000008bc                lcdRectBrd
+                0x00000738                lcdPutchar
+                0x000009d0                lcdContrast
+                0x00000a48                lcdOff
+                0x00000a64                lcdInit
+                0x0000080c                lcdIcon
+                0x00000670                lcdData
+                0x000005fc                lcdWrdata
+                0x0000096c                lcdRect
+                0x0000060c                lcdWrcmd
+                0x0000079c                lcdPuts
+                0x000007e4                lcdGotoxy
+ .text          0x00000b58      0x884 startupDisplay.o
+                0x00000b58                displayStartupSequence
+ .text          0x000013dc      0x1e0 key.o
+                0x000013ec                checkKey2
+                0x00001438                sampleKey
+                0x000013f8                initKeyProc
+                0x000013dc                checkKey
+ .text          0x000015bc      0x160 select.o
+                0x0000162c                drawMenu
+ .text          0x0000171c      0x280 uart.o
+                0x000017cc                uart1SendChar
+                0x00001850                uart1SendChars
+                0x00001894                uart1SendString
+                0x00001878                uart1SendCh
+                0x000018ac                initUart1
+                0x00001784                uart1GetChSem
+                0x0000171c                uart1GetChar
+                0x000017b0                uart1GetCh
+ .text          0x0000199c     0x1138 bt.o
+                0x00001f14                handleBt
+                0x00002994                initBtProc
+                0x000019fc                activateBtProc
+                0x0000199c                blockBtProc
+ .text          0x00002ad4      0x528 snake.o
+                0x00002db4                playSnake
+ .text          0x00002ffc      0x558 exampleGame.o
+                0x000033e8                playExample
+ .text          0x00003554     0x1730 pong.o
+                0x00003e78                playPong
+ .text          0x00004c84      0x378 eeprom.o
+                0x00004e18                lm75Read
+                0x00004d24                pca9532
+                0x00004e98                eepromWrite
+                0x00004fa4                eepromPoll
+                0x00004f24                eepromPageRead
+                0x00004c84                eepromStartRead
+ .text          0x00004ffc      0x3e0 i2c.o
+                0x000051c0                i2cInit
+                0x00005234                getI2cLock
+                0x0000529c                i2cRead
+                0x00005138                i2cWriteWithWait
+                0x00005014                i2cStart
+                0x00005060                i2cStop
+                0x00004ffc                i2cCheckStatus
+                0x000050b4                i2cGetChar
+                0x00005250                i2cRepeatStart
+                0x0000533c                i2cWrite
+                0x0000510c                i2cWaitTransmit
+                0x00005168                i2cMyWrite
+                0x00005088                i2cPutChar
+                0x0000521c                releaseI2cLock
+ .text          0x000053dc      0x44c hw.o
+                0x00005440                sendToLCD
+                0x00005680                resetBT
+                0x000053dc                setBuzzer
+                0x000054bc                initSpiForLcd
+                0x0000576c                immediateIoInit
+                0x000056fc                resetLCD
+                0x000055c4                setLED
+                0x00005514                getKeys
+                0x00005400                selectLCD
+ .text          0x00005828      0x680 startup/libea_startup_thumb.a(consol.o)
+                0x00005ce4                consolGetIntNum
+                0x00005920                consolSendCh
+                0x00005aec                consolGetString
+                0x00005990                consolSendNumber
+                0x00005aa8                consolGetCh
+                0x00005900                consolSendChar
+                0x00005b64                simplePrintf
+                0x00005964                consolSendString
+                0x00005dc4                consolScanf
+                0x00005ac8                consolGetChar
+                0x000058ac                consolInit
+ .text          0x00005ea8      0x2bc startup/libea_startup_thumb.a(framework.o)
+                0x00005fd0                eaInit
+                0x00005f20                lowLevelInit
+                0x00005ea8                exceptionHandlerInit
+ .text          0x00006164      0x2bc irq_code/irqUart.a(irqUart.o)
+                0x0000618c                uart1ISR
+                0x00006184                restoreIrq
+                0x00006164                disIrq
+ .text          0x00006420       0xb4 gcc_files/libm.a(s_cos.o)
+                0x00006420                cos
+ .text          0x000064d4      0x144 gcc_files/libm.a(s_floor.o)
+                0x000064d4                floor
+ .text          0x00006618       0xbc gcc_files/libm.a(s_sin.o)
+                0x00006618                sin
+ .text          0x000066d4       0xc8 gcc_files/libm.a(w_sqrt.o)
+                0x000066d4                sqrt
+ .text          0x0000679c      0x4a0 gcc_files/libm.a(e_rem_pio2.o)
+                0x0000679c                __ieee754_rem_pio2
+ .text          0x00006c3c      0x1e8 gcc_files/libm.a(e_sqrt.o)
+                0x00006c3c                __ieee754_sqrt
+ .text          0x00006e24      0x1e8 gcc_files/libm.a(k_cos.o)
+                0x00006e24                __kernel_cos
+ .text          0x0000700c      0x7ec gcc_files/libm.a(k_rem_pio2.o)
+                0x0000700c                __kernel_rem_pio2
+ .text          0x000077f8      0x15c gcc_files/libm.a(k_sin.o)
+                0x000077f8                __kernel_sin
+ .text          0x00007954       0x20 gcc_files/libm.a(s_fabs.o)
+                0x00007954                fabs
+ .text          0x00007974       0x28 gcc_files/libm.a(s_isnan.o)
+                0x00007974                isnan
+ .text          0x0000799c        0x0 gcc_files/libm.a(s_lib_ver.o)
+ .text          0x0000799c        0x4 gcc_files/libm.a(s_matherr.o)
+                0x0000799c                matherr
+ .text          0x000079a0      0x120 gcc_files/libm.a(s_scalbn.o)
+                0x000079a0                scalbn
+ .text          0x00007ac0       0x1c gcc_files/libm.a(s_copysign.o)
+                0x00007ac0                copysign
+ .text          0x00007adc      0x4f8 pre_emptive_os/pre_emptive_os.a(kernel.o)
+                0x00007e58                osTick
+                0x00007f1c                rmvFromRdyList
+                0x00007c78                osGetHighPrioProc
+                0x00007f38                osSuspend
+                0x00007b8c                osInit
+                0x00007f6c                osDeleteProcess
+                0x00007bb8                osISREnter
+                0x00007c94                schedule
+                0x00007bdc                osCreateProcess
+                0x00007dd8                addToRdyList
+                0x00007b28                addToTimeList
+                0x00007dec                osResume
+                0x00007adc                osPid
+                0x00007f9c                osSleep
+                0x00007d00                osISRExit
+                0x00007d68                osStart
+                0x00007d94                rmvFromTimeList
+                0x00007eb4                osStartProcess
+ .text          0x00007fd4      0x124 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                0x00007fd4                initPrioQueue
+                0x0000803c                rmvFromPrioQueue
+                0x00007ff4                addToPrioQueue
+                0x000080d8                isEmptyPrioQueue
+                0x000080a0                getHighPrioQueue
+ .text          0x000080f8      0x144 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                0x00008198                osSemGive
+                0x000081fc                osSemTryTake
+                0x000080f8                osSemInit
+                0x0000810c                osSemTake
+ .text          0x0000823c      0x218 pre_emptive_os/pre_emptive_os.a(timer.o)
+                0x0000823c                timerTick
+                0x000083b0                osInitTimers
+                0x0000834c                osDeleteTimer
+                0x00008320                osCreateTimer
+ .text          0x00008454       0xa4 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+                0x00008454                osStackUsage
+                0x00008498                createStackPattern
+                0x000084b8                checkStackLimit
+ .text          0x000084f8      0x1ec pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                0x00008530                stkFrameInit_oshal
+                0x000084f8                timerIsr_oshal
+                0x00008610                halRestoreInterrupts_oshal
+                0x00008618                initTimer_oshal
+                0x00008600                halEnableInterrupts_oshal
+                0x000086b0                handleIRQs_oshal
+                0x000085e0                halDisableInterrupts_oshal
+ .text          0x000086e4       0xc4 pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                0x000086f0                startHighProc_oshal
+                0x00008718                ctxSwitchIsr_oshal
+                0x000086f8                ctxSwitch_oshal
+                0x00008738                generalIRQ_oshal
+ .text          0x000087a8       0xd8 pre_emptive_os/pre_emptive_os.a(event.o)
+                0x000087b8                eventWait
+                0x000087a8                eventInit
+                0x00008820                eventIsEmpty
+                0x000087f0                eventWaitReturn
+                0x00008830                eventSignal
+ .text          0x00008880      0x114 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+                0x00008880                __udivsi3
+                0x00008880                __aeabi_uidiv
+                0x0000897c                __aeabi_uidivmod
+ .text          0x00008994      0x144 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+                0x00008994                __aeabi_idiv
+                0x00008994                __divsi3
+                0x00008ac0                __aeabi_idivmod
+ .text          0x00008ad8       0xd0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+                0x00008ad8                __umodsi3
+ .text          0x00008ba8       0xe8 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+                0x00008ba8                __modsi3
+ .text          0x00008c90        0x4 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+                0x00008c90                __aeabi_ldiv0
+                0x00008c90                __div0
+                0x00008c90                __aeabi_idiv0
+ .text          0x00008c94       0x3c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+                0x00008c9c                _call_via_r2
+                0x00008cac                _call_via_r6
+                0x00008ca8                _call_via_r5
+                0x00008ca0                _call_via_r3
+                0x00008cc0                _call_via_fp
+                0x00008cb4                _call_via_r8
+                0x00008cb0                _call_via_r7
+                0x00008c94                _call_via_r0
+                0x00008cbc                _call_via_sl
+                0x00008cc8                _call_via_sp
+                0x00008cb8                _call_via_r9
+                0x00008ca4                _call_via_r4
+                0x00008c98                _call_via_r1
+                0x00008cc4                _call_via_ip
+                0x00008ccc                _call_via_lr
+ .text          0x00008cd0      0x430 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+                0x00009094                __floatdidf
+                0x00009014                __floatsidf
+                0x00008fec                __aeabi_ui2d
+                0x00008cd0                __aeabi_drsub
+                0x00009040                __extendsfdf2
+                0x00008cdc                __adddf3
+                0x00008fec                __floatunsidf
+                0x00008cdc                __aeabi_dadd
+                0x00009080                __aeabi_ul2d
+                0x00008cd8                __aeabi_dsub
+                0x00009080                __floatundidf
+                0x00009014                __aeabi_i2d
+                0x00009094                __aeabi_l2d
+                0x00009040                __aeabi_f2d
+                0x00008cd8                __subdf3
+ .text          0x00009100      0x49c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+                0x00009390                __aeabi_ddiv
+                0x00009100                __aeabi_dmul
+                0x00009390                __divdf3
+                0x00009100                __muldf3
+ .text          0x0000959c      0x140 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                0x00009694                __aeabi_dcmple
+                0x000095ac                __cmpdf2
+                0x000095ac                __eqdf2
+                0x0000959c                __gtdf2
+                0x0000964c                __aeabi_cdcmple
+                0x00009630                __aeabi_cdrcmple
+                0x000095a4                __ltdf2
+                0x0000967c                __aeabi_dcmplt
+                0x000095a4                __ledf2
+                0x000096c4                __aeabi_dcmpgt
+                0x000096ac                __aeabi_dcmpge
+                0x000095ac                __nedf2
+                0x00009664                __aeabi_dcmpeq
+                0x0000964c                __aeabi_cdcmpeq
+                0x0000959c                __gedf2
+ .text          0x000096dc       0x5c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+                0x000096dc                __fixdfsi
+                0x000096dc                __aeabi_d2iz
+ .text          0x00009738       0x54 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+                0x00009738                __fixunsdfsi
+                0x00009738                __aeabi_d2uiz
+ .text          0x0000978c       0x30 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+                0x0000978c                _atoi_r
+                0x000097a4                atoi
+ .text          0x000097bc       0x10 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+                0x000097bc                __errno
+ .text          0x000097cc        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .text          0x000097cc       0x98 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+                0x000097cc                memcmp
+ .text          0x00009864       0x9c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+                0x00009864                memcpy
+ .text          0x00009900       0x7c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+                0x0000991c                rand
+                0x00009900                srand
+ .text          0x0000997c      0x118 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+                0x0000997c                strchr
+ .text          0x00009a94       0xa0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+                0x00009a94                strcpy
+ .text          0x00009b34       0x90 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+                0x00009b34                strlen
+ .text          0x00009bc4      0x13c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+                0x00009bc4                strncmp
+ .text          0x00009d00      0x1f0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                0x00009ec4                strtol
+                0x00009d00                _strtol_r
+ .text          0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+ *(.glue_7)
+ .glue_7        0x00009ef0        0x0 main.o
+ .glue_7        0x00009ef0        0x0 lcd.o
+ .glue_7        0x00009ef0        0x0 startupDisplay.o
+ .glue_7        0x00009ef0        0x0 key.o
+ .glue_7        0x00009ef0        0x0 select.o
+ .glue_7        0x00009ef0        0x0 uart.o
+ .glue_7        0x00009ef0        0x0 bt.o
+ .glue_7        0x00009ef0        0x0 snake.o
+ .glue_7        0x00009ef0        0x0 exampleGame.o
+ .glue_7        0x00009ef0        0x0 pong.o
+ .glue_7        0x00009ef0        0x0 eeprom.o
+ .glue_7        0x00009ef0        0x0 i2c.o
+ .glue_7        0x00009ef0        0x0 hw.o
+ .glue_7        0x00009ef0        0x0 startup/libea_startup_thumb.a(consol.o)
+ .glue_7        0x00009ef0        0x0 startup/libea_startup_thumb.a(framework.o)
+ .glue_7        0x00009ef0        0x0 startup/libea_startup_thumb.a(startup.o)
+ .glue_7        0x00009ef0        0x0 irq_code/irqUart.a(irqUart.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_cos.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_floor.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_sin.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(w_sqrt.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(e_rem_pio2.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(e_sqrt.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(k_cos.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(k_rem_pio2.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(k_sin.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_fabs.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_isnan.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_lib_ver.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_matherr.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_scalbn.o)
+ .glue_7        0x00009ef0        0x0 gcc_files/libm.a(s_copysign.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+ .glue_7        0x00009ef0        0x0 pre_emptive_os/pre_emptive_os.a(event.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .glue_7        0x00009ef0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .glue_7        0x00009ef0       0x24 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+                0x00009f08                __osISRExit_from_arm
+                0x00009efc                __osTick_from_arm
+                0x00009ef0                __osSemGive_from_arm
+ *(.glue_7t)
+ .glue_7t       0x00009f14        0x0 main.o
+ .glue_7t       0x00009f14        0x0 lcd.o
+ .glue_7t       0x00009f14        0x0 startupDisplay.o
+ .glue_7t       0x00009f14        0x0 key.o
+ .glue_7t       0x00009f14        0x0 select.o
+ .glue_7t       0x00009f14        0x0 uart.o
+ .glue_7t       0x00009f14        0x0 bt.o
+ .glue_7t       0x00009f14        0x0 snake.o
+ .glue_7t       0x00009f14        0x0 exampleGame.o
+ .glue_7t       0x00009f14        0x0 pong.o
+ .glue_7t       0x00009f14        0x0 eeprom.o
+ .glue_7t       0x00009f14        0x0 i2c.o
+ .glue_7t       0x00009f14        0x0 hw.o
+ .glue_7t       0x00009f14        0x0 startup/libea_startup_thumb.a(consol.o)
+ .glue_7t       0x00009f14        0x0 startup/libea_startup_thumb.a(framework.o)
+ .glue_7t       0x00009f14        0x0 startup/libea_startup_thumb.a(startup.o)
+ .glue_7t       0x00009f14        0x0 irq_code/irqUart.a(irqUart.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_cos.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_floor.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_sin.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(w_sqrt.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(e_rem_pio2.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(e_sqrt.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(k_cos.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(k_rem_pio2.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(k_sin.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_fabs.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_isnan.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_lib_ver.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_matherr.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_scalbn.o)
+ .glue_7t       0x00009f14        0x0 gcc_files/libm.a(s_copysign.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+ .glue_7t       0x00009f14        0x0 pre_emptive_os/pre_emptive_os.a(event.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .glue_7t       0x00009f14        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .glue_7t       0x00009f14      0x128 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+                0x00009f90                __strcpy_change_to_arm
+                0x00009f70                ____modsi3_change_to_arm
+                0x00009fbc                ____gtdf2_from_thumb
+                0x00009fac                ____subdf3_from_thumb
+                0x00009fd0                ____ltdf2_change_to_arm
+                0x00009fe4                ____ledf2_from_thumb
+                0x0000a00c                __halRestoreInterrupts_oshal_from_thumb
+                0x00009fb0                ____subdf3_change_to_arm
+                0x00009f30                __restoreIrq_change_to_arm
+                0x00009fc8                ____gedf2_change_to_arm
+                0x00009f50                __strchr_change_to_arm
+                0x00009f34                __memcpy_from_thumb
+                0x0000a01c                __ctxSwitch_oshal_from_thumb
+                0x0000a018                __stkFrameInit_oshal_change_to_arm
+                0x00009f7c                __srand_from_thumb
+                0x00009f88                __strncmp_change_to_arm
+                0x0000a030                __initTimer_oshal_change_to_arm
+                0x00009ffc                ____eqdf2_from_thumb
+                0x0000a034                __startHighProc_oshal_from_thumb
+                0x00009f48                ____umodsi3_change_to_arm
+                0x00009ff4                ____fixdfsi_from_thumb
+                0x00009fd8                ____divdf3_change_to_arm
+                0x00009f8c                __strcpy_from_thumb
+                0x00009fc4                ____gedf2_from_thumb
+                0x00009f6c                ____modsi3_from_thumb
+                0x00009f58                ____udivsi3_change_to_arm
+                0x0000a038                __startHighProc_oshal_change_to_arm
+                0x0000a024                __ctxSwitchIsr_oshal_from_thumb
+                0x00009f4c                __strchr_from_thumb
+                0x00009f28                __disIrq_change_to_arm
+                0x00009fa4                ____fixunsdfsi_from_thumb
+                0x00009fe0                ____muldf3_change_to_arm
+                0x00009ff8                ____fixdfsi_change_to_arm
+                0x00009f24                __disIrq_from_thumb
+                0x00009fd4                ____divdf3_from_thumb
+                0x0000a010                __halRestoreInterrupts_oshal_change_to_arm
+                0x00009f20                __simplePrintf_change_to_arm
+                0x00009f80                __srand_change_to_arm
+                0x00009f44                ____umodsi3_from_thumb
+                0x00009f64                ____divsi3_from_thumb
+                0x00009fa8                ____fixunsdfsi_change_to_arm
+                0x00009fa0                ____adddf3_change_to_arm
+                0x00009fc0                ____gtdf2_change_to_arm
+                0x0000a020                __ctxSwitch_oshal_change_to_arm
+                0x00009f94                ____floatsidf_from_thumb
+                0x00009fcc                ____ltdf2_from_thumb
+                0x0000a014                __stkFrameInit_oshal_from_thumb
+                0x00009f54                ____udivsi3_from_thumb
+                0x00009f14                __eaInit_from_thumb
+                0x00009fb8                ____nedf2_change_to_arm
+                0x00009f5c                __consolGetChar_from_thumb
+                0x00009f9c                ____adddf3_from_thumb
+                0x00009f1c                __simplePrintf_from_thumb
+                0x0000a02c                __initTimer_oshal_from_thumb
+                0x00009f18                __eaInit_change_to_arm
+                0x00009f60                __consolGetChar_change_to_arm
+                0x0000a000                ____eqdf2_change_to_arm
+                0x0000a028                __ctxSwitchIsr_oshal_change_to_arm
+                0x00009f74                __rand_from_thumb
+                0x00009f3c                __memcmp_from_thumb
+                0x00009f40                __memcmp_change_to_arm
+                0x0000a008                __halDisableInterrupts_oshal_change_to_arm
+                0x0000a004                __halDisableInterrupts_oshal_from_thumb
+                0x00009ff0                ____errno_change_to_arm
+                0x00009fdc                ____muldf3_from_thumb
+                0x00009fec                ____errno_from_thumb
+                0x00009f2c                __restoreIrq_from_thumb
+                0x00009fb4                ____nedf2_from_thumb
+                0x00009f38                __memcpy_change_to_arm
+                0x00009fe8                ____ledf2_change_to_arm
+                0x00009f84                __strncmp_from_thumb
+                0x00009f68                ____divsi3_change_to_arm
+                0x00009f98                ____floatsidf_change_to_arm
+                0x00009f78                __rand_change_to_arm
+                0x0000a03c                . = ALIGN (0x4)
+
+.rodata         0x0000a03c     0xcf80
+ *(.rodata)
+ .rodata        0x0000a03c     0x3c9c main.o
+                0x0000b160                _fire_2_100x40c
+                0x0000cb8e                _fire_5_100x40c
+                0x0000a87e                _fire_1_100x40c
+                0x0000ba74                _fire_3_100x40c
+                0x0000a058                _fire_0_100x40c
+                0x0000c31c                _fire_4_100x40c
+                0x0000d42e                _fire_6_100x40c
+ .rodata        0x0000dcd8      0x55c lcd.o
+                0x0000dcd8                charMap
+ .rodata        0x0000e234     0x4c48 startupDisplay.o
+                0x0000e6b8                _ea_97x60c
+                0x0000ee14                _future_128x39c
+                0x00010a16                _fun_0_130x90c
+                0x0000f950                _philips_122x25c
+                0x000102fc                _segger_85x40c
+                0x00011c22                _fun_1_130x90c
+ .rodata        0x00012e7c       0x30 bt.o
+ .rodata        0x00012eac     0x3470 exampleGame.o
+                0x00012eac                _brickWall_130x130c
+ .rodata        0x0001631c       0x10 pong.o
+ .rodata        0x0001632c       0x11 hw.o
+ *fill*         0x0001633d        0x3 00
+ .rodata        0x00016340       0x10 startup/libea_startup_thumb.a(consol.o)
+ .rodata        0x00016350      0x188 gcc_files/libm.a(e_rem_pio2.o)
+ .rodata        0x000164d8       0x50 gcc_files/libm.a(k_rem_pio2.o)
+ .rodata        0x00016528        0x4 gcc_files/libm.a(s_lib_ver.o)
+                0x00016528                __fdlib_version
+ .rodata        0x0001652c        0x4 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+                0x0001652c                _global_impure_ptr
+ .rodata        0x00016530      0x101 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+                0x00016530                _ctype_
+ *(.rodata*)
+ *fill*         0x00016631        0x3 00
+ .rodata.str1.4
+                0x00016634      0x389 main.o
+                                0x38c (size before relaxing)
+ *fill*         0x000169bd        0x3 00
+ .rodata.str1.4
+                0x000169c0      0x32c bt.o
+                                0x330 (size before relaxing)
+ .rodata.str1.4
+                0x00016cec       0x2d snake.o
+                                 0x30 (size before relaxing)
+ *fill*         0x00016d19        0x3 00
+ .rodata.str1.4
+                0x00016d1c       0x1f exampleGame.o
+                                 0x48 (size before relaxing)
+ *fill*         0x00016d3b        0x1 00
+ .rodata.str1.4
+                0x00016d3c      0x183 pong.o
+                                0x23c (size before relaxing)
+ *fill*         0x00016ebf        0x1 00
+ .rodata.str1.4
+                0x00016ec0       0x18 startup/libea_startup_thumb.a(consol.o)
+ .rodata.str1.4
+                0x00016ed8       0xd8 startup/libea_startup_thumb.a(framework.o)
+ .rodata.str1.4
+                0x00016fb0        0x5 gcc_files/libm.a(w_sqrt.o)
+                                  0x8 (size before relaxing)
+ *fill*         0x00016fb5        0x3 00
+ .rodata.str1.4
+                0x00016fb8        0x4 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+                0x00016fbc                . = ALIGN (0x4)
+                0x00016fbc                _etext = .
+                0x00016fbc                PROVIDE (etext, .)
+
+.data           0x40000080      0x5a0 load address 0x00016fbc
+                0x40000080                _data = .
+ *(.data)
+ .data          0x40000080        0x1 main.o
+ .data          0x40000081        0x0 lcd.o
+ .data          0x40000081        0x0 startupDisplay.o
+ .data          0x40000081        0x5 key.o
+ .data          0x40000086        0x0 select.o
+ .data          0x40000086        0x0 uart.o
+ .data          0x40000086        0x0 bt.o
+ .data          0x40000086        0x1 snake.o
+ .data          0x40000087      0x130 exampleGame.o
+                0x40000087                figures
+ *fill*         0x400001b7        0x1 00
+ .data          0x400001b8       0x60 pong.o
+ .data          0x40000218        0x0 eeprom.o
+ .data          0x40000218        0x0 i2c.o
+ .data          0x40000218        0x0 hw.o
+ .data          0x40000218        0x0 startup/libea_startup_thumb.a(consol.o)
+ .data          0x40000218        0x0 startup/libea_startup_thumb.a(framework.o)
+ .data          0x40000218        0x0 startup/libea_startup_thumb.a(startup.o)
+ .data          0x40000218        0x0 irq_code/irqUart.a(irqUart.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_cos.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_floor.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_sin.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(w_sqrt.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(e_rem_pio2.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(e_sqrt.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(k_cos.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(k_rem_pio2.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(k_sin.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_fabs.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_isnan.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_lib_ver.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_matherr.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_scalbn.o)
+ .data          0x40000218        0x0 gcc_files/libm.a(s_copysign.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+ .data          0x40000218        0x0 pre_emptive_os/pre_emptive_os.a(event.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .data          0x40000218        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .data          0x40000218      0x404 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+                0x40000218                _impure_ptr
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .data          0x4000061c        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .data          0x4000061c        0x4 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+                0x4000061c                __ctype_ptr
+                0x40000620                . = ALIGN (0x4)
+                0x40000620                _edata = .
+                0x40000620                PROVIDE (edata, .)
+
+.bss            0x40000620     0x1da4
+                0x40000620                _bss = .
+                0x40000620                __bss_start = .
+                0x40000620                __bss_start__ = .
+ *(.bss)
+ .bss           0x40000620      0x57b main.o
+ .bss           0x40000b9b        0x5 lcd.o
+ .bss           0x40000ba0        0x0 startupDisplay.o
+ .bss           0x40000ba0      0x134 key.o
+ .bss           0x40000cd4       0x34 select.o
+ .bss           0x40000d08       0x18 uart.o
+                0x40000d10                uart1TxRunning
+                0x40000d08                uart1TxHead
+                0x40000d0c                uart1TxTail
+                0x40000d14                uart1RxHead
+                0x40000d1c                uart1RxInBuff
+                0x40000d18                uart1RxTail
+ .bss           0x40000d20      0x404 bt.o
+ .bss           0x40001124      0x288 snake.o
+ .bss           0x400013ac      0x298 exampleGame.o
+ .bss           0x40001644       0xd8 pong.o
+ .bss           0x4000171c        0x0 eeprom.o
+ .bss           0x4000171c       0x1c i2c.o
+ .bss           0x40001738        0x2 hw.o
+ .bss           0x4000173a        0x0 startup/libea_startup_thumb.a(consol.o)
+ .bss           0x4000173a        0x0 startup/libea_startup_thumb.a(framework.o)
+ .bss           0x4000173a        0x0 startup/libea_startup_thumb.a(startup.o)
+ .bss           0x4000173a        0x0 irq_code/irqUart.a(irqUart.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_cos.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_floor.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_sin.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(w_sqrt.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(e_rem_pio2.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(e_sqrt.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(k_cos.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(k_rem_pio2.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(k_sin.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_fabs.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_isnan.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_lib_ver.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_matherr.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_scalbn.o)
+ .bss           0x4000173a        0x0 gcc_files/libm.a(s_copysign.o)
+ *fill*         0x4000173a        0x2 00
+ .bss           0x4000173c       0x2c pre_emptive_os/pre_emptive_os.a(kernel.o)
+                0x4000173c                osLockNesting
+                0x40001740                pNxtToRun
+                0x40001744                pRunProc
+                0x4000173d                isrNesting
+ .bss           0x40001768        0x0 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .bss           0x40001768        0x0 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .bss           0x40001768      0x348 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .bss           0x40001ab0        0x0 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .bss           0x40001ab0        0x0 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .bss           0x40001ab0        0x0 pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+ .bss           0x40001ab0        0x0 pre_emptive_os/pre_emptive_os.a(event.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .bss           0x40001ab0        0x0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+ *(COMMON)
+ COMMON         0x40001ab0        0x4 main.o
+                0x40001ab0                ms
+ COMMON         0x40001ab4      0x51c uart.o
+                0x40001ab4                uart1RxBuf
+                0x40001eb4                receiveSem
+                0x40001ed0                uart1TxBuf
+ COMMON         0x40001fd0      0x320 snake.o
+                0x40001fd0                snake
+ COMMON         0x400022f0        0x2 hw.o
+                0x400022f0                ver1_1
+                0x400022f1                ver1_0
+ *fill*         0x400022f2        0x2 00
+ COMMON         0x400022f4        0x8 startup/libea_startup_thumb.a(framework.o)
+                0x400022f4                pHeapEnd
+                0x400022f8                pHeapStart
+ COMMON         0x400022fc       0xc8 pre_emptive_os/pre_emptive_os.a(kernel.o)
+                0x400022fc                processControlBlocks
+                0x400023c4                . = ALIGN (0x4)
+                0x400023c4                . = ALIGN (0x4)
+                0x400023c4                __bss_end = .
+                0x400023c4                __bss_end__ = .
+                0x400023c4                _end = .
+                0x400023c4                PROVIDE (end, .)
+
+.stab           0x00000000      0x600
+ *(.stab)
+ .stab          0x00000000      0x3c0 startup/libea_startup_thumb.a(startup.o)
+ .stab          0x000003c0      0x240 pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                                0x24c (size before relaxing)
+
+.stabstr        0x00000000       0x96
+ *(.stabstr)
+ .stabstr       0x00000000       0x96 startup/libea_startup_thumb.a(startup.o)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000      0x384
+ *(.comment)
+ .comment       0x00000000       0x12 main.o
+ .comment       0x00000012       0x12 lcd.o
+ .comment       0x00000024       0x12 startupDisplay.o
+ .comment       0x00000036       0x12 key.o
+ .comment       0x00000048       0x12 select.o
+ .comment       0x0000005a       0x12 uart.o
+ .comment       0x0000006c       0x12 bt.o
+ .comment       0x0000007e       0x12 snake.o
+ .comment       0x00000090       0x12 exampleGame.o
+ .comment       0x000000a2       0x12 pong.o
+ .comment       0x000000b4       0x12 eeprom.o
+ .comment       0x000000c6       0x12 i2c.o
+ .comment       0x000000d8       0x12 hw.o
+ .comment       0x000000ea       0x12 startup/libea_startup_thumb.a(consol.o)
+ .comment       0x000000fc       0x12 startup/libea_startup_thumb.a(framework.o)
+ .comment       0x0000010e       0x12 irq_code/irqUart.a(irqUart.o)
+ .comment       0x00000120       0x12 gcc_files/libm.a(s_cos.o)
+ .comment       0x00000132       0x12 gcc_files/libm.a(s_floor.o)
+ .comment       0x00000144       0x12 gcc_files/libm.a(s_sin.o)
+ .comment       0x00000156       0x12 gcc_files/libm.a(w_sqrt.o)
+ .comment       0x00000168       0x12 gcc_files/libm.a(e_rem_pio2.o)
+ .comment       0x0000017a       0x12 gcc_files/libm.a(e_sqrt.o)
+ .comment       0x0000018c       0x12 gcc_files/libm.a(k_cos.o)
+ .comment       0x0000019e       0x12 gcc_files/libm.a(k_rem_pio2.o)
+ .comment       0x000001b0       0x12 gcc_files/libm.a(k_sin.o)
+ .comment       0x000001c2       0x12 gcc_files/libm.a(s_fabs.o)
+ .comment       0x000001d4       0x12 gcc_files/libm.a(s_isnan.o)
+ .comment       0x000001e6       0x12 gcc_files/libm.a(s_lib_ver.o)
+ .comment       0x000001f8       0x12 gcc_files/libm.a(s_matherr.o)
+ .comment       0x0000020a       0x12 gcc_files/libm.a(s_scalbn.o)
+ .comment       0x0000021c       0x12 gcc_files/libm.a(s_copysign.o)
+ .comment       0x0000022e       0x12 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .comment       0x00000240       0x12 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .comment       0x00000252       0x12 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .comment       0x00000264       0x12 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .comment       0x00000276       0x12 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .comment       0x00000288       0x12 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .comment       0x0000029a       0x12 pre_emptive_os/pre_emptive_os.a(event.o)
+ .comment       0x000002ac       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .comment       0x000002be       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .comment       0x000002d0       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .comment       0x000002e2       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .comment       0x000002f4       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .comment       0x00000306       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .comment       0x00000318       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .comment       0x0000032a       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .comment       0x0000033c       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .comment       0x0000034e       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .comment       0x00000360       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .comment       0x00000372       0x12 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x740
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 lcd.o
+ .debug_aranges
+                0x00000040       0x20 startupDisplay.o
+ .debug_aranges
+                0x00000060       0x20 key.o
+ .debug_aranges
+                0x00000080       0x20 select.o
+ .debug_aranges
+                0x000000a0       0x20 uart.o
+ .debug_aranges
+                0x000000c0       0x20 bt.o
+ .debug_aranges
+                0x000000e0       0x20 snake.o
+ .debug_aranges
+                0x00000100       0x20 exampleGame.o
+ .debug_aranges
+                0x00000120       0x20 pong.o
+ .debug_aranges
+                0x00000140       0x20 eeprom.o
+ .debug_aranges
+                0x00000160       0x20 i2c.o
+ .debug_aranges
+                0x00000180       0x20 hw.o
+ .debug_aranges
+                0x000001a0       0x20 startup/libea_startup_thumb.a(consol.o)
+ .debug_aranges
+                0x000001c0       0x20 startup/libea_startup_thumb.a(framework.o)
+ .debug_aranges
+                0x000001e0       0x20 irq_code/irqUart.a(irqUart.o)
+ .debug_aranges
+                0x00000200       0x20 gcc_files/libm.a(s_cos.o)
+ .debug_aranges
+                0x00000220       0x20 gcc_files/libm.a(s_floor.o)
+ .debug_aranges
+                0x00000240       0x20 gcc_files/libm.a(s_sin.o)
+ .debug_aranges
+                0x00000260       0x20 gcc_files/libm.a(w_sqrt.o)
+ .debug_aranges
+                0x00000280       0x20 gcc_files/libm.a(e_rem_pio2.o)
+ .debug_aranges
+                0x000002a0       0x20 gcc_files/libm.a(e_sqrt.o)
+ .debug_aranges
+                0x000002c0       0x20 gcc_files/libm.a(k_cos.o)
+ .debug_aranges
+                0x000002e0       0x20 gcc_files/libm.a(k_rem_pio2.o)
+ .debug_aranges
+                0x00000300       0x20 gcc_files/libm.a(k_sin.o)
+ .debug_aranges
+                0x00000320       0x20 gcc_files/libm.a(s_fabs.o)
+ .debug_aranges
+                0x00000340       0x20 gcc_files/libm.a(s_isnan.o)
+ .debug_aranges
+                0x00000360       0x20 gcc_files/libm.a(s_matherr.o)
+ .debug_aranges
+                0x00000380       0x20 gcc_files/libm.a(s_scalbn.o)
+ .debug_aranges
+                0x000003a0       0x20 gcc_files/libm.a(s_copysign.o)
+ .debug_aranges
+                0x000003c0       0x20 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .debug_aranges
+                0x000003e0       0x20 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .debug_aranges
+                0x00000400       0x20 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .debug_aranges
+                0x00000420       0x20 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .debug_aranges
+                0x00000440       0x20 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .debug_aranges
+                0x00000460       0x20 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .debug_aranges
+                0x00000480       0x20 pre_emptive_os/pre_emptive_os.a(event.o)
+ .debug_aranges
+                0x000004a0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x000004c0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .debug_aranges
+                0x000004e0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .debug_aranges
+                0x00000500       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .debug_aranges
+                0x00000520       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .debug_aranges
+                0x00000540       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .debug_aranges
+                0x00000560       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .debug_aranges
+                0x00000580       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .debug_aranges
+                0x000005a0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .debug_aranges
+                0x000005c0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .debug_aranges
+                0x000005e0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .debug_aranges
+                0x00000600       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .debug_aranges
+                0x00000620       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .debug_aranges
+                0x00000640       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .debug_aranges
+                0x00000660       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .debug_aranges
+                0x00000680       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .debug_aranges
+                0x000006a0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .debug_aranges
+                0x000006c0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .debug_aranges
+                0x000006e0       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .debug_aranges
+                0x00000700       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .debug_aranges
+                0x00000720       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+
+.debug_pubnames
+                0x00000000      0xfc3
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0xba main.o
+ .debug_pubnames
+                0x000000ba       0xe5 lcd.o
+ .debug_pubnames
+                0x0000019f       0x9e startupDisplay.o
+ .debug_pubnames
+                0x0000023d       0x4b key.o
+ .debug_pubnames
+                0x00000288       0x1f select.o
+ .debug_pubnames
+                0x000002a7      0x12d uart.o
+ .debug_pubnames
+                0x000003d4       0x51 bt.o
+ .debug_pubnames
+                0x00000425       0x2a snake.o
+ .debug_pubnames
+                0x0000044f       0x46 exampleGame.o
+ .debug_pubnames
+                0x00000495       0x1f pong.o
+ .debug_pubnames
+                0x000004b4       0x71 eeprom.o
+ .debug_pubnames
+                0x00000525       0xee i2c.o
+ .debug_pubnames
+                0x00000613       0xa8 hw.o
+ .debug_pubnames
+                0x000006bb       0xda startup/libea_startup_thumb.a(consol.o)
+ .debug_pubnames
+                0x00000795       0x63 startup/libea_startup_thumb.a(framework.o)
+ .debug_pubnames
+                0x000007f8       0x39 irq_code/irqUart.a(irqUart.o)
+ .debug_pubnames
+                0x00000831       0x1a gcc_files/libm.a(s_cos.o)
+ .debug_pubnames
+                0x0000084b       0x1c gcc_files/libm.a(s_floor.o)
+ .debug_pubnames
+                0x00000867       0x1a gcc_files/libm.a(s_sin.o)
+ .debug_pubnames
+                0x00000881       0x1b gcc_files/libm.a(w_sqrt.o)
+ .debug_pubnames
+                0x0000089c       0x29 gcc_files/libm.a(e_rem_pio2.o)
+ .debug_pubnames
+                0x000008c5       0x25 gcc_files/libm.a(e_sqrt.o)
+ .debug_pubnames
+                0x000008ea       0x23 gcc_files/libm.a(k_cos.o)
+ .debug_pubnames
+                0x0000090d       0x28 gcc_files/libm.a(k_rem_pio2.o)
+ .debug_pubnames
+                0x00000935       0x23 gcc_files/libm.a(k_sin.o)
+ .debug_pubnames
+                0x00000958       0x1b gcc_files/libm.a(s_fabs.o)
+ .debug_pubnames
+                0x00000973       0x1c gcc_files/libm.a(s_isnan.o)
+ .debug_pubnames
+                0x0000098f       0x26 gcc_files/libm.a(s_lib_ver.o)
+ .debug_pubnames
+                0x000009b5       0x1e gcc_files/libm.a(s_matherr.o)
+ .debug_pubnames
+                0x000009d3       0x1d gcc_files/libm.a(s_scalbn.o)
+ .debug_pubnames
+                0x000009f0       0x1f gcc_files/libm.a(s_copysign.o)
+ .debug_pubnames
+                0x00000a0f      0x17f pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .debug_pubnames
+                0x00000b8e       0x76 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .debug_pubnames
+                0x00000c04       0x4d pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .debug_pubnames
+                0x00000c51       0x55 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .debug_pubnames
+                0x00000ca6       0x4e pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .debug_pubnames
+                0x00000cf4       0xc1 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .debug_pubnames
+                0x00000db5       0x63 pre_emptive_os/pre_emptive_os.a(event.o)
+ .debug_pubnames
+                0x00000e18       0x27 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .debug_pubnames
+                0x00000e3f       0x1e /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .debug_pubnames
+                0x00000e5d       0x39 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .debug_pubnames
+                0x00000e96       0x1d /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .debug_pubnames
+                0x00000eb3       0x1d /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .debug_pubnames
+                0x00000ed0       0x25 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .debug_pubnames
+                0x00000ef5       0x1d /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .debug_pubnames
+                0x00000f12       0x1d /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .debug_pubnames
+                0x00000f2f       0x1d /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .debug_pubnames
+                0x00000f4c       0x1e /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .debug_pubnames
+                0x00000f6a       0x2b /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .debug_pubnames
+                0x00000f95       0x2e /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+
+.debug_info     0x00000000     0xb615
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x3ad main.o
+ .debug_info    0x000003ad      0x58f lcd.o
+ .debug_info    0x0000093c      0x1b4 startupDisplay.o
+ .debug_info    0x00000af0      0x23b key.o
+ .debug_info    0x00000d2b      0x203 select.o
+ .debug_info    0x00000f2e      0x499 uart.o
+ .debug_info    0x000013c7      0xc44 bt.o
+ .debug_info    0x0000200b      0x3e5 snake.o
+ .debug_info    0x000023f0      0x657 exampleGame.o
+ .debug_info    0x00002a47      0xa8e pong.o
+ .debug_info    0x000034d5      0x30f eeprom.o
+ .debug_info    0x000037e4      0x648 i2c.o
+ .debug_info    0x00003e2c      0x2d7 hw.o
+ .debug_info    0x00004103      0x584 startup/libea_startup_thumb.a(consol.o)
+ .debug_info    0x00004687      0x1e4 startup/libea_startup_thumb.a(framework.o)
+ .debug_info    0x0000486b      0x35b irq_code/irqUart.a(irqUart.o)
+ .debug_info    0x00004bc6       0xee gcc_files/libm.a(s_cos.o)
+ .debug_info    0x00004cb4      0x1a0 gcc_files/libm.a(s_floor.o)
+ .debug_info    0x00004e54       0xee gcc_files/libm.a(s_sin.o)
+ .debug_info    0x00004f42      0x172 gcc_files/libm.a(w_sqrt.o)
+ .debug_info    0x000050b4      0x390 gcc_files/libm.a(e_rem_pio2.o)
+ .debug_info    0x00005444      0x211 gcc_files/libm.a(e_sqrt.o)
+ .debug_info    0x00005655      0x20c gcc_files/libm.a(k_cos.o)
+ .debug_info    0x00005861      0x2c0 gcc_files/libm.a(k_rem_pio2.o)
+ .debug_info    0x00005b21      0x18b gcc_files/libm.a(k_sin.o)
+ .debug_info    0x00005cac      0x151 gcc_files/libm.a(s_fabs.o)
+ .debug_info    0x00005dfd      0x147 gcc_files/libm.a(s_isnan.o)
+ .debug_info    0x00005f44       0xbe gcc_files/libm.a(s_lib_ver.o)
+ .debug_info    0x00006002      0x125 gcc_files/libm.a(s_matherr.o)
+ .debug_info    0x00006127      0x1f4 gcc_files/libm.a(s_scalbn.o)
+ .debug_info    0x0000631b      0x14a gcc_files/libm.a(s_copysign.o)
+ .debug_info    0x00006465      0x5fe pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .debug_info    0x00006a63      0x2e8 pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .debug_info    0x00006d4b      0x32b pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .debug_info    0x00007076      0x4b8 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .debug_info    0x0000752e      0x2cf pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .debug_info    0x000077fd      0x189 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .debug_info    0x00007986      0x2ee pre_emptive_os/pre_emptive_os.a(event.o)
+ .debug_info    0x00007c74       0x68 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .debug_info    0x00007cdc       0x68 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .debug_info    0x00007d44       0x68 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .debug_info    0x00007dac       0x68 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .debug_info    0x00007e14       0x68 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .debug_info    0x00007e7c       0x68 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .debug_info    0x00007ee4       0x67 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .debug_info    0x00007f4b       0x67 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .debug_info    0x00007fb2       0x67 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .debug_info    0x00008019       0x67 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .debug_info    0x00008080       0x67 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .debug_info    0x000080e7      0x949 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .debug_info    0x00008a30      0x913 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .debug_info    0x00009343      0x922 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .debug_info    0x00009c65      0x110 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .debug_info    0x00009d75      0x10a /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .debug_info    0x00009e7f      0x934 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .debug_info    0x0000a7b3      0x10f /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .debug_info    0x0000a8c2      0x107 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .debug_info    0x0000a9c9       0xd4 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .debug_info    0x0000aa9d       0xf0 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .debug_info    0x0000ab8d      0xa0f /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .debug_info    0x0000b59c       0x79 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+
+.debug_abbrev   0x00000000     0x397c
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x19d main.o
+ .debug_abbrev  0x0000019d      0x1bf lcd.o
+ .debug_abbrev  0x0000035c       0xa1 startupDisplay.o
+ .debug_abbrev  0x000003fd      0x120 key.o
+ .debug_abbrev  0x0000051d       0xe5 select.o
+ .debug_abbrev  0x00000602      0x132 uart.o
+ .debug_abbrev  0x00000734      0x267 bt.o
+ .debug_abbrev  0x0000099b      0x1a0 snake.o
+ .debug_abbrev  0x00000b3b      0x267 exampleGame.o
+ .debug_abbrev  0x00000da2      0x2b0 pong.o
+ .debug_abbrev  0x00001052       0xfd eeprom.o
+ .debug_abbrev  0x0000114f      0x1fa i2c.o
+ .debug_abbrev  0x00001349      0x13c hw.o
+ .debug_abbrev  0x00001485      0x2a4 startup/libea_startup_thumb.a(consol.o)
+ .debug_abbrev  0x00001729       0xd0 startup/libea_startup_thumb.a(framework.o)
+ .debug_abbrev  0x000017f9      0x13e irq_code/irqUart.a(irqUart.o)
+ .debug_abbrev  0x00001937       0x8b gcc_files/libm.a(s_cos.o)
+ .debug_abbrev  0x000019c2       0xe8 gcc_files/libm.a(s_floor.o)
+ .debug_abbrev  0x00001aaa       0x8b gcc_files/libm.a(s_sin.o)
+ .debug_abbrev  0x00001b35       0xc7 gcc_files/libm.a(w_sqrt.o)
+ .debug_abbrev  0x00001bfc      0x128 gcc_files/libm.a(e_rem_pio2.o)
+ .debug_abbrev  0x00001d24      0x104 gcc_files/libm.a(e_sqrt.o)
+ .debug_abbrev  0x00001e28       0xea gcc_files/libm.a(k_cos.o)
+ .debug_abbrev  0x00001f12       0xe6 gcc_files/libm.a(k_rem_pio2.o)
+ .debug_abbrev  0x00001ff8       0x93 gcc_files/libm.a(k_sin.o)
+ .debug_abbrev  0x0000208b       0xd0 gcc_files/libm.a(s_fabs.o)
+ .debug_abbrev  0x0000215b       0xd4 gcc_files/libm.a(s_isnan.o)
+ .debug_abbrev  0x0000222f       0x5a gcc_files/libm.a(s_lib_ver.o)
+ .debug_abbrev  0x00002289       0x95 gcc_files/libm.a(s_matherr.o)
+ .debug_abbrev  0x0000231e       0xe8 gcc_files/libm.a(s_scalbn.o)
+ .debug_abbrev  0x00002406       0xc5 gcc_files/libm.a(s_copysign.o)
+ .debug_abbrev  0x000024cb      0x1b8 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .debug_abbrev  0x00002683      0x11e pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .debug_abbrev  0x000027a1      0x101 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .debug_abbrev  0x000028a2      0x154 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .debug_abbrev  0x000029f6      0x170 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .debug_abbrev  0x00002b66       0xf2 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .debug_abbrev  0x00002c58      0x103 pre_emptive_os/pre_emptive_os.a(event.o)
+ .debug_abbrev  0x00002d5b       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00002d6f       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .debug_abbrev  0x00002d83       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .debug_abbrev  0x00002d97       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .debug_abbrev  0x00002dab       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .debug_abbrev  0x00002dbf       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .debug_abbrev  0x00002dd3       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .debug_abbrev  0x00002de7       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .debug_abbrev  0x00002dfb       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .debug_abbrev  0x00002e0f       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .debug_abbrev  0x00002e23       0x14 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .debug_abbrev  0x00002e37      0x176 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .debug_abbrev  0x00002fad      0x15f /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .debug_abbrev  0x0000310c      0x157 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .debug_abbrev  0x00003263       0x7c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .debug_abbrev  0x000032df       0xa6 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .debug_abbrev  0x00003385      0x185 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .debug_abbrev  0x0000350a       0x9e /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .debug_abbrev  0x000035a8       0xad /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .debug_abbrev  0x00003655       0x8b /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .debug_abbrev  0x000036e0       0x8d /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .debug_abbrev  0x0000376d      0x1bd /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .debug_abbrev  0x0000392a       0x52 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+
+.debug_line     0x00000000     0x3d38
+ *(.debug_line)
+ .debug_line    0x00000000      0x193 main.o
+ .debug_line    0x00000193      0x183 lcd.o
+ .debug_line    0x00000316      0x1ec startupDisplay.o
+ .debug_line    0x00000502       0xb8 key.o
+ .debug_line    0x000005ba       0xa6 select.o
+ .debug_line    0x00000660      0x112 uart.o
+ .debug_line    0x00000772      0x36c bt.o
+ .debug_line    0x00000ade      0x140 snake.o
+ .debug_line    0x00000c1e      0x179 exampleGame.o
+ .debug_line    0x00000d97      0x37d pong.o
+ .debug_line    0x00001114      0x135 eeprom.o
+ .debug_line    0x00001249      0x162 i2c.o
+ .debug_line    0x000013ab      0x12f hw.o
+ .debug_line    0x000014da      0x198 startup/libea_startup_thumb.a(consol.o)
+ .debug_line    0x00001672       0xd7 startup/libea_startup_thumb.a(framework.o)
+ .debug_line    0x00001749       0xd2 irq_code/irqUart.a(irqUart.o)
+ .debug_line    0x0000181b       0xc2 gcc_files/libm.a(s_cos.o)
+ .debug_line    0x000018dd      0x12a gcc_files/libm.a(s_floor.o)
+ .debug_line    0x00001a07       0xc2 gcc_files/libm.a(s_sin.o)
+ .debug_line    0x00001ac9       0xbf gcc_files/libm.a(w_sqrt.o)
+ .debug_line    0x00001b88      0x17c gcc_files/libm.a(e_rem_pio2.o)
+ .debug_line    0x00001d04      0x166 gcc_files/libm.a(e_sqrt.o)
+ .debug_line    0x00001e6a      0x115 gcc_files/libm.a(k_cos.o)
+ .debug_line    0x00001f7f      0x17d gcc_files/libm.a(k_rem_pio2.o)
+ .debug_line    0x000020fc       0xbc gcc_files/libm.a(k_sin.o)
+ .debug_line    0x000021b8       0xf3 gcc_files/libm.a(s_fabs.o)
+ .debug_line    0x000022ab       0xfb gcc_files/libm.a(s_isnan.o)
+ .debug_line    0x000023a6       0x96 gcc_files/libm.a(s_lib_ver.o)
+ .debug_line    0x0000243c       0xa6 gcc_files/libm.a(s_matherr.o)
+ .debug_line    0x000024e2       0xe1 gcc_files/libm.a(s_scalbn.o)
+ .debug_line    0x000025c3       0xba gcc_files/libm.a(s_copysign.o)
+ .debug_line    0x0000267d      0x177 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .debug_line    0x000027f4       0xbb pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .debug_line    0x000028af       0xd9 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .debug_line    0x00002988      0x109 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .debug_line    0x00002a91       0x97 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .debug_line    0x00002b28       0x8c pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .debug_line    0x00002bb4       0xaf pre_emptive_os/pre_emptive_os.a(event.o)
+ .debug_line    0x00002c63       0x84 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .debug_line    0x00002ce7       0x90 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .debug_line    0x00002d77       0x6e /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .debug_line    0x00002de5       0x74 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .debug_line    0x00002e59       0x5d /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+ .debug_line    0x00002eb6       0x6b /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+ .debug_line    0x00002f21      0x165 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+ .debug_line    0x00003086      0x17a /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+ .debug_line    0x00003200       0xa7 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+ .debug_line    0x000032a7       0x72 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+ .debug_line    0x00003319       0x70 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+ .debug_line    0x00003389       0xf9 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .debug_line    0x00003482       0xf2 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .debug_line    0x00003574       0xe3 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+ .debug_line    0x00003657       0xc7 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .debug_line    0x0000371e       0xc8 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .debug_line    0x000037e6       0xf9 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .debug_line    0x000038df       0x81 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .debug_line    0x00003960       0x7c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .debug_line    0x000039dc       0xaf /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .debug_line    0x00003a8b       0xdf /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .debug_line    0x00003b6a      0x173 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+ .debug_line    0x00003cdd       0x5b /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+
+.debug_frame    0x00000000     0x187c
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xa8 main.o
+ .debug_frame   0x000000a8      0x1b8 lcd.o
+ .debug_frame   0x00000260       0x2c startupDisplay.o
+ .debug_frame   0x0000028c       0x80 key.o
+ .debug_frame   0x0000030c       0x54 select.o
+ .debug_frame   0x00000360       0xe8 uart.o
+ .debug_frame   0x00000448      0x19c bt.o
+ .debug_frame   0x000005e4       0x98 snake.o
+ .debug_frame   0x0000067c       0xac exampleGame.o
+ .debug_frame   0x00000728      0x164 pong.o
+ .debug_frame   0x0000088c       0xc4 eeprom.o
+ .debug_frame   0x00000950      0x140 i2c.o
+ .debug_frame   0x00000a90       0xf8 hw.o
+ .debug_frame   0x00000b88      0x150 startup/libea_startup_thumb.a(consol.o)
+ .debug_frame   0x00000cd8       0xd8 startup/libea_startup_thumb.a(framework.o)
+ .debug_frame   0x00000db0       0x4c irq_code/irqUart.a(irqUart.o)
+ .debug_frame   0x00000dfc       0x30 gcc_files/libm.a(s_cos.o)
+ .debug_frame   0x00000e2c       0x38 gcc_files/libm.a(s_floor.o)
+ .debug_frame   0x00000e64       0x30 gcc_files/libm.a(s_sin.o)
+ .debug_frame   0x00000e94       0x38 gcc_files/libm.a(w_sqrt.o)
+ .debug_frame   0x00000ecc       0x3c gcc_files/libm.a(e_rem_pio2.o)
+ .debug_frame   0x00000f08       0x3c gcc_files/libm.a(e_sqrt.o)
+ .debug_frame   0x00000f44       0x38 gcc_files/libm.a(k_cos.o)
+ .debug_frame   0x00000f7c       0x40 gcc_files/libm.a(k_rem_pio2.o)
+ .debug_frame   0x00000fbc       0x30 gcc_files/libm.a(k_sin.o)
+ .debug_frame   0x00000fec       0x28 gcc_files/libm.a(s_fabs.o)
+ .debug_frame   0x00001014       0x28 gcc_files/libm.a(s_isnan.o)
+ .debug_frame   0x0000103c       0x20 gcc_files/libm.a(s_matherr.o)
+ .debug_frame   0x0000105c       0x34 gcc_files/libm.a(s_scalbn.o)
+ .debug_frame   0x00001090       0x2c gcc_files/libm.a(s_copysign.o)
+ .debug_frame   0x000010bc      0x1e8 pre_emptive_os/pre_emptive_os.a(kernel.o)
+ .debug_frame   0x000012a4       0x8c pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+ .debug_frame   0x00001330       0x84 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+ .debug_frame   0x000013b4       0xb8 pre_emptive_os/pre_emptive_os.a(timer.o)
+ .debug_frame   0x0000146c       0x58 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+ .debug_frame   0x000014c4       0xa0 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+ .debug_frame   0x00001564       0x94 pre_emptive_os/pre_emptive_os.a(event.o)
+ .debug_frame   0x000015f8       0x2c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+ .debug_frame   0x00001624       0x2c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+ .debug_frame   0x00001650       0x2c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+ .debug_frame   0x0000167c       0x2c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+ .debug_frame   0x000016a8       0x40 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .debug_frame   0x000016e8       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+ .debug_frame   0x00001708       0x28 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .debug_frame   0x00001730       0x28 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .debug_frame   0x00001758       0x3c /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .debug_frame   0x00001794       0x28 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .debug_frame   0x000017bc       0x28 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .debug_frame   0x000017e4       0x20 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .debug_frame   0x00001804       0x28 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .debug_frame   0x0000182c       0x50 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+
+.debug_str      0x00000000     0x26af
+ *(.debug_str)
+ .debug_str     0x00000000      0x1b0 main.o
+                                0x1e9 (size before relaxing)
+ .debug_str     0x000001b0      0x142 lcd.o
+                                0x1fb (size before relaxing)
+ .debug_str     0x000002f2       0x86 startupDisplay.o
+                                0x174 (size before relaxing)
+ .debug_str     0x00000378      0x102 key.o
+                                0x1bd (size before relaxing)
+ .debug_str     0x0000047a       0x98 select.o
+                                0x1b5 (size before relaxing)
+ .debug_str     0x00000512      0x219 uart.o
+                                0x2f3 (size before relaxing)
+ .debug_str     0x0000072b      0x20e bt.o
+                                0x4aa (size before relaxing)
+ .debug_str     0x00000939       0x9c snake.o
+                                0x23c (size before relaxing)
+ .debug_str     0x000009d5      0x105 exampleGame.o
+                                0x29b (size before relaxing)
+ .debug_str     0x00000ada      0x21c pong.o
+                                0x471 (size before relaxing)
+ .debug_str     0x00000cf6       0x82 eeprom.o
+                                0x13a (size before relaxing)
+ .debug_str     0x00000d78       0xb1 i2c.o
+                                0x284 (size before relaxing)
+ .debug_str     0x00000e29       0xf7 hw.o
+                                0x1c8 (size before relaxing)
+ .debug_str     0x00000f20      0x1a8 startup/libea_startup_thumb.a(consol.o)
+                                0x268 (size before relaxing)
+ .debug_str     0x000010c8       0xdd startup/libea_startup_thumb.a(framework.o)
+                                0x164 (size before relaxing)
+ .debug_str     0x000011a5       0xae irq_code/irqUart.a(irqUart.o)
+                                0x28f (size before relaxing)
+ .debug_str     0x00001253       0x93 gcc_files/libm.a(s_cos.o)
+                                0x11d (size before relaxing)
+ .debug_str     0x000012e6       0x7b gcc_files/libm.a(s_floor.o)
+                                0x162 (size before relaxing)
+ .debug_str     0x00001361       0x3c gcc_files/libm.a(s_sin.o)
+                                0x11d (size before relaxing)
+ .debug_str     0x0000139d       0xb8 gcc_files/libm.a(w_sqrt.o)
+                                0x199 (size before relaxing)
+ .debug_str     0x00001455       0xc7 gcc_files/libm.a(e_rem_pio2.o)
+                                0x1d6 (size before relaxing)
+ .debug_str     0x0000151c       0x51 gcc_files/libm.a(e_sqrt.o)
+                                0x16f (size before relaxing)
+ .debug_str     0x0000156d       0x49 gcc_files/libm.a(k_cos.o)
+                                0x15d (size before relaxing)
+ .debug_str     0x000015b6       0x82 gcc_files/libm.a(k_rem_pio2.o)
+                                0x16e (size before relaxing)
+ .debug_str     0x00001638       0x49 gcc_files/libm.a(k_sin.o)
+                                0x12f (size before relaxing)
+ .debug_str     0x00001681       0x42 gcc_files/libm.a(s_fabs.o)
+                                0x156 (size before relaxing)
+ .debug_str     0x000016c3       0x44 gcc_files/libm.a(s_isnan.o)
+                                0x158 (size before relaxing)
+ .debug_str     0x00001707       0x85 gcc_files/libm.a(s_lib_ver.o)
+                                0x176 (size before relaxing)
+ .debug_str     0x0000178c       0x4a gcc_files/libm.a(s_matherr.o)
+                                0x148 (size before relaxing)
+ .debug_str     0x000017d6       0x55 gcc_files/libm.a(s_scalbn.o)
+                                0x17a (size before relaxing)
+ .debug_str     0x0000182b       0x4c gcc_files/libm.a(s_copysign.o)
+                                0x158 (size before relaxing)
+ .debug_str     0x00001877      0x220 pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                0x359 (size before relaxing)
+ .debug_str     0x00001a97       0x7d pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                                0x241 (size before relaxing)
+ .debug_str     0x00001b14       0x51 pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                                0x256 (size before relaxing)
+ .debug_str     0x00001b65       0xe2 pre_emptive_os/pre_emptive_os.a(timer.o)
+                                0x2f2 (size before relaxing)
+ .debug_str     0x00001c47       0x70 pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+                                0x226 (size before relaxing)
+ .debug_str     0x00001cb7      0x153 pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                                0x1d8 (size before relaxing)
+ .debug_str     0x00001e0a       0x51 pre_emptive_os/pre_emptive_os.a(event.o)
+                                0x260 (size before relaxing)
+ .debug_str     0x00001e5b      0x402 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+                                0x49e (size before relaxing)
+ .debug_str     0x0000225d       0x7a /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+                                0x4a4 (size before relaxing)
+ .debug_str     0x000022d7       0x92 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+                                0x4bc (size before relaxing)
+ .debug_str     0x00002369       0x83 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+                                0x10c (size before relaxing)
+ .debug_str     0x000023ec       0x6a /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+                                 0xd6 (size before relaxing)
+ .debug_str     0x00002456       0x40 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+                                0x4ad (size before relaxing)
+ .debug_str     0x00002496       0x55 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+                                0x117 (size before relaxing)
+ .debug_str     0x000024eb       0x43 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+                                0x127 (size before relaxing)
+ .debug_str     0x0000252e       0x49 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+                                0x11f (size before relaxing)
+ .debug_str     0x00002577       0x45 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+                                0x10e (size before relaxing)
+ .debug_str     0x000025bc       0x78 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                                0x4e0 (size before relaxing)
+ .debug_str     0x00002634       0x7b /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+                                 0xaa (size before relaxing)
+
+.debug_loc      0x00000000     0x3f34
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x1c1 main.o
+ .debug_loc     0x000001c1      0x783 lcd.o
+ .debug_loc     0x00000944       0x54 startupDisplay.o
+ .debug_loc     0x00000998       0x9a key.o
+ .debug_loc     0x00000a32       0x9d select.o
+ .debug_loc     0x00000acf      0x274 uart.o
+ .debug_loc     0x00000d43      0x818 bt.o
+ .debug_loc     0x0000155b      0x2b0 snake.o
+ .debug_loc     0x0000180b      0x3e9 exampleGame.o
+ .debug_loc     0x00001bf4      0x93b pong.o
+ .debug_loc     0x0000252f      0x451 eeprom.o
+ .debug_loc     0x00002980      0x47b i2c.o
+ .debug_loc     0x00002dfb      0x21b hw.o
+ .debug_loc     0x00003016      0x5ee startup/libea_startup_thumb.a(consol.o)
+ .debug_loc     0x00003604      0x193 startup/libea_startup_thumb.a(framework.o)
+ .debug_loc     0x00003797       0x8a irq_code/irqUart.a(irqUart.o)
+ .debug_loc     0x00003821       0x77 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+ .debug_loc     0x00003898      0x13e /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+ .debug_loc     0x000039d6       0xfc /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+ .debug_loc     0x00003ad2       0x1f /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+ .debug_loc     0x00003af1       0xb5 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+ .debug_loc     0x00003ba6       0x79 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+ .debug_loc     0x00003c1f       0x47 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+ .debug_loc     0x00003c66       0xc3 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+ .debug_loc     0x00003d29      0x20b /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+OUTPUT(lpc2104_color_lcd_v1.9.elf elf32-littlearm)
+
+.debug_ranges   0x00000000      0x3b8
+ .debug_ranges  0x00000000      0x198 bt.o
+ .debug_ranges  0x00000198      0x1a0 pong.o
+ .debug_ranges  0x00000338       0x20 gcc_files/libm.a(s_floor.o)
+ .debug_ranges  0x00000358       0x18 gcc_files/libm.a(e_rem_pio2.o)
+ .debug_ranges  0x00000370       0x18 gcc_files/libm.a(e_sqrt.o)
+ .debug_ranges  0x00000388       0x18 gcc_files/libm.a(k_cos.o)
+ .debug_ranges  0x000003a0       0x18 gcc_files/libm.a(s_scalbn.o)
+
+Cross Reference Table
+
+Symbol                                            File
+____adddf3_change_to_arm                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____adddf3_from_thumb                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____divdf3_change_to_arm                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____divdf3_from_thumb                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____divsi3_change_to_arm                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____divsi3_from_thumb                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____eqdf2_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____eqdf2_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____errno_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____errno_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____fixdfsi_change_to_arm                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____fixdfsi_from_thumb                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____fixunsdfsi_change_to_arm                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____fixunsdfsi_from_thumb                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____floatsidf_change_to_arm                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____floatsidf_from_thumb                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____gedf2_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____gedf2_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____gtdf2_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____gtdf2_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____ledf2_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____ledf2_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____ltdf2_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____ltdf2_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____modsi3_change_to_arm                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____modsi3_from_thumb                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____muldf3_change_to_arm                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____muldf3_from_thumb                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____nedf2_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____nedf2_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____subdf3_change_to_arm                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____subdf3_from_thumb                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____udivsi3_change_to_arm                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____udivsi3_from_thumb                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____umodsi3_change_to_arm                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+____umodsi3_from_thumb                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__adddf3                                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+                                                  gcc_files/libm.a(s_scalbn.o)
+                                                  gcc_files/libm.a(k_sin.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(k_cos.o)
+                                                  gcc_files/libm.a(e_sqrt.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+                                                  gcc_files/libm.a(s_floor.o)
+                                                  pong.o
+__aeabi_cdcmpeq                                   /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_cdcmple                                   /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_cdrcmple                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_d2iz                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+__aeabi_d2uiz                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+__aeabi_dadd                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__aeabi_dcmpeq                                    /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_dcmpge                                    /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_dcmpgt                                    /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_dcmple                                    /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_dcmplt                                    /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__aeabi_ddiv                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+__aeabi_dmul                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+__aeabi_drsub                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__aeabi_dsub                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__aeabi_f2d                                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__aeabi_i2d                                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__aeabi_idiv                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+__aeabi_idiv0                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+__aeabi_idivmod                                   /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+__aeabi_l2d                                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__aeabi_ldiv0                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+__aeabi_ui2d                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__aeabi_uidiv                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+__aeabi_uidivmod                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+__aeabi_ul2d                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__bss_end__                                       startup/libea_startup_thumb.a(startup.o)
+__bss_start__                                     startup/libea_startup_thumb.a(startup.o)
+__cmpdf2                                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+__consolGetChar_change_to_arm                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__consolGetChar_from_thumb                        /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__ctxSwitchIsr_oshal_change_to_arm                /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__ctxSwitchIsr_oshal_from_thumb                   /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__ctxSwitch_oshal_change_to_arm                   /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__ctxSwitch_oshal_from_thumb                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__ctype_ptr                                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+__disIrq_change_to_arm                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__disIrq_from_thumb                               /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__div0                                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_dvmd_tls.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+__divdf3                                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+                                                  gcc_files/libm.a(e_sqrt.o)
+                                                  gcc_files/libm.a(w_sqrt.o)
+                                                  pong.o
+__divsi3                                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_divsi3.o)
+                                                  pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  snake.o
+__eaInit_change_to_arm                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__eaInit_from_thumb                               /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__eqdf2                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+__errno                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+                                                  gcc_files/libm.a(w_sqrt.o)
+__extendsfdf2                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__fdlib_version                                   gcc_files/libm.a(s_lib_ver.o)
+                                                  gcc_files/libm.a(w_sqrt.o)
+__fixdfsi                                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixdfsi.o)
+                                                  gcc_files/libm.a(k_sin.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(k_cos.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+__fixunsdfsi                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_fixunsdfsi.o)
+                                                  pong.o
+__floatdidf                                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__floatsidf                                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+                                                  pong.o
+__floatundidf                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__floatunsidf                                     /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+__gedf2                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(e_sqrt.o)
+                                                  pong.o
+__gtdf2                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                                                  gcc_files/libm.a(e_sqrt.o)
+                                                  gcc_files/libm.a(s_floor.o)
+                                                  pong.o
+__halDisableInterrupts_oshal_change_to_arm        /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__halDisableInterrupts_oshal_from_thumb           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__halRestoreInterrupts_oshal_change_to_arm        /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__halRestoreInterrupts_oshal_from_thumb           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__ieee754_rem_pio2                                gcc_files/libm.a(e_rem_pio2.o)
+                                                  gcc_files/libm.a(s_sin.o)
+                                                  gcc_files/libm.a(s_cos.o)
+__ieee754_sqrt                                    gcc_files/libm.a(e_sqrt.o)
+                                                  gcc_files/libm.a(w_sqrt.o)
+__initTimer_oshal_change_to_arm                   /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__initTimer_oshal_from_thumb                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__kernel_cos                                      gcc_files/libm.a(k_cos.o)
+                                                  gcc_files/libm.a(s_sin.o)
+                                                  gcc_files/libm.a(s_cos.o)
+__kernel_rem_pio2                                 gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+__kernel_sin                                      gcc_files/libm.a(k_sin.o)
+                                                  gcc_files/libm.a(s_sin.o)
+                                                  gcc_files/libm.a(s_cos.o)
+__ledf2                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                                                  pong.o
+__ltdf2                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                                                  gcc_files/libm.a(w_sqrt.o)
+                                                  pong.o
+__memcmp_change_to_arm                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__memcmp_from_thumb                               /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__memcpy_change_to_arm                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__memcpy_from_thumb                               /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__modsi3                                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_modsi3.o)
+                                                  exampleGame.o
+                                                  snake.o
+__muldf3                                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_muldivdf3.o)
+                                                  gcc_files/libm.a(s_scalbn.o)
+                                                  gcc_files/libm.a(k_sin.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(k_cos.o)
+                                                  gcc_files/libm.a(e_sqrt.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+                                                  pong.o
+__nedf2                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_cmpdf2.o)
+                                                  gcc_files/libm.a(s_matherr.o)
+                                                  pong.o
+__osISRExit_from_arm                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__osSemGive_from_arm                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__osTick_from_arm                                 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__rand_change_to_arm                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__rand_from_thumb                                 /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__restoreIrq_change_to_arm                        /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__restoreIrq_from_thumb                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__simplePrintf_change_to_arm                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__simplePrintf_from_thumb                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__srand_change_to_arm                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__srand_from_thumb                                /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__startHighProc_oshal_change_to_arm               /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__startHighProc_oshal_from_thumb                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__stkFrameInit_oshal_change_to_arm                /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__stkFrameInit_oshal_from_thumb                   /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__strchr_change_to_arm                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__strchr_from_thumb                               /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__strcpy_change_to_arm                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__strcpy_from_thumb                               /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__strncmp_change_to_arm                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__strncmp_from_thumb                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+__subdf3                                          /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_addsubdf3.o)
+                                                  gcc_files/libm.a(k_sin.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  gcc_files/libm.a(k_cos.o)
+                                                  gcc_files/libm.a(e_sqrt.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+                                                  gcc_files/libm.a(s_sin.o)
+                                                  gcc_files/libm.a(s_cos.o)
+                                                  pong.o
+__udivsi3                                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_udivsi3.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                                                  pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+                                                  startup/libea_startup_thumb.a(consol.o)
+                                                  pong.o
+                                                  exampleGame.o
+                                                  bt.o
+__umodsi3                                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_umodsi3.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                                                  startup/libea_startup_thumb.a(consol.o)
+                                                  pong.o
+                                                  exampleGame.o
+                                                  bt.o
+_atoi_r                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+_brickWall_130x130c                               exampleGame.o
+_call_via_fp                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_ip                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_lr                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r0                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r1                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r2                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r3                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r4                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+_call_via_r5                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r6                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r7                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r8                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_r9                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_sl                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_call_via_sp                                      /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/interwork/libgcc.a(_call_via_rX.o)
+_ctype_                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(ctype_.o)
+_data                                             startup/libea_startup_thumb.a(startup.o)
+_ea_97x60c                                        startupDisplay.o
+_edata                                            startup/libea_startup_thumb.a(startup.o)
+_etext                                            startup/libea_startup_thumb.a(startup.o)
+_fire_0_100x40c                                   main.o
+_fire_1_100x40c                                   main.o
+_fire_2_100x40c                                   main.o
+_fire_3_100x40c                                   main.o
+_fire_4_100x40c                                   main.o
+_fire_5_100x40c                                   main.o
+_fire_6_100x40c                                   main.o
+_fun_0_130x90c                                    startupDisplay.o
+_fun_1_130x90c                                    startupDisplay.o
+_future_128x39c                                   startupDisplay.o
+_global_impure_ptr                                /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+_impure_ptr                                       /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(impure.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(errno.o)
+_philips_122x25c                                  startupDisplay.o
+_segger_85x40c                                    startupDisplay.o
+_startup                                          startup/libea_startup_thumb.a(startup.o)
+_strtol_r                                         /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+activateBtProc                                    bt.o
+                                                  pong.o
+addToPrioQueue                                    pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+addToRdyList                                      pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+addToTimeList                                     pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+appTick                                           main.o
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+atoi                                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+                                                  startup/libea_startup_thumb.a(consol.o)
+blockBtProc                                       bt.o
+                                                  pong.o
+charMap                                           lcd.o
+checkKey                                          key.o
+                                                  pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+                                                  select.o
+                                                  startupDisplay.o
+                                                  main.o
+checkKey2                                         key.o
+                                                  pong.o
+checkStackLimit                                   pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+consolGetCh                                       startup/libea_startup_thumb.a(consol.o)
+consolGetChar                                     startup/libea_startup_thumb.a(consol.o)
+                                                  bt.o
+consolGetIntNum                                   startup/libea_startup_thumb.a(consol.o)
+consolGetString                                   startup/libea_startup_thumb.a(consol.o)
+consolInit                                        startup/libea_startup_thumb.a(consol.o)
+                                                  startup/libea_startup_thumb.a(framework.o)
+consolScanf                                       startup/libea_startup_thumb.a(consol.o)
+consolSendCh                                      startup/libea_startup_thumb.a(consol.o)
+consolSendChar                                    startup/libea_startup_thumb.a(consol.o)
+consolSendNumber                                  startup/libea_startup_thumb.a(consol.o)
+                                                  startup/libea_startup_thumb.a(framework.o)
+consolSendString                                  startup/libea_startup_thumb.a(consol.o)
+                                                  startup/libea_startup_thumb.a(framework.o)
+copysign                                          gcc_files/libm.a(s_copysign.o)
+                                                  gcc_files/libm.a(s_scalbn.o)
+cos                                               gcc_files/libm.a(s_cos.o)
+                                                  pong.o
+createStackPattern                                pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+ctxSwitchIsr_oshal                                pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+ctxSwitch_oshal                                   pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+disIrq                                            irq_code/irqUart.a(irqUart.o)
+                                                  uart.o
+displayStartupSequence                            startupDisplay.o
+                                                  main.o
+drawMenu                                          select.o
+                                                  pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+eaInit                                            startup/libea_startup_thumb.a(framework.o)
+                                                  main.o
+eepromPageRead                                    eeprom.o
+eepromPoll                                        eeprom.o
+eepromStartRead                                   eeprom.o
+eepromWrite                                       eeprom.o
+end                                               startup/libea_startup_thumb.a(framework.o)
+eventInit                                         pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+eventIsEmpty                                      pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+eventSignal                                       pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+eventWait                                         pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+eventWaitReturn                                   pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+exceptionHandlerInit                              startup/libea_startup_thumb.a(framework.o)
+                                                  startup/libea_startup_thumb.a(startup.o)
+fabs                                              gcc_files/libm.a(s_fabs.o)
+                                                  gcc_files/libm.a(e_rem_pio2.o)
+figures                                           exampleGame.o
+floor                                             gcc_files/libm.a(s_floor.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+                                                  pong.o
+generalIRQ_oshal                                  pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                                                  pre_emptive_os/pre_emptive_os.a(a7hal.o)
+getHighPrioQueue                                  pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+getI2cLock                                        i2c.o
+                                                  eeprom.o
+getKeys                                           hw.o
+                                                  key.o
+halDisableInterrupts_oshal                        pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+halEnableInterrupts_oshal                         pre_emptive_os/pre_emptive_os.a(a7hal.o)
+halRestoreInterrupts_oshal                        pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+handleBt                                          bt.o
+                                                  main.o
+handleIRQs_oshal                                  pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                                                  pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+i2cCheckStatus                                    i2c.o
+                                                  eeprom.o
+i2cGetChar                                        i2c.o
+                                                  eeprom.o
+i2cInit                                           i2c.o
+                                                  hw.o
+i2cMyWrite                                        i2c.o
+i2cPutChar                                        i2c.o
+                                                  eeprom.o
+i2cRead                                           i2c.o
+i2cRepeatStart                                    i2c.o
+                                                  eeprom.o
+i2cStart                                          i2c.o
+                                                  eeprom.o
+i2cStop                                           i2c.o
+                                                  eeprom.o
+i2cWaitTransmit                                   i2c.o
+i2cWrite                                          i2c.o
+i2cWriteWithWait                                  i2c.o
+                                                  eeprom.o
+immediateIoInit                                   hw.o
+                                                  main.o
+initBtProc                                        bt.o
+                                                  main.o
+initKeyProc                                       key.o
+                                                  main.o
+initPrioQueue                                     pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+initSpiForLcd                                     hw.o
+                                                  lcd.o
+initTimer_oshal                                   pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+initUart1                                         uart.o
+                                                  bt.o
+isEmptyPrioQueue                                  pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+isnan                                             gcc_files/libm.a(s_isnan.o)
+                                                  gcc_files/libm.a(w_sqrt.o)
+isrNesting                                        pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+lcdClrscr                                         lcd.o
+                                                  pong.o
+                                                  snake.o
+                                                  bt.o
+                                                  startupDisplay.o
+                                                  main.o
+lcdColor                                          lcd.o
+                                                  pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+                                                  select.o
+                                                  startupDisplay.o
+                                                  main.o
+lcdContrast                                       lcd.o
+                                                  main.o
+lcdData                                           lcd.o
+lcdGotoxy                                         lcd.o
+                                                  pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+                                                  select.o
+                                                  startupDisplay.o
+                                                  main.o
+lcdIcon                                           lcd.o
+                                                  exampleGame.o
+                                                  startupDisplay.o
+                                                  main.o
+lcdInit                                           lcd.o
+                                                  main.o
+lcdOff                                            lcd.o
+lcdPutchar                                        lcd.o
+                                                  pong.o
+                                                  bt.o
+                                                  startupDisplay.o
+lcdPuts                                           lcd.o
+                                                  pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+                                                  select.o
+                                                  main.o
+lcdRect                                           lcd.o
+                                                  pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+                                                  select.o
+                                                  main.o
+lcdRectBrd                                        lcd.o
+                                                  exampleGame.o
+lcdWindow                                         lcd.o
+lcdWrcmd                                          lcd.o
+lcdWrdata                                         lcd.o
+lm75Read                                          eeprom.o
+lowLevelInit                                      startup/libea_startup_thumb.a(framework.o)
+                                                  startup/libea_startup_thumb.a(startup.o)
+main                                              main.o
+                                                  startup/libea_startup_thumb.a(startup.o)
+matherr                                           gcc_files/libm.a(s_matherr.o)
+                                                  gcc_files/libm.a(w_sqrt.o)
+memcmp                                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcmp.o)
+                                                  pong.o
+                                                  bt.o
+memcpy                                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(memcpy.o)
+                                                  startup/libea_startup_thumb.a(consol.o)
+                                                  hw.o
+                                                  bt.o
+ms                                                pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+                                                  main.o
+osCreateProcess                                   pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  bt.o
+                                                  key.o
+                                                  main.o
+osCreateTimer                                     pre_emptive_os/pre_emptive_os.a(timer.o)
+osDeleteProcess                                   pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  main.o
+osDeleteTimer                                     pre_emptive_os/pre_emptive_os.a(timer.o)
+osGetHighPrioProc                                 pre_emptive_os/pre_emptive_os.a(kernel.o)
+osISREnter                                        pre_emptive_os/pre_emptive_os.a(kernel.o)
+osISRExit                                         pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+osInit                                            pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  main.o
+osInitTimers                                      pre_emptive_os/pre_emptive_os.a(timer.o)
+osLockNesting                                     pre_emptive_os/pre_emptive_os.a(kernel.o)
+osPid                                             pre_emptive_os/pre_emptive_os.a(kernel.o)
+osResume                                          pre_emptive_os/pre_emptive_os.a(kernel.o)
+osSemGive                                         pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  irq_code/irqUart.a(irqUart.o)
+                                                  i2c.o
+                                                  bt.o
+osSemInit                                         pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  i2c.o
+                                                  bt.o
+                                                  uart.o
+osSemTake                                         pre_emptive_os/pre_emptive_os.a(count_sem.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  i2c.o
+                                                  bt.o
+                                                  uart.o
+osSemTryTake                                      pre_emptive_os/pre_emptive_os.a(count_sem.o)
+osSleep                                           pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  hw.o
+                                                  pong.o
+                                                  exampleGame.o
+                                                  snake.o
+                                                  bt.o
+                                                  select.o
+                                                  key.o
+                                                  startupDisplay.o
+                                                  lcd.o
+                                                  main.o
+osStackUsage                                      pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+osStart                                           pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  main.o
+osStartProcess                                    pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  bt.o
+                                                  key.o
+                                                  main.o
+osSuspend                                         pre_emptive_os/pre_emptive_os.a(kernel.o)
+osTick                                            pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(a7hal.o)
+pHeapEnd                                          startup/libea_startup_thumb.a(framework.o)
+pHeapStart                                        startup/libea_startup_thumb.a(framework.o)
+pNxtToRun                                         pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+pRunProc                                          pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+pca9532                                           eeprom.o
+                                                  hw.o
+playExample                                       exampleGame.o
+                                                  main.o
+playPong                                          pong.o
+                                                  main.o
+playSnake                                         snake.o
+                                                  main.o
+processControlBlocks                              pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(stack_usage.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+rand                                              /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+                                                  exampleGame.o
+                                                  snake.o
+receiveSem                                        irq_code/irqUart.a(irqUart.o)
+                                                  uart.o
+releaseI2cLock                                    i2c.o
+                                                  eeprom.o
+resetBT                                           hw.o
+                                                  bt.o
+resetLCD                                          hw.o
+                                                  main.o
+restoreIrq                                        irq_code/irqUart.a(irqUart.o)
+                                                  uart.o
+rmvFromPrioQueue                                  pre_emptive_os/pre_emptive_os.a(prioqueue.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+rmvFromRdyList                                    pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+rmvFromTimeList                                   pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+sampleKey                                         key.o
+scalbn                                            gcc_files/libm.a(s_scalbn.o)
+                                                  gcc_files/libm.a(k_rem_pio2.o)
+schedule                                          pre_emptive_os/pre_emptive_os.a(kernel.o)
+                                                  pre_emptive_os/pre_emptive_os.a(event.o)
+                                                  pre_emptive_os/pre_emptive_os.a(count_sem.o)
+selectLCD                                         hw.o
+                                                  lcd.o
+sendToLCD                                         hw.o
+                                                  lcd.o
+setBuzzer                                         hw.o
+                                                  main.o
+setLED                                            hw.o
+                                                  main.o
+simplePrintf                                      startup/libea_startup_thumb.a(consol.o)
+                                                  pong.o
+                                                  bt.o
+                                                  main.o
+sin                                               gcc_files/libm.a(s_sin.o)
+                                                  pong.o
+snake                                             snake.o
+sqrt                                              gcc_files/libm.a(w_sqrt.o)
+                                                  pong.o
+srand                                             /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(rand.o)
+                                                  exampleGame.o
+                                                  snake.o
+startHighProc_oshal                               pre_emptive_os/pre_emptive_os.a(a7hal_a.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+stkFrameInit_oshal                                pre_emptive_os/pre_emptive_os.a(a7hal.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+strchr                                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strchr.o)
+                                                  pong.o
+                                                  bt.o
+strcpy                                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strcpy.o)
+                                                  pong.o
+strlen                                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strlen.o)
+                                                  startup/libea_startup_thumb.a(consol.o)
+strncmp                                           /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strncmp.o)
+                                                  pong.o
+strtol                                            /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(strtol.o)
+                                                  /cygdrive/c/program files/gnuarm/bin/../lib/gcc/arm-elf/4.1.1/../../../../arm-elf/lib/interwork/libc.a(atoi.o)
+timerIsr_oshal                                    pre_emptive_os/pre_emptive_os.a(a7hal.o)
+timerTick                                         pre_emptive_os/pre_emptive_os.a(timer.o)
+                                                  pre_emptive_os/pre_emptive_os.a(kernel.o)
+uart1GetCh                                        uart.o
+uart1GetChSem                                     uart.o
+uart1GetChar                                      uart.o
+                                                  pong.o
+                                                  bt.o
+uart1ISR                                          irq_code/irqUart.a(irqUart.o)
+                                                  uart.o
+uart1RxBuf                                        irq_code/irqUart.a(irqUart.o)
+                                                  uart.o
+uart1RxHead                                       uart.o
+                                                  irq_code/irqUart.a(irqUart.o)
+uart1RxInBuff                                     uart.o
+                                                  irq_code/irqUart.a(irqUart.o)
+uart1RxTail                                       uart.o
+                                                  irq_code/irqUart.a(irqUart.o)
+uart1SendCh                                       uart.o
+uart1SendChar                                     uart.o
+                                                  bt.o
+uart1SendChars                                    uart.o
+                                                  pong.o
+uart1SendString                                   uart.o
+                                                  pong.o
+                                                  bt.o
+uart1TxBuf                                        irq_code/irqUart.a(irqUart.o)
+                                                  uart.o
+uart1TxHead                                       uart.o
+                                                  irq_code/irqUart.a(irqUart.o)
+uart1TxRunning                                    uart.o
+                                                  irq_code/irqUart.a(irqUart.o)
+uart1TxTail                                       uart.o
+                                                  irq_code/irqUart.a(irqUart.o)
+ver1_0                                            hw.o
+                                                  main.o
+ver1_1                                            hw.o
+                                                  main.o

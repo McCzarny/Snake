@@ -1,4 +1,4 @@
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 1
 
 
    1              		.code	16
@@ -58,7 +58,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
   34:select.c      **** /*****************************************************************************
   35:select.c      ****  *
   36:select.c      ****  * Description:
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 2
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 2
 
 
   37:select.c      ****  *    Draw cursor in main menu
@@ -118,7 +118,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
   54:select.c      ****       lcdColor(menu.bgColor,menu.choicesColor);
   55              		.loc 1 54 0
   56 003a 231C     		mov	r3, r4
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 3
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 3
 
 
   57 003c 1078     		ldrb	r0, [r2]
@@ -178,7 +178,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
   97              		.loc 1 68 0
   98 0070 84B0     		sub	sp, sp, #16
   99              	.LCFI1:
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 4
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 4
 
 
  100 0072 70B5     		push	{r4, r5, r6, lr}
@@ -238,7 +238,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  147 00c2 1206     		lsl	r2, r2, #24
  148 00c4 1B06     		lsl	r3, r3, #24
  149 00c6 120E     		lsr	r2, r2, #24
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 5
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 5
 
 
  150 00c8 1B0E     		lsr	r3, r3, #24
@@ -298,7 +298,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  186 0106 0028     		cmp	r0, #0
  187 0108 1BD0     		beq	.L14
   94:select.c      ****     {
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 6
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 6
 
 
   95:select.c      ****       //select specific function
@@ -358,7 +358,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  221              		.loc 1 115 0
  222 0138 0023     		mov	r3, #0
  223              	.L34:
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 7
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 7
 
 
  224 013a 1370     		strb	r3, [r2]
@@ -418,7 +418,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  267 0008 01       		.byte	0x1
  268 0009 00       		.ascii	"\000"
  269 000a 01       		.uleb128 0x1
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 8
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 8
 
 
  270 000b 7C       		.sleb128 -4
@@ -478,7 +478,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  324 0050 24       		.uleb128 0x24
  325 0051 000000   		.align	2
  326              	.LEFDE2:
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 9
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 9
 
 
  327              		.file 2 "./startup/../pre_emptive_os/api/../api/general.h"
@@ -538,7 +538,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  381 007c 0100     		.2byte	0x1
  382 007e 50       		.byte	0x50
  383 007f 42010000 		.4byte	.LVL6-.Ltext0
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 10
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 10
 
 
  384 0083 44010000 		.4byte	.LVL7-.Ltext0
@@ -559,38 +559,38 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  399 000c 00000000 		.4byte	.Ldebug_line0
  400 0010 60010000 		.4byte	.Letext0
  401 0014 00000000 		.4byte	.Ltext0
- 402 0018 5A010000 		.4byte	.LASF29
+ 402 0018 5E010000 		.4byte	.LASF29
  403 001c 01       		.byte	0x1
- 404 001d 17010000 		.4byte	.LASF30
- 405 0021 C9000000 		.4byte	.LASF31
+ 404 001d 1B010000 		.4byte	.LASF30
+ 405 0021 00000000 		.4byte	.LASF31
  406 0025 02       		.uleb128 0x2
  407 0026 74553800 		.ascii	"tU8\000"
  408 002a 02       		.byte	0x2
  409 002b 47       		.byte	0x47
  410 002c 30000000 		.4byte	0x30
  411 0030 03       		.uleb128 0x3
- 412 0031 4C010000 		.4byte	.LASF0
+ 412 0031 50010000 		.4byte	.LASF0
  413 0035 01       		.byte	0x1
  414 0036 08       		.byte	0x8
  415 0037 03       		.uleb128 0x3
- 416 0038 B6000000 		.4byte	.LASF1
+ 416 0038 03010000 		.4byte	.LASF1
  417 003c 02       		.byte	0x2
  418 003d 07       		.byte	0x7
  419 003e 04       		.uleb128 0x4
- 420 003f 12010000 		.4byte	.LASF2
+ 420 003f 16010000 		.4byte	.LASF2
  421 0043 02       		.byte	0x2
  422 0044 49       		.byte	0x49
  423 0045 49000000 		.4byte	0x49
  424 0049 03       		.uleb128 0x3
- 425 004a 88000000 		.4byte	.LASF3
+ 425 004a D5000000 		.4byte	.LASF3
  426 004e 04       		.byte	0x4
  427 004f 07       		.byte	0x7
  428 0050 03       		.uleb128 0x3
- 429 0051 00000000 		.4byte	.LASF4
+ 429 0051 4D000000 		.4byte	.LASF4
  430 0055 01       		.byte	0x1
  431 0056 06       		.byte	0x6
  432 0057 03       		.uleb128 0x3
- 433 0058 66010000 		.4byte	.LASF5
+ 433 0058 6A010000 		.4byte	.LASF5
  434 005c 02       		.byte	0x2
  435 005d 05       		.byte	0x5
  436 005e 05       		.uleb128 0x5
@@ -598,33 +598,33 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  438 0063 04       		.byte	0x4
  439 0064 05       		.byte	0x5
  440 0065 06       		.uleb128 0x6
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 11
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 11
 
 
  441 0066 04       		.byte	0x4
  442 0067 25000000 		.4byte	0x25
  443 006b 03       		.uleb128 0x3
- 444 006c A4000000 		.4byte	.LASF6
+ 444 006c F1000000 		.4byte	.LASF6
  445 0070 04       		.byte	0x4
  446 0071 07       		.byte	0x7
  447 0072 03       		.uleb128 0x3
- 448 0073 A4000000 		.4byte	.LASF6
+ 448 0073 F1000000 		.4byte	.LASF6
  449 0077 04       		.byte	0x4
  450 0078 07       		.byte	0x7
  451 0079 03       		.uleb128 0x3
- 452 007a 53000000 		.4byte	.LASF7
+ 452 007a A0000000 		.4byte	.LASF7
  453 007e 04       		.byte	0x4
  454 007f 05       		.byte	0x5
  455 0080 03       		.uleb128 0x3
- 456 0081 45000000 		.4byte	.LASF8
+ 456 0081 92000000 		.4byte	.LASF8
  457 0085 08       		.byte	0x8
  458 0086 05       		.byte	0x5
  459 0087 03       		.uleb128 0x3
- 460 0088 75010000 		.4byte	.LASF9
+ 460 0088 79010000 		.4byte	.LASF9
  461 008c 01       		.byte	0x1
  462 008d 08       		.byte	0x8
  463 008e 03       		.uleb128 0x3
- 464 008f 14000000 		.4byte	.LASF10
+ 464 008f 61000000 		.4byte	.LASF10
  465 0093 08       		.byte	0x8
  466 0094 07       		.byte	0x7
  467 0095 07       		.uleb128 0x7
@@ -633,7 +633,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  470 009b 03       		.byte	0x3
  471 009c 1A       		.byte	0x1a
  472 009d 08       		.uleb128 0x8
- 473 009e A0010000 		.4byte	.LASF11
+ 473 009e A4010000 		.4byte	.LASF11
  474 00a2 03       		.byte	0x3
  475 00a3 1B       		.byte	0x1b
  476 00a4 25000000 		.4byte	0x25
@@ -641,7 +641,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  478 00a9 23       		.byte	0x23
  479 00aa 00       		.uleb128 0x0
  480 00ab 08       		.uleb128 0x8
- 481 00ac 81010000 		.4byte	.LASF12
+ 481 00ac 85010000 		.4byte	.LASF12
  482 00b0 03       		.byte	0x3
  483 00b1 1C       		.byte	0x1c
  484 00b2 25000000 		.4byte	0x25
@@ -649,7 +649,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  486 00b7 23       		.byte	0x23
  487 00b8 01       		.uleb128 0x1
  488 00b9 08       		.uleb128 0x8
- 489 00ba 70010000 		.4byte	.LASF13
+ 489 00ba 74010000 		.4byte	.LASF13
  490 00be 03       		.byte	0x3
  491 00bf 1D       		.byte	0x1d
  492 00c0 25000000 		.4byte	0x25
@@ -657,8 +657,8 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  494 00c5 23       		.byte	0x23
  495 00c6 02       		.uleb128 0x2
  496 00c7 08       		.uleb128 0x8
- 497 00c8 5C000000 		.4byte	.LASF14
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 12
+ 497 00c8 A9000000 		.4byte	.LASF14
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 12
 
 
  498 00cc 03       		.byte	0x3
@@ -668,7 +668,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  502 00d3 23       		.byte	0x23
  503 00d4 03       		.uleb128 0x3
  504 00d5 08       		.uleb128 0x8
- 505 00d6 61000000 		.4byte	.LASF15
+ 505 00d6 AE000000 		.4byte	.LASF15
  506 00da 03       		.byte	0x3
  507 00db 1F       		.byte	0x1f
  508 00dc 25000000 		.4byte	0x25
@@ -676,7 +676,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  510 00e1 23       		.byte	0x23
  511 00e2 04       		.uleb128 0x4
  512 00e3 08       		.uleb128 0x8
- 513 00e4 7A000000 		.4byte	.LASF16
+ 513 00e4 C7000000 		.4byte	.LASF16
  514 00e8 03       		.byte	0x3
  515 00e9 20       		.byte	0x20
  516 00ea 25000000 		.4byte	0x25
@@ -684,7 +684,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  518 00ef 23       		.byte	0x23
  519 00f0 05       		.uleb128 0x5
  520 00f1 08       		.uleb128 0x8
- 521 00f2 A5010000 		.4byte	.LASF17
+ 521 00f2 A9010000 		.4byte	.LASF17
  522 00f6 03       		.byte	0x3
  523 00f7 21       		.byte	0x21
  524 00f8 65000000 		.4byte	0x65
@@ -692,7 +692,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  526 00fd 23       		.byte	0x23
  527 00fe 08       		.uleb128 0x8
  528 00ff 08       		.uleb128 0x8
- 529 0100 95000000 		.4byte	.LASF18
+ 529 0100 E2000000 		.4byte	.LASF18
  530 0104 03       		.byte	0x3
  531 0105 22       		.byte	0x22
  532 0106 25000000 		.4byte	0x25
@@ -700,7 +700,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  534 010b 23       		.byte	0x23
  535 010c 0C       		.uleb128 0xc
  536 010d 08       		.uleb128 0x8
- 537 010e 20010000 		.4byte	.LASF19
+ 537 010e 24010000 		.4byte	.LASF19
  538 0112 03       		.byte	0x3
  539 0113 23       		.byte	0x23
  540 0114 62010000 		.4byte	0x162
@@ -708,7 +708,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  542 0119 23       		.byte	0x23
  543 011a 10       		.uleb128 0x10
  544 011b 08       		.uleb128 0x8
- 545 011c 28010000 		.4byte	.LASF20
+ 545 011c 2C010000 		.4byte	.LASF20
  546 0120 03       		.byte	0x3
  547 0121 24       		.byte	0x24
  548 0122 25000000 		.4byte	0x25
@@ -716,9 +716,9 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  550 0127 23       		.byte	0x23
  551 0128 28       		.uleb128 0x28
  552 0129 08       		.uleb128 0x8
- 553 012a 39000000 		.4byte	.LASF21
+ 553 012a 86000000 		.4byte	.LASF21
  554 012e 03       		.byte	0x3
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 13
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 13
 
 
  555 012f 25       		.byte	0x25
@@ -727,7 +727,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  558 0135 23       		.byte	0x23
  559 0136 29       		.uleb128 0x29
  560 0137 08       		.uleb128 0x8
- 561 0138 86010000 		.4byte	.LASF22
+ 561 0138 8A010000 		.4byte	.LASF22
  562 013c 03       		.byte	0x3
  563 013d 26       		.byte	0x26
  564 013e 25000000 		.4byte	0x25
@@ -735,7 +735,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  566 0143 23       		.byte	0x23
  567 0144 2A       		.uleb128 0x2a
  568 0145 08       		.uleb128 0x8
- 569 0146 6D000000 		.4byte	.LASF23
+ 569 0146 BA000000 		.4byte	.LASF23
  570 014a 03       		.byte	0x3
  571 014b 27       		.byte	0x27
  572 014c 25000000 		.4byte	0x25
@@ -743,7 +743,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  574 0151 23       		.byte	0x23
  575 0152 2B       		.uleb128 0x2b
  576 0153 08       		.uleb128 0x8
- 577 0154 2B000000 		.4byte	.LASF24
+ 577 0154 78000000 		.4byte	.LASF24
  578 0158 03       		.byte	0x3
  579 0159 28       		.byte	0x28
  580 015a 25000000 		.4byte	0x25
@@ -759,13 +759,13 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  590 0170 05       		.byte	0x5
  591 0171 00       		.byte	0x0
  592 0172 04       		.uleb128 0x4
- 593 0173 37010000 		.4byte	.LASF25
+ 593 0173 3B010000 		.4byte	.LASF25
  594 0177 03       		.byte	0x3
  595 0178 29       		.byte	0x29
  596 0179 95000000 		.4byte	0x95
  597 017d 0B       		.uleb128 0xb
  598 017e A5010000 		.4byte	0x1a5
- 599 0182 3D010000 		.4byte	.LASF32
+ 599 0182 41010000 		.4byte	.LASF32
  600 0186 01       		.byte	0x1
  601 0187 2D       		.byte	0x2d
  602 0188 01       		.byte	0x1
@@ -778,14 +778,14 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  609 019b 2E       		.byte	0x2e
  610 019c 3E000000 		.4byte	0x3e
  611 01a0 1F000000 		.4byte	.LLST1
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 14
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 14
 
 
  612 01a4 00       		.byte	0x0
  613 01a5 0D       		.uleb128 0xd
  614 01a6 E0010000 		.4byte	0x1e0
  615 01aa 01       		.byte	0x1
- 616 01ab 92010000 		.4byte	.LASF33
+ 616 01ab 96010000 		.4byte	.LASF33
  617 01af 01       		.byte	0x1
  618 01b0 44       		.byte	0x44
  619 01b1 01       		.byte	0x1
@@ -794,7 +794,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  622 01ba 60010000 		.4byte	.LFE3
  623 01be 32000000 		.4byte	.LLST2
  624 01c2 0E       		.uleb128 0xe
- 625 01c3 0C000000 		.4byte	.LASF34
+ 625 01c3 59000000 		.4byte	.LASF34
  626 01c7 01       		.byte	0x1
  627 01c8 43       		.byte	0x43
  628 01c9 72010000 		.4byte	0x172
@@ -802,14 +802,14 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  630 01ce 91       		.byte	0x91
  631 01cf 00       		.sleb128 0
  632 01d0 0F       		.uleb128 0xf
- 633 01d1 7A010000 		.4byte	.LASF26
+ 633 01d1 7E010000 		.4byte	.LASF26
  634 01d5 01       		.byte	0x1
  635 01d6 45       		.byte	0x45
  636 01d7 25000000 		.4byte	0x25
  637 01db 69000000 		.4byte	.LLST3
  638 01df 00       		.byte	0x0
  639 01e0 10       		.uleb128 0x10
- 640 01e1 9B010000 		.4byte	.LASF27
+ 640 01e1 9F010000 		.4byte	.LASF27
  641 01e5 01       		.byte	0x1
  642 01e6 1E       		.byte	0x1e
  643 01e7 72010000 		.4byte	0x172
@@ -817,7 +817,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  645 01ec 03       		.byte	0x3
  646 01ed 00000000 		.4byte	menu
  647 01f1 10       		.uleb128 0x10
- 648 01f2 30010000 		.4byte	.LASF28
+ 648 01f2 34010000 		.4byte	.LASF28
  649 01f6 01       		.byte	0x1
  650 01f7 1F       		.byte	0x1f
  651 01f8 25000000 		.4byte	0x25
@@ -838,7 +838,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  666 0009 25       		.uleb128 0x25
  667 000a 0E       		.uleb128 0xe
  668 000b 13       		.uleb128 0x13
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 15
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 15
 
 
  669 000c 0B       		.uleb128 0xb
@@ -898,7 +898,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  723 0042 00       		.byte	0x0
  724 0043 06       		.uleb128 0x6
  725 0044 0F       		.uleb128 0xf
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 16
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 16
 
 
  726 0045 00       		.byte	0x0
@@ -958,7 +958,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  780 007b 2E       		.uleb128 0x2e
  781 007c 01       		.byte	0x1
  782 007d 01       		.uleb128 0x1
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 17
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 17
 
 
  783 007e 13       		.uleb128 0x13
@@ -1018,7 +1018,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  837 00b4 06       		.uleb128 0x6
  838 00b5 00       		.byte	0x0
  839 00b6 00       		.byte	0x0
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 18
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 18
 
 
  840 00b7 0E       		.uleb128 0xe
@@ -1078,7 +1078,7 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  892      00
  893 001b 00000000 		.4byte	0x0
  894              		.section	.debug_aranges,"",%progbits
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 19
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 19
 
 
  895 0000 1C000000 		.4byte	0x1c
@@ -1093,174 +1093,174 @@ ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 1
  904 0018 00000000 		.4byte	0x0
  905 001c 00000000 		.4byte	0x0
  906              		.section	.debug_str,"MS",%progbits,1
- 907              	.LASF4:
- 908 0000 7369676E 		.ascii	"signed char\000"
- 908      65642063 
- 908      68617200 
- 909              	.LASF34:
- 910 000c 6E65774D 		.ascii	"newMenu\000"
- 910      656E7500 
- 911              	.LASF10:
- 912 0014 6C6F6E67 		.ascii	"long long unsigned int\000"
- 912      206C6F6E 
- 912      6720756E 
- 912      7369676E 
- 912      65642069 
- 913              	.LASF24:
- 914 002b 73656C65 		.ascii	"selectedColor\000"
- 914      63746564 
- 914      436F6C6F 
- 914      7200
- 915              	.LASF21:
- 916 0039 626F7264 		.ascii	"borderColor\000"
- 916      6572436F 
- 916      6C6F7200 
- 917              	.LASF8:
- 918 0045 6C6F6E67 		.ascii	"long long int\000"
- 918      206C6F6E 
- 918      6720696E 
- 918      7400
- 919              	.LASF7:
- 920 0053 6C6F6E67 		.ascii	"long int\000"
- 920      20696E74 
- 920      00
- 921              	.LASF14:
- 922 005c 794C656E 		.ascii	"yLen\000"
- 922      00
- 923              	.LASF15:
- 924 0061 6E6F4F66 		.ascii	"noOfChoices\000"
- 924      43686F69 
- 924      63657300 
- 925              	.LASF23:
- 926 006d 63686F69 		.ascii	"choicesColor\000"
- 926      63657343 
- 926      6F6C6F72 
- 926      00
- 927              	.LASF16:
- 928 007a 696E6974 		.ascii	"initialChoice\000"
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 20
+ 907              	.LASF31:
+ 908 0000 2F637967 		.ascii	"/cygdrive/c/Documents and Settings/witaj/Moje dokum"
+ 908      64726976 
+ 908      652F632F 
+ 908      446F6375 
+ 908      6D656E74 
+ 909 0033 656E7479 		.ascii	"enty/GitHub/Snake/Example\000"
+ 909      2F476974 
+ 909      4875622F 
+ 909      536E616B 
+ 909      652F4578 
+ 910              	.LASF4:
+ 911 004d 7369676E 		.ascii	"signed char\000"
+ 911      65642063 
+ 911      68617200 
+ 912              	.LASF34:
+ 913 0059 6E65774D 		.ascii	"newMenu\000"
+ 913      656E7500 
+ 914              	.LASF10:
+ 915 0061 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 915      206C6F6E 
+ 915      6720756E 
+ 915      7369676E 
+ 915      65642069 
+ 916              	.LASF24:
+ 917 0078 73656C65 		.ascii	"selectedColor\000"
+ 917      63746564 
+ 917      436F6C6F 
+ 917      7200
+ 918              	.LASF21:
+ 919 0086 626F7264 		.ascii	"borderColor\000"
+ 919      6572436F 
+ 919      6C6F7200 
+ 920              	.LASF8:
+ 921 0092 6C6F6E67 		.ascii	"long long int\000"
+ 921      206C6F6E 
+ 921      6720696E 
+ 921      7400
+ 922              	.LASF7:
+ 923 00a0 6C6F6E67 		.ascii	"long int\000"
+ 923      20696E74 
+ 923      00
+ 924              	.LASF14:
+ 925 00a9 794C656E 		.ascii	"yLen\000"
+ 925      00
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 20
 
 
- 928      69616C43 
- 928      686F6963 
- 928      6500
- 929              	.LASF3:
- 930 0088 756E7369 		.ascii	"unsigned int\000"
- 930      676E6564 
- 930      20696E74 
- 930      00
- 931              	.LASF18:
- 932 0095 68656164 		.ascii	"headerTextXpos\000"
- 932      65725465 
- 932      78745870 
- 932      6F7300
- 933              	.LASF6:
- 934 00a4 6C6F6E67 		.ascii	"long unsigned int\000"
- 934      20756E73 
- 934      69676E65 
- 934      6420696E 
- 934      7400
- 935              	.LASF1:
- 936 00b6 73686F72 		.ascii	"short unsigned int\000"
- 936      7420756E 
- 936      7369676E 
- 936      65642069 
- 936      6E7400
- 937              	.LASF31:
- 938 00c9 2F637967 		.ascii	"/cygdrive/c/Documents and Settings/witaj/Moje dokum"
- 938      64726976 
- 938      652F632F 
- 938      446F6375 
- 938      6D656E74 
- 939 00fc 656E7479 		.ascii	"enty/GitHub/Snake/src\000"
- 939      2F476974 
- 939      4875622F 
- 939      536E616B 
- 939      652F7372 
+ 926              	.LASF15:
+ 927 00ae 6E6F4F66 		.ascii	"noOfChoices\000"
+ 927      43686F69 
+ 927      63657300 
+ 928              	.LASF23:
+ 929 00ba 63686F69 		.ascii	"choicesColor\000"
+ 929      63657343 
+ 929      6F6C6F72 
+ 929      00
+ 930              	.LASF16:
+ 931 00c7 696E6974 		.ascii	"initialChoice\000"
+ 931      69616C43 
+ 931      686F6963 
+ 931      6500
+ 932              	.LASF3:
+ 933 00d5 756E7369 		.ascii	"unsigned int\000"
+ 933      676E6564 
+ 933      20696E74 
+ 933      00
+ 934              	.LASF18:
+ 935 00e2 68656164 		.ascii	"headerTextXpos\000"
+ 935      65725465 
+ 935      78745870 
+ 935      6F7300
+ 936              	.LASF6:
+ 937 00f1 6C6F6E67 		.ascii	"long unsigned int\000"
+ 937      20756E73 
+ 937      69676E65 
+ 937      6420696E 
+ 937      7400
+ 938              	.LASF1:
+ 939 0103 73686F72 		.ascii	"short unsigned int\000"
+ 939      7420756E 
+ 939      7369676E 
+ 939      65642069 
+ 939      6E7400
  940              	.LASF2:
- 941 0112 74553332 		.ascii	"tU32\000"
+ 941 0116 74553332 		.ascii	"tU32\000"
  941      00
  942              	.LASF30:
- 943 0117 73656C65 		.ascii	"select.c\000"
+ 943 011b 73656C65 		.ascii	"select.c\000"
  943      63742E63 
  943      00
  944              	.LASF19:
- 945 0120 7043686F 		.ascii	"pChoice\000"
+ 945 0124 7043686F 		.ascii	"pChoice\000"
  945      69636500 
  946              	.LASF20:
- 947 0128 6267436F 		.ascii	"bgColor\000"
+ 947 012c 6267436F 		.ascii	"bgColor\000"
  947      6C6F7200 
  948              	.LASF28:
- 949 0130 63757273 		.ascii	"cursor\000"
+ 949 0134 63757273 		.ascii	"cursor\000"
  949      6F7200
  950              	.LASF25:
- 951 0137 744D656E 		.ascii	"tMenu\000"
+ 951 013b 744D656E 		.ascii	"tMenu\000"
  951      7500
  952              	.LASF32:
- 953 013d 64726177 		.ascii	"drawMenuCursor\000"
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 21
+ 953 0141 64726177 		.ascii	"drawMenuCursor\000"
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 21
 
 
  953      4D656E75 
  953      43757273 
  953      6F7200
  954              	.LASF0:
- 955 014c 756E7369 		.ascii	"unsigned char\000"
+ 955 0150 756E7369 		.ascii	"unsigned char\000"
  955      676E6564 
  955      20636861 
  955      7200
  956              	.LASF29:
- 957 015a 474E5520 		.ascii	"GNU C 4.1.1\000"
+ 957 015e 474E5520 		.ascii	"GNU C 4.1.1\000"
  957      4320342E 
  957      312E3100 
  958              	.LASF5:
- 959 0166 73686F72 		.ascii	"short int\000"
+ 959 016a 73686F72 		.ascii	"short int\000"
  959      7420696E 
  959      7400
  960              	.LASF13:
- 961 0170 784C656E 		.ascii	"xLen\000"
+ 961 0174 784C656E 		.ascii	"xLen\000"
  961      00
  962              	.LASF9:
- 963 0175 63686172 		.ascii	"char\000"
+ 963 0179 63686172 		.ascii	"char\000"
  963      00
  964              	.LASF26:
- 965 017a 616E794B 		.ascii	"anyKey\000"
+ 965 017e 616E794B 		.ascii	"anyKey\000"
  965      657900
  966              	.LASF12:
- 967 0181 79506F73 		.ascii	"yPos\000"
+ 967 0185 79506F73 		.ascii	"yPos\000"
  967      00
  968              	.LASF22:
- 969 0186 68656164 		.ascii	"headerColor\000"
+ 969 018a 68656164 		.ascii	"headerColor\000"
  969      6572436F 
  969      6C6F7200 
  970              	.LASF33:
- 971 0192 64726177 		.ascii	"drawMenu\000"
+ 971 0196 64726177 		.ascii	"drawMenu\000"
  971      4D656E75 
  971      00
  972              	.LASF27:
- 973 019b 6D656E75 		.ascii	"menu\000"
+ 973 019f 6D656E75 		.ascii	"menu\000"
  973      00
  974              	.LASF11:
- 975 01a0 78506F73 		.ascii	"xPos\000"
+ 975 01a4 78506F73 		.ascii	"xPos\000"
  975      00
  976              	.LASF17:
- 977 01a5 70486561 		.ascii	"pHeaderText\000"
+ 977 01a9 70486561 		.ascii	"pHeaderText\000"
  977      64657254 
  977      65787400 
  978              		.ident	"GCC: (GNU) 4.1.1"
-ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s 			page 22
+ARM GAS  /cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 select.c
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:1      .text:00000000 $t
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:15     .text:00000000 drawMenuCursor
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:85     .text:00000064 $d
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:258    .bss:00000000 menu
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:260    .bss:00000030 cursor
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:95     .text:00000070 drawMenu
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:92     .text:00000070 $t
-/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/ccON1sJl.s:252    .text:00000158 $d
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:1      .text:00000000 $t
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:15     .text:00000000 drawMenuCursor
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:85     .text:00000064 $d
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:258    .bss:00000000 menu
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:260    .bss:00000030 cursor
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:95     .text:00000070 drawMenu
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:92     .text:00000070 $t
+/cygdrive/c/DOCUME~1/witaj/USTAWI~1/Temp/cckXIkCp.s:252    .text:00000158 $d
 
 UNDEFINED SYMBOLS
 lcdGotoxy

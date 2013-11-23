@@ -121,6 +121,7 @@ drawMenuCursor(tU8 cursor)
     switch(row)
     {
       case 0: lcdPuts("Snake/TRON"); break;
+	  case 1: lcdPuts("Send score"); break;
       default: break;
     }
   }
@@ -207,6 +208,8 @@ proc1(void* arg)
         switch(cursor)
         {
           case 0: playSnake(); break;
+          // Tutaj trzeba podać wiadomosc i rozmiar wiadomosci.
+          //case 1: sendScore(memblock, rozmiar); break;
           default: break;
         }
         drawMenu();
@@ -218,14 +221,14 @@ proc1(void* arg)
         if (cursor > 0)
           cursor--;
         else
-          cursor = 0;
+          cursor = 1;
         drawMenuCursor(cursor);
       }
       
       //move cursor down
       else if (anyKey == KEY_DOWN)
       {
-        if (cursor < 0)
+        if (cursor < 1)
           cursor++;
         else
           cursor = 0;

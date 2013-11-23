@@ -1162,7 +1162,7 @@ drawBtMenu(void)
  *
  ****************************************************************************/
 void
-handleBt(void)
+handleBluetooth(void)
 {
   tU8 exit = FALSE;
 
