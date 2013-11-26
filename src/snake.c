@@ -44,6 +44,7 @@
 #define MOVE_DOWN       1
 #define MOVE_LEFT       2
 #define MOVE_RIGHT      3
+#define MOVE_NULL       5
 
 #define ARENA_SIZE      32
 #define MAX_SNAKE_SIZE  64
@@ -600,18 +601,27 @@ resetSnake()
 	int j = 0, i = snakeTailGuard;
 	int index;
 	tU8 snakeTailCopy[snakeSize];
-	/*
-	for(index = 0; index < snakeSize; index++)
-	{
-		snakeTailCopy[snakeSize-index-1] = snakeTail[(snakeTailGuard+index)%snakeSize];
-	}
-	*/
+    /*
+    	// for(index = 0; index < snakeSize; index++)
+    	// {
+    	// 	snakeTailCopy[snakeSize-index-1] = snakeTail[(snakeTailGuard+index)%snakeSize];
+    	// }
 	do 
     {
 		snakeTailCopy[snakeSize-1-i] = snakeTail[i];
         i = (i + 1) % snakeSize;
     }while(i != snakeTailGuard % snakeSize);
 	snakeTailGuard = snakeSize - 1;
+    */
+
+    for (index = 0; index < snakeSize; index++)
+    {
+        snakeTailCopy[index] = snakeTail[(snakeTailGuard+index)%snakeSize];
+    }
+    for (index = 0; index < snakeSize; index++)
+    {
+        snakeTail[index] = snakeTailCopy[index];
+    }
 }
 
 static void
@@ -656,8 +666,6 @@ moveField(tU8 x, tU8 y, tU8 direction)
 
 	cleanEndOfTail();
 	
-
-	
     // Remember move
     snakeTail[snakeTailGuard] = direction;
     snakeTailGuard = (snakeTailGuard + 1) % snakeSize;
@@ -674,6 +682,8 @@ moveField(tU8 x, tU8 y, tU8 direction)
         makeNoise();
 		resetSnake();
         snakeSize++;
+        snakeTailGuard = snakeSize-1;
+        snakeTail[snakeTailGuard] = MOVE_NULL;
 		putSnack();
     }
 	else
