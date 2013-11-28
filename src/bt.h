@@ -15,8 +15,5 @@
 #define _BT_H_
 
 void initBtProc(void);
-void handleBluetooth(void);
-void blockBtProc(void);
-void activateBtProc(void);
 
 #endif

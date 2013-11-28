@@ -23,22 +23,9 @@
 #include "lcd.h"
 #include "key.h"
 #include "uart.h"
-#include "exampleGame.h"
 #include "snake.h"
 #include "bt.h"
 #include "hw.h"
-#include "version.h"
-#include "configAppl.h"
-
-#ifdef INCLUDE_MENU_FIRE
-#include "fire_0_100x40c.h"
-#include "fire_1_100x40c.h"
-#include "fire_2_100x40c.h"
-#include "fire_3_100x40c.h"
-#include "fire_4_100x40c.h"
-#include "fire_5_100x40c.h"
-#include "fire_6_100x40c.h"
-#endif
 
 /******************************************************************************
  * Typedefs and defines
@@ -62,6 +49,9 @@ static tU8 pid1;
 
 static tU8 contrast = 56;
 static tU8 cursor   = 0;
+
+tU8 memblock[] = {'W', 'i', 'a', 'd', 'o', 'm', 'o', 's', 'c', ' ', 'w', 'y', 's', 'l', 'a', 'n', 'a', ' ', 'z', ' ', 'G','a','m','e','b','o','a','r','d','a'};
+int memblockSize = 30;
 
 
 /*****************************************************************************
@@ -209,7 +199,7 @@ proc1(void* arg)
         {
           case 0: playSnake(); break;
           // Tutaj trzeba podać wiadomosc i rozmiar wiadomosci.
-          //case 1: sendScore(memblock, rozmiar); break;
+          case 1: sendScore(memblock, memblockSize); break;
           default: break;
         }
         drawMenu();
@@ -270,35 +260,7 @@ initProc(void* arg)
   tU8 error;
 
   eaInit();
-  printf("\n*********************************************************");
-  printf("\n*                                                       *");
-  printf("\n* Welcome to Embedded Artists' summer promotion board;  *");
-  printf("\n*   'LPC2104 Color LCD Game Board with Bluetooth'       *");
-  printf("\n* in cooperation with Future Electronics and Philips.   *");
-  printf("\n* Boards with embedded JTAG includes J-link(tm)         *");
-  printf("\n* technology from Segger.                               *");
-  printf("\n*                                                       *");
-
-  printf("\n* Program version:  %d.%d                                 *", MAJOR_VER, MINOR_VER);
-  printf("\n* Program date:     %s                          *", RELEASE_DATE);
-
-  if (TRUE == ver1_0)
-    printf("\n* Hardware version: 1.0                                 *");
-  else if (TRUE == ver1_1)
-    printf("\n* Hardware version: 1.1                                 *");
-
-#ifdef __IAR_SYSTEMS_ICC__
-  printf("\n* Compiled with IAR Embedded Workbench                  *");
-#else
-  printf("\n* Compiled with GCC                                     *");
-#endif
-
-  printf("\n*                                                       *");
-  printf("\n* (C) Embedded Artists AB, 2006                         *");
-  printf("\n*                                                       *");
-  printf("\n*********************************************************\n");
   
-
   osCreateProcess(proc1, proc1Stack, PROC1_STACK_SIZE, &pid1, 3, NULL, &error);
   osStartProcess(pid1, &error);
 
